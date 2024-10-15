@@ -1,0 +1,14 @@
+.roulette-full{
+    background-color: #0C012B;
+}
+
+.roulette-main{
+    display: flex;
+}
+
+.roulette-left-main{
+width: 20%;
+height: 85vh;
+display: flex;
+flex-direction: column;
+}

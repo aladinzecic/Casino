@@ -1,0 +1,39 @@
+.side{
+    height: 90vh;
+    background-color: #1C0D34;
+    width: 7vw;
+    border-top-right-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.side-box{
+    width: 7vw;
+    height: 6vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.side-box:nth-child(1){
+    margin-top: 20px;
+}
+.crash-img{
+    width: 2.5vw;
+    height: 2.5vw;
+}
+
+.h4-side{
+    margin-top: 5px;
+    font-size: 14px;
+    color: rgb(226, 208, 208);
+}
+
+.h4-side-active{
+    margin-top: 5px;
+    font-size: 14px;
+    color: #cf3af8;
+}
