@@ -26,6 +26,7 @@ input{
     border: 0;
     padding-left: 8px;
     color: gray;
+    font-size: 14px;
 }
 input:focus{
     outline: none;
@@ -47,6 +48,7 @@ height: 30px;
 width: 55px;
 border: 0;
 cursor: pointer;
+font-size: 16px;
 }
 
 .percent-button:nth-child(4){
@@ -63,4 +65,5 @@ background-color: #C137E5;
     cursor: pointer;
     border: 0;
     border-radius: 20px;
+    font-size: 18px;
 }

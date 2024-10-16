@@ -1,0 +1,89 @@
+.number-board{
+    width: 75%;
+}
+
+.board-up{
+    width: 100%;
+    display: flex;
+}
+.board-down{
+    width: 100%;
+    display: flex;
+    margin-left: 50px;
+}
+.number-board-red-black{
+    margin-left: 10px;
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 10px;
+    grid-auto-flow: row;
+}
+.num{
+    padding: 20px;
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid red;
+
+}
+.zero{
+    width: 40px;
+    height: 140px;
+    background-color: #0baf34;
+    color: #fff;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.third{
+    background-color: #2d2741;
+    margin-left: 10px;
+}
+
+.third:not(:nth-child(1)){
+    margin-top: 10px;
+}
+
+.long-field{
+    width: 90px;
+    height: 40px;
+    background-color: #2d2741;
+    color: #fff;
+    border-radius: 5px;
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.long-field:not(:nth-child(1)){
+    margin-left: 10px;
+}
+.red-bet{
+    background-color: #BC4EFF;
+}
+.black-bet{
+    background-color: #461797;
+}
+.proba{
+    width: 30px;
+    height: 40px;
+}
+.chip{margin-top: 2px;
+    width: 30px;
+    height: 30px;
+    margin-left: -17px;
+position: absolute;
+}
+.chip:nth-child(2){
+margin-top: -5px;
+}

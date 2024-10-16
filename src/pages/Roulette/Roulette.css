@@ -12,3 +12,12 @@ height: 85vh;
 display: flex;
 flex-direction: column;
 }
+.roulette-right-main{
+    width: 75%;
+height: 80vh;
+display: flex;
+flex-direction: column-reverse;
+margin-left: 5vw;
+align-items: center;
+
+}

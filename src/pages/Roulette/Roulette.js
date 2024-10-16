@@ -4,6 +4,7 @@ import Navbar from '../../components/NavBar/Navbar'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import PlaceBetCard from '../../components/PlaceBetCard/PlaceBetCard'
 import WinningsCard from '../../components/WinningsCard/WinningsCard'
+import RouletteNumbers from '../../components/RouletteNumbers/RouletteNumbers'
 export default function Roulette() {
   return (
     <div className='roulette-full'>
@@ -13,8 +14,11 @@ export default function Roulette() {
             <div className="roulette-left-main">
                 <PlaceBetCard/>
                 <WinningsCard/>
+                
             </div>
+
             <div className="roulette-right-main">
+                <RouletteNumbers/>
             </div>
         </div>
     </div>
