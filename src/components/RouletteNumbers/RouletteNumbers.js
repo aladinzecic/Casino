@@ -5,7 +5,7 @@ export default function RouletteNumbers() {
     const redNumbers=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
     const blackNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
     const allNumbers = [];
-    const [chipVisible,setChipVisible]=useState(0);
+    const [chipVisible,setChipVisible]=useState(-1);
     for(let i=1;i<=12;i++){
         allNumbers.push(i*3)
     }
@@ -30,7 +30,14 @@ function addChips(){
       return (
         <div className="number-board">
             <div className="board-up">
-            <div className="zero" key={0}>0</div>
+            <div className="zero" key={0} onClick={()=>setChipVisible(0)}>0
+            {chipVisible===0 && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+            </div>
             <div className='number-board-red-black'>
             {allNumbers.map((number) => (
               <div
@@ -46,7 +53,7 @@ function addChips(){
                 }}
               >
                 {number}
-                {chipVisible==number && (
+                {chipVisible===number && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
@@ -55,19 +62,88 @@ function addChips(){
               </div>
             ))}
           </div>
-          <div className=""right-thirds>
-            <div className="num third">2:1</div>
-            <div className="num third">2:1</div>
-            <div className="num third">2:1</div>
+          <div className=""right-thirds >
+            <div className="num third" onClick={()=>setChipVisible("thirds-first")}>2:1
+            {chipVisible==="thirds-first" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+            </div>
+            <div className="num third" onClick={()=>setChipVisible("thirds-second")}>2:1
+            {chipVisible==="thirds-second" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+            </div>
+            <div className="num third" onClick={()=>setChipVisible("thirds-third")}>2:1
+            {chipVisible==="thirds-third" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+            </div>
           </div>
             </div>
             <div className="board-down">
-              <div className="long-field">1-18</div>
-              <div className="long-field">Even</div>
-              <div className="long-field red-bet"></div>
-              <div className="long-field black-bet"></div>
-              <div className="long-field">Odd</div>
-              <div className="long-field">19-36</div>
+              <div className="long-field"
+              onClick={()=>setChipVisible("left-half")}
+              >
+                1-18
+                {chipVisible==="left-half" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+                </div>
+              <div className="long-field" onClick={()=>setChipVisible("even")}>
+                Even
+                {chipVisible==="even" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+                </div>
+              <div className="long-field red-bet" onClick={()=>setChipVisible("rose")}>
+              {chipVisible==="rose" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+              </div>
+              <div className="long-field black-bet" onClick={()=>setChipVisible("purple")}>
+              {chipVisible==="purple" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+              </div>
+              <div className="long-field" onClick={()=>setChipVisible("odd")}>
+                Odd
+                {chipVisible==="odd" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+                </div>
+              <div className="long-field" onClick={()=>setChipVisible("right-half")}>
+                19-36
+                {chipVisible==="right-half" && (
+        <div className="proba">
+          <img className="chip" src={chip} alt="chip" />
+          <img className="chip" src={chip} alt="chip" />
+        </div>
+      )}
+                </div>
             </div>
         </div>
       );

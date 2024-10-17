@@ -29,7 +29,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid red;
+    position: relative;
 
 }
 .zero{
@@ -64,6 +64,8 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 }
 .long-field:not(:nth-child(1)){
     margin-left: 10px;
@@ -77,12 +79,17 @@
 .proba{
     width: 30px;
     height: 40px;
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
 }
-.chip{margin-top: 2px;
+.chip{
+    margin-top: 2px;
     width: 30px;
     height: 30px;
-    margin-left: -17px;
-position: absolute;
+    position: absolute;
+    left: 0;
 }
 .chip:nth-child(2){
 margin-top: -5px;
