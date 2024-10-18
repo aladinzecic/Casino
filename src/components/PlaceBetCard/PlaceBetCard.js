@@ -1,7 +1,25 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import "./PlaceBetCard.css"
+import { AppContext } from '../../Context/AppContext'
 
 export default function PlaceBetCard() {
+
+  const {setIsSpinning,setRotateWheelDeg,wheelNumbers}=useContext(AppContext)
+
+  function CalculateSpinningDeg(numb){
+    const degPerNum=360/37;
+    console.log(degPerNum)
+    const index = wheelNumbers.findIndex(num => num === numb);  
+    const rotatingCircles=Math.floor(Math.random()*2)+3
+    const rotatingDeg=rotatingCircles*360+index*degPerNum
+    setRotateWheelDeg(-rotatingDeg)
+  }
+  function PlaceBet(){
+    const num=Math.floor(Math.random()*37)
+    console.log(num)
+    CalculateSpinningDeg(num)
+    setIsSpinning(true)
+  }
   return (
     <div className='place-bet-card'>
         <h3 className="place-bet-card-h4">Place your bet</h3>
@@ -13,7 +31,9 @@ export default function PlaceBetCard() {
             <button className="percent-button">1/4</button>
             <button className="percent-button">Full</button>
         </div>
-        <button className="place-bet-button">Place a bet</button>
+        <button className="place-bet-button"
+        onClick={()=>PlaceBet()}
+        >Place a bet</button>
     </div>
   )
 }

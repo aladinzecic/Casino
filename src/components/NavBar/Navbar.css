@@ -2,4 +2,6 @@
 .nav{
     height: 10vh;
     background-color: #0C012B;
+    z-index: 10;
+    position: relative;
 }

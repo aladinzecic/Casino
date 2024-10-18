@@ -1,5 +1,6 @@
 .roulette-full{
     background-color: #0C012B;
+    overflow: hidden;
 }
 
 .roulette-main{
@@ -19,5 +20,44 @@ display: flex;
 flex-direction: column-reverse;
 margin-left: 5vw;
 align-items: center;
+position: relative;
+margin-top: 5vh;
 
 }
+
+.arrow{
+    position: absolute;
+    rotate: 90deg;
+    height: 25px;
+    top: 55px;
+    animation: bounce 6s linear  infinite ;
+}
+
+  @keyframes bounce{
+    20%{
+        top: 55px;
+    }
+    30%{
+        top: 62px;
+    }
+    40%{
+        top: 55px;
+    }
+    50%{
+        top: 62px;
+    }
+    60%{
+        top: 55px;
+    }
+    70%{
+        top: 62px;
+    }
+    80%{
+        top: 55px;
+    }
+
+    100%{
+        top: 55px;
+    }
+
+  }

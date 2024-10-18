@@ -5,7 +5,10 @@ import Sidebar from '../../components/Sidebar/Sidebar'
 import PlaceBetCard from '../../components/PlaceBetCard/PlaceBetCard'
 import WinningsCard from '../../components/WinningsCard/WinningsCard'
 import RouletteNumbers from '../../components/RouletteNumbers/RouletteNumbers'
+import Wheel from '../../components/Wheel/Wheel'
+import arrow from "../../assets/icons/arrow.png"
 export default function Roulette() {
+
   return (
     <div className='roulette-full'>
       <Navbar/>
@@ -19,6 +22,8 @@ export default function Roulette() {
 
             <div className="roulette-right-main">
                 <RouletteNumbers/>
+                <img className="arrow" alt='' src={arrow} />
+                <Wheel/>
             </div>
         </div>
     </div>

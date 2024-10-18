@@ -1,0 +1,24 @@
+.circle-container {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: 50% -120px; /* Centriraj rotaciju na sredinu */
+}
+  
+  .circle-segment {
+    position: absolute;
+    width: 60px;
+    height: 100px;
+    clip-path: polygon(22% 0, 78% 0, 90% 100%, 10% 100%);
+    border-radius: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-origin: center -230px;
+    color: #fff;
+  }
+
