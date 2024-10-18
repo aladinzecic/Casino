@@ -1,16 +1,26 @@
-import React,{useContext} from 'react'
+import React,{useContext,useEffect,useState} from 'react'
 import "./PlaceBetCard.css"
 import { AppContext } from '../../Context/AppContext'
 
 export default function PlaceBetCard() {
+const [rotatingCircles,setRotatingCircles]=useState(null)
+  const {setIsSpinning,setRotateWheelDeg,wheelNumbers,rotateWheelDeg}=useContext(AppContext)
+  useEffect(()=>{
+    if (PlaceBet) {
+      const timeoutId = setTimeout(() => {
+          // Nakon 10 sekundi poziva se setRotateWheelDeg
+          setRotateWheelDeg(rotateWheelDeg-rotatingCircles); // Dodaj 360 stepeni za još jedan krug
+      }, 10000); // 10 sekundi
 
-  const {setIsSpinning,setRotateWheelDeg,wheelNumbers}=useContext(AppContext)
-
+      // Čisti timeout kada se komponenta demontira
+      return () => clearTimeout(timeoutId);
+  }
+  },[PlaceBet])
   function CalculateSpinningDeg(numb){
     const degPerNum=360/37;
     console.log(degPerNum)
     const index = wheelNumbers.findIndex(num => num === numb);  
-    const rotatingCircles=Math.floor(Math.random()*2)+3
+    setRotatingCircles(Math.floor(Math.random()*2)+3)
     const rotatingDeg=rotatingCircles*360+index*degPerNum
     setRotateWheelDeg(-rotatingDeg)
   }
