@@ -1,34 +1,31 @@
-import React,{useContext,useEffect,useState} from 'react'
+import React,{useContext,useState} from 'react'
 import "./PlaceBetCard.css"
 import { AppContext } from '../../Context/AppContext'
 
 export default function PlaceBetCard() {
-const [rotatingCircles,setRotatingCircles]=useState(null)
-  const {setIsSpinning,setRotateWheelDeg,wheelNumbers,rotateWheelDeg}=useContext(AppContext)
-  useEffect(()=>{
-    if (PlaceBet) {
-      const timeoutId = setTimeout(() => {
-          // Nakon 10 sekundi poziva se setRotateWheelDeg
-          setRotateWheelDeg(rotateWheelDeg-rotatingCircles); // Dodaj 360 stepeni za još jedan krug
-      }, 10000); // 10 sekundi
+const [lastNumIndex,setLastNumIndex]=useState(0)
+  const {setRotateWheelDeg,wheelNumbers,rotateWheelDeg,setWinningNumber}=useContext(AppContext)
 
-      // Čisti timeout kada se komponenta demontira
-      return () => clearTimeout(timeoutId);
-  }
-  },[PlaceBet])
   function CalculateSpinningDeg(numb){
     const degPerNum=360/37;
     console.log(degPerNum)
     const index = wheelNumbers.findIndex(num => num === numb);  
-    setRotatingCircles(Math.floor(Math.random()*2)+3)
-    const rotatingDeg=rotatingCircles*360+index*degPerNum
-    setRotateWheelDeg(-rotatingDeg)
+    const rotatingDeg=(Math.floor(Math.random()*2)+3)*360+index*degPerNum- lastNumIndex*degPerNum
+    setRotateWheelDeg(rotateWheelDeg-rotatingDeg)
+    setLastNumIndex(index)
+    
   }
   function PlaceBet(){
     const num=Math.floor(Math.random()*37)
-    console.log(num)
+    setWinningNumber(null)
     CalculateSpinningDeg(num)
-    setIsSpinning(true)
+    const interval=setTimeout(() => {
+      setWinningNumber(num)
+  
+    }, 10000);
+    return () => {
+      clearTimeout(interval)
+  };
   }
   return (
     <div className='place-bet-card'>

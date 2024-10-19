@@ -1,11 +1,11 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import "./RouletteNumbers.css"
 import chip from "../../assets/icons/chip.webp"
+import { AppContext } from '../../Context/AppContext'
 export default function RouletteNumbers() {
-    const roseNumbers=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
-    const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
+    const {roseNumbers,purpleNumbers}=useContext(AppContext)
     const allNumbers = [];
-    const [chipVisible,setChipVisible]=useState(-1);
+    const [userBet,setUserBet]=useState(-1);
     const [isHovered,setIsHovered]=useState(null);
     for(let i=1;i<=12;i++){
         allNumbers.push(i*3)
@@ -40,10 +40,10 @@ else return 1
       return (
         <div className="number-board">
             <div className="board-up">
-            <div className="zero" key={0} onClick={()=>setChipVisible(0)}
+            <div className="zero" key={0} onClick={()=>setUserBet(0)}
               style={{opacity:isHovered!=null?"0.1":"1"}}
               >0
-            {chipVisible===0 && (
+            {userBet===0 && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
@@ -60,11 +60,11 @@ else return 1
                   opacity: addOpacity(number)
                 }}
                 onClick={()=>{
-                  setChipVisible(number)
+                  setUserBet(number)
                 }}
               >
                 {number}
-                {chipVisible===number && (
+                {userBet===number && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
@@ -74,33 +74,33 @@ else return 1
             ))}
           </div>
           <div className=""right-thirds >
-            <div className="num third" onClick={()=>setChipVisible("thirds-first")}
+            <div className="num third" onClick={()=>setUserBet("thirds-first")}
                             onMouseEnter={()=>setIsHovered("thirds-first")}
                             onMouseLeave={()=>setIsHovered(null)}
               >2:1
-            {chipVisible==="thirds-first" && (
+            {userBet==="thirds-first" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
         </div>
       )}
             </div>
-            <div className="num third" onClick={()=>setChipVisible("thirds-second")}
+            <div className="num third" onClick={()=>setUserBet("thirds-second")}
                             onMouseEnter={()=>setIsHovered("thirds-second")}
                             onMouseLeave={()=>setIsHovered(null)}
               >2:1
-            {chipVisible==="thirds-second" && (
+            {userBet==="thirds-second" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
         </div>
       )}
             </div>
-            <div className="num third" onClick={()=>setChipVisible("thirds-third")}
+            <div className="num third" onClick={()=>setUserBet("thirds-third")}
                             onMouseEnter={()=>setIsHovered("thirds-third")}
                             onMouseLeave={()=>setIsHovered(null)}
               >2:1
-            {chipVisible==="thirds-third" && (
+            {userBet==="thirds-third" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
@@ -111,68 +111,68 @@ else return 1
             </div>
             <div className="board-down">
               <div className="long-field"
-              onClick={()=>setChipVisible("left-half")}
+              onClick={()=>setUserBet("left-half")}
               onMouseEnter={()=>setIsHovered("left-half")}
               onMouseLeave={()=>setIsHovered(null)}
               >
                 1-18
-                {chipVisible==="left-half" && (
+                {userBet==="left-half" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
         </div>
       )}
                 </div>
-              <div className="long-field" onClick={()=>setChipVisible("even")}
+              <div className="long-field" onClick={()=>setUserBet("even")}
                 onMouseEnter={()=>setIsHovered("even")}
                 onMouseLeave={()=>setIsHovered(null)}
                 >
                 Even
-                {chipVisible==="even" && (
+                {userBet==="even" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
         </div>
       )}
                 </div>
-              <div className="long-field red-bet" onClick={()=>setChipVisible("rose")}
+              <div className="long-field red-bet" onClick={()=>setUserBet("rose")}
                                           onMouseEnter={()=>setIsHovered("rose")}
                                           onMouseLeave={()=>setIsHovered(null)}>
-              {chipVisible==="rose" && (
+              {userBet==="rose" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
         </div>
       )}
               </div>
-              <div className="long-field black-bet" onClick={()=>setChipVisible("purple")}
+              <div className="long-field black-bet" onClick={()=>setUserBet("purple")}
                                           onMouseEnter={()=>setIsHovered("purple")}
                                           onMouseLeave={()=>setIsHovered(null)}>
-              {chipVisible==="purple" && (
+              {userBet==="purple" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
         </div>
       )}
               </div>
-              <div className="long-field" onClick={()=>setChipVisible("odd")}
+              <div className="long-field" onClick={()=>setUserBet("odd")}
                           onMouseEnter={()=>setIsHovered("odd")}
                           onMouseLeave={()=>setIsHovered(null)}
                 >
                 Odd
-                {chipVisible==="odd" && (
+                {userBet==="odd" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />
         </div>
       )}
                 </div>
-              <div className="long-field" onClick={()=>setChipVisible("right-half")}
+              <div className="long-field" onClick={()=>setUserBet("right-half")}
                                           onMouseEnter={()=>setIsHovered("right-half")}
                                           onMouseLeave={()=>setIsHovered(null)}
                 >
                 19-36
-                {chipVisible==="right-half" && (
+                {userBet==="right-half" && (
         <div className="proba">
           <img className="chip" src={chip} alt="chip" />
           <img className="chip" src={chip} alt="chip" />

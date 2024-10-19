@@ -33,6 +33,21 @@ margin-top: 5vh;
     animation: bounce 6s linear  infinite ;
 }
 
+.winning-number{
+    position: absolute;
+    top: -20px;
+    color: #fff;
+    font-size: 42px;
+    border-radius: 5px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
   @keyframes bounce{
     20%{
         top: 55px;
