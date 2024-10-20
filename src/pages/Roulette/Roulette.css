@@ -45,8 +45,15 @@ margin-top: 5vh;
     align-items: center;
 }
 
-
-
+.winn{
+    position: absolute;
+    z-index: 20;
+    height: 600px;
+}
+.results-text{
+    font-size: 32px;
+    color: #Fff;
+}
 
   @keyframes bounce{
     20%{

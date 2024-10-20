@@ -4,7 +4,7 @@ import { AppContext } from '../../Context/AppContext'
 
 export default function PlaceBetCard() {
 const [lastNumIndex,setLastNumIndex]=useState(0)
-  const {setRotateWheelDeg,wheelNumbers,rotateWheelDeg,setWinningNumber}=useContext(AppContext)
+  const {setRotateWheelDeg,wheelNumbers,rotateWheelDeg,setWinningNumber,winCheck,userBet,setRouletteResults}=useContext(AppContext)
 
   function CalculateSpinningDeg(numb){
     const degPerNum=360/37;
@@ -18,10 +18,14 @@ const [lastNumIndex,setLastNumIndex]=useState(0)
   function PlaceBet(){
     const num=Math.floor(Math.random()*37)
     setWinningNumber(null)
+    setRouletteResults({
+      money:0,
+      win:false
+  });
     CalculateSpinningDeg(num)
     const interval=setTimeout(() => {
       setWinningNumber(num)
-  
+      winCheck(10,num,userBet)
     }, 10000);
     return () => {
       clearTimeout(interval)

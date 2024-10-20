@@ -3,9 +3,8 @@ import "./RouletteNumbers.css"
 import chip from "../../assets/icons/chip.webp"
 import { AppContext } from '../../Context/AppContext'
 export default function RouletteNumbers() {
-    const {roseNumbers,purpleNumbers}=useContext(AppContext)
+    const {roseNumbers,purpleNumbers,userBet,setUserBet}=useContext(AppContext)
     const allNumbers = [];
-    const [userBet,setUserBet]=useState(-1);
     const [isHovered,setIsHovered]=useState(null);
     for(let i=1;i<=12;i++){
         allNumbers.push(i*3)

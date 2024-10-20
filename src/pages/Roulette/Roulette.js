@@ -9,7 +9,7 @@ import Wheel from '../../components/Wheel/Wheel'
 import arrow from "../../assets/icons/arrow.png"
 import { AppContext } from '../../Context/AppContext'
 export default function Roulette() {
-const {winningNumber,getBackgroundColor}=useContext(AppContext)
+const {winningNumber,getBackgroundColor,rouletteResults}=useContext(AppContext)
   return (
     <div className='roulette-full'>
       <Navbar/>
@@ -23,6 +23,8 @@ const {winningNumber,getBackgroundColor}=useContext(AppContext)
 
             <div className="roulette-right-main">
                 <RouletteNumbers/>
+                <div className="results-text">    {rouletteResults.win ? "You won!":""}
+                </div>
                 <div className="winning-number"
                 style={{background:getBackgroundColor(winningNumber)}}
                 >{winningNumber}</div>

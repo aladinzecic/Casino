@@ -9,7 +9,11 @@ function ContextProvider({children}){
     const [winningNumber,setWinningNumber]=useState(null)
     const [isSpinning,setIsSpinning]=useState(false)
     const [rotateWheelDeg,setRotateWheelDeg]=useState(0)
-
+    const [userBet,setUserBet]=useState(-1);
+    const [rouletteResults, setRouletteResults] = useState({
+        money: 0,
+        win: null
+    });
     const getBackgroundColor = (number) => {
         if (roseNumbers.includes(number)) {
           return '#BC4EFF';
@@ -24,79 +28,79 @@ function ContextProvider({children}){
         let userWin=true;
         if (userBet===winningNumber) {
             newMoney=winningNumber===0?userBetMoney*50:userBetMoney*35
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="left-half"&&winningNumber>0&&winningNumber<19){
             newMoney=userBetMoney*2
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="right-half"&&winningNumber>18&&winningNumber<37){
             newMoney=userBetMoney*2
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="even"&&winningNumber%2===0){
             newMoney=userBetMoney*2
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="odd"&&winningNumber%2!==0){
             newMoney=userBetMoney*2
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="rose"&&roseNumbers.includes(winningNumber)){
             newMoney=userBetMoney*2
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="purple"&&purpleNumbers.includes(winningNumber)){
             newMoney=userBetMoney*2
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="thirds-first"&&winningNumber%3===0){
             newMoney=userBetMoney*3
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="thirds-second"&&(winningNumber+1)%3===0){
             newMoney=userBetMoney*3
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else if(userBet==="thirds-third"&&(winningNumber+2)%3===0){
             newMoney=userBetMoney*3
-            return {
+            setRouletteResults({
                 money:newMoney,
                 win:userWin
-            };
+            });
         }
         else{
-            return {
+            setRouletteResults({
                 money:0,
                 win:false
-            };
+            });
         }
       };
 
@@ -111,6 +115,10 @@ function ContextProvider({children}){
         setIsSpinning,
         rotateWheelDeg,
         setRotateWheelDeg,
+        userBet,
+        setUserBet,
+        rouletteResults,
+        setRouletteResults,
         getBackgroundColor,
         winCheck
     }
