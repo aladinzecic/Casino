@@ -104,6 +104,12 @@ function ContextProvider({children}){
         }
       };
 
+
+
+
+      //MINES SECTION//////////////////////////////////////////////////////////////////////////////////////
+      const [numOfBombs,setNumOfBombs]=useState(1)
+
     const values={
         wheelNumbers,
         roseNumbers,
@@ -120,7 +126,9 @@ function ContextProvider({children}){
         rouletteResults,
         setRouletteResults,
         getBackgroundColor,
-        winCheck
+        winCheck,
+        numOfBombs,
+        setNumOfBombs
     }
 
 

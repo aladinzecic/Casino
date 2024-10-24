@@ -1,0 +1,40 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 12px;
+  }
+  
+  .grid-item, .bomb, .diamond {
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  .grid-item{
+    background-image: url(../../assets/icons/mines-background.png);
+    background-size: 75%;
+    background-position: center;
+  }
+  .bomb{
+
+    background-image: url(../../assets/icons/9167208-ezgif.com-webp-to-jpg-converter-removebg-preview.png) !important ;
+    background-size: 80%;
+    background-position: center;
+    background-repeat:no-repeat;
+  }
+  .diamond{
+
+    background-image: url(../../assets/icons/sonic-the-hedgehog-icons-emerald-purple-purple-diamond-removebg-preview.png) !important ;
+    background-size: 80%;
+    background-position: center;
+    background-repeat:no-repeat;
+  }
+
+  .grid-item:hover{
+    margin-top: -3px;
+    transition: ease;
+  }

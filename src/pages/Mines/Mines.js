@@ -4,6 +4,7 @@ import WinningsCard from '../../components/WinningsCard/WinningsCard'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Navbar from '../../components/NavBar/Navbar'
 import MinesBetCard from '../../components/MinesBetCard/MinesBetCard'
+import MinesTable from '../../components/MinesTable/MinesTable'
 export default function Mines() {
   return (
 <div className='mines-full'>
@@ -16,7 +17,7 @@ export default function Mines() {
             </div>
 
             <div className="mines-right-main">
-
+              <MinesTable/>
             </div>
         </div>
     </div>

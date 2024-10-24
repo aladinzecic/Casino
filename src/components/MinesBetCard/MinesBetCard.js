@@ -1,8 +1,9 @@
-import React,{useState} from 'react'
+import React,{useState,useContext} from 'react'
 import "./MinesBetCard.css"
-
+import {AppContext} from "../../Context/AppContext"
 export default function MinesBetCard() {
-    const [numOfBombs,setNumOfBombs]=useState(1);
+    
+    const {numOfBombs,setNumOfBombs}=useContext(AppContext);
   return (
     <div className='mines-bet-card'>
         <h3 className="mines-bet-card-h4">Place your bet</h3>
