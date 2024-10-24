@@ -14,7 +14,7 @@ const {winningNumber,getBackgroundColor,rouletteResults}=useContext(AppContext)
     <div className='roulette-full'>
       <Navbar/>
         <div className="roulette-main">
-        <Sidebar/>
+        <Sidebar activee={1}/>
             <div className="roulette-left-main">
                 <PlaceBetCard/>
                 <WinningsCard/>

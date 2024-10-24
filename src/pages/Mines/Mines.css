@@ -1,0 +1,26 @@
+.mines-full{
+    background-color: #0C012B;
+    overflow: hidden;
+}
+
+.mines-main{
+    display: flex;
+}
+
+.mines-left-main{
+width: 20%;
+height: 85vh;
+display: flex;
+flex-direction: column;
+}
+.mines-right-main{
+    width: 75%;
+height: 80vh;
+display: flex;
+flex-direction: column-reverse;
+margin-left: 5vw;
+align-items: center;
+position: relative;
+margin-top: 5vh;
+
+}

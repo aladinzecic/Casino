@@ -28,7 +28,7 @@ console.log(winningNumber)
     transition={{ duration:"10" , ease:[.01,.9,.83,1] }}
 
     >
-      {wheelNumbers.map((num, index) => (
+        {wheelNumbers.map((num, index) => (
         <div key={num} className="circle-segment" style={{
           transform: `rotate(${(360 / numberOfDivs) * index}deg)`,
           background: getBackgroundColor(num)

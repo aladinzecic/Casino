@@ -1,15 +1,24 @@
 import React from 'react'
 import "./Sidebar.css"
-import roulettepng from "../../assets/icons/roulette-active.png"
+import rouletteActivepng from "../../assets/icons/roulette-active.png"
+import roulettePng from "../../assets/icons/roulette.png"
 import plinkopng from "../../assets/icons/plinko.png"
-import minespng from "../../assets/icons/mines.png"
+import minesPng from "../../assets/icons/mines.png"
+import minesActivePng from "../../assets/icons/mines-active.png"
 import slotpng from "../../assets/icons/slots.png"
-export default function Sidebar() {
+export default function Sidebar({activee}) {
+  console.log("Activee value: ", activee);
   return (
     <div className='side'>
       <div className="active side-box">
-      <img className="crash-img" src={roulettepng} alt=''/>
-      <h4 className="h4-side-active">Roulette</h4>
+      
+        {activee === 1 
+          ? <img className="crash-img" src={rouletteActivepng} alt='' /> 
+          : <img className="crash-img" src={roulettePng} alt='' />
+        }
+        
+      
+      <h4 className={activee===1?"h4-side-active":"h4-side"}>Roulette</h4>
       </div>
       <div className="side-box">
       <img className="crash-img" src={plinkopng} alt=''/>
@@ -17,8 +26,12 @@ export default function Sidebar() {
 
       </div>
       <div className="side-box">
-      <img className="crash-img" src={minespng} alt=''/>
-      <h4 className="h4-side">Mines</h4>
+      {activee === 2
+          ? <img className="crash-img" src={minesActivePng} alt='' /> 
+          : <img className="crash-img" src={minesPng} alt='' />
+        }      
+              <h4 className={activee===2?"h4-side-active":"h4-side"}>Mines</h4>
+
 
       </div>
       <div className="side-box">
