@@ -25,3 +25,14 @@ position: relative;
 margin-top: 5vh;
 
 }
+.cash-out-btn{
+    margin-top: 20px;
+    width: 120px;
+    height: 40px;
+    border-radius: 5px;
+    border: 0px;
+    font-size: 22px;
+    background-color: #C137E5;
+    color: #fff;
+    cursor: pointer;
+}

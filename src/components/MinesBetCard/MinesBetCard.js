@@ -3,7 +3,7 @@ import "./MinesBetCard.css"
 import {AppContext} from "../../Context/AppContext"
 export default function MinesBetCard() {
     
-    const {numOfBombs,setNumOfBombs}=useContext(AppContext);
+    const {numOfBombs,setNumOfBombs,setMinesGameOn}=useContext(AppContext);
   return (
     <div className='mines-bet-card'>
         <h3 className="mines-bet-card-h4">Place your bet</h3>
@@ -28,7 +28,7 @@ export default function MinesBetCard() {
             <button className={numOfBombs===24?"bombNum-button-active":"bombNum-button"} onClick={()=>setNumOfBombs(24)}>24</button>
         </div>
         <button className="mines-bet-button"
-        
+        onClick={()=>setMinesGameOn(true)}
         >Place a bet</button>
     </div>
   )

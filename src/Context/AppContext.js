@@ -109,6 +109,7 @@ function ContextProvider({children}){
 
       //MINES SECTION//////////////////////////////////////////////////////////////////////////////////////
       const [numOfBombs,setNumOfBombs]=useState(1)
+      const [minesGameOn,setMinesGameOn]=useState(false)
 
     const values={
         wheelNumbers,
@@ -128,7 +129,9 @@ function ContextProvider({children}){
         getBackgroundColor,
         winCheck,
         numOfBombs,
-        setNumOfBombs
+        setNumOfBombs,
+        minesGameOn,
+        setMinesGameOn
     }
 
 
