@@ -24,10 +24,9 @@ export default function Mines() {
           secondary: '#FFFAEE',
         },
       });
-      const int=setInterval(()=>{
-        setMinesGameOn(false)
-      },2000)
-      return () => clearInterval(int);
+      setTimeout(() => {
+        setMinesGameOn(false);
+      }, 2000);
     }
     else{
       toast.error('You didnt even start the game retard.', {

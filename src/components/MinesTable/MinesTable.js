@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './MinesTable.css';
 import { AppContext } from '../../Context/AppContext';
+import toast from 'react-hot-toast';
 
 export default function MinesTable() {
   const { numOfBombs, minesGameOn, setMinesGameOn } = useContext(AppContext);
@@ -21,8 +22,21 @@ export default function MinesTable() {
 
   function CheckBomb(index) {
     if (bombsIndexes.includes(index)) {
-      console.log('game over');
-      setMinesGameOn(false);
+      toast.error('jbgica.', {
+        style: {
+          border: '1px solid #713200',
+          padding: '16px',
+          color: '#713200',
+          fontSize: '18px'
+        },
+        iconTheme: {
+          primary: '#713200',
+          secondary: '#FFFAEE',
+        },
+      });
+      setTimeout(() => {
+        setMinesGameOn(false);
+      }, 2000);
       setRevealed((prev) => {
         const newRevealed = [...prev];
         newRevealed[index] = 'bomb';
@@ -41,11 +55,11 @@ export default function MinesTable() {
     if (minesGameOn) {
       GenerateMines();
       setRevealed(Array(gridSize * gridSize).fill(''));
-      console.log(2222)
+      console.log("igra zapoceta")
 
     }
     else{
-      console.log(1111)
+      console.log("igra zavrsena")
       setRevealed(Array(gridSize * gridSize).fill(''));
 
     }

@@ -6,25 +6,31 @@ import plinkopng from "../../assets/icons/plinko.png"
 import minesPng from "../../assets/icons/mines.png"
 import minesActivePng from "../../assets/icons/mines-active.png"
 import slotpng from "../../assets/icons/slots.png"
+import { NavLink } from 'react-router-dom'
+
 export default function Sidebar({activee}) {
   console.log("Activee value: ", activee);
   return (
     <div className='side'>
+      <NavLink to="/">
       <div className="active side-box">
       
-        {activee === 1 
-          ? <img className="crash-img" src={rouletteActivepng} alt='' /> 
-          : <img className="crash-img" src={roulettePng} alt='' />
-        }
-        
+      {activee === 1 
+        ? <img className="crash-img" src={rouletteActivepng} alt='' /> 
+        : <img className="crash-img" src={roulettePng} alt='' />
+      }
       
-      <h4 className={activee===1?"h4-side-active":"h4-side"}>Roulette</h4>
-      </div>
+    
+    <h4 className={activee===1?"h4-side-active":"h4-side"}>Roulette</h4>
+    </div>
+      </NavLink>
       <div className="side-box">
       <img className="crash-img" src={plinkopng} alt=''/>
       <h4 className="h4-side">Plinko</h4>
 
       </div>
+      <NavLink to="/Mines">
+
       <div className="side-box">
       {activee === 2
           ? <img className="crash-img" src={minesActivePng} alt='' /> 
@@ -34,6 +40,8 @@ export default function Sidebar({activee}) {
 
 
       </div>
+      </NavLink>
+      
       <div className="side-box">
       <img className="crash-img" src={slotpng} alt=''/>
       <h4 className="h4-side">Slots</h4>
