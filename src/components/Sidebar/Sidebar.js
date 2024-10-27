@@ -12,7 +12,7 @@ export default function Sidebar({activee}) {
   console.log("Activee value: ", activee);
   return (
     <div className='side'>
-      <NavLink to="/">
+      <NavLink style={{ textDecoration: 'none' }} to="/">
       <div className="active side-box">
       
       {activee === 1 
@@ -29,7 +29,7 @@ export default function Sidebar({activee}) {
       <h4 className="h4-side">Plinko</h4>
 
       </div>
-      <NavLink to="/Mines">
+      <NavLink style={{ textDecoration: 'none' }} to="/Mines">
 
       <div className="side-box">
       {activee === 2
