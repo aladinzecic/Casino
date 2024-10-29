@@ -7,11 +7,11 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<Roulette />} />
         <Route path="/Mines" element={<Mines />} />
-      </Routes> */}
-      <Plinko/>
+      </Routes>
+      {/* <Plinko/> */}
     </div>
   );
 }

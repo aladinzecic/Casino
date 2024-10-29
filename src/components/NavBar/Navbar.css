@@ -4,4 +4,11 @@
     background-color: #0C012B;
     z-index: 10;
     position: relative;
+    display: flex;
+    align-items: center;
+}
+.logo{
+    height: 40%;
+    cursor: pointer;
+    margin-left: 20px;
 }

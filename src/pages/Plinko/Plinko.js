@@ -8,7 +8,7 @@ const Plinko = () => {
     // Kreiraj Matter.js engine i runner
     const engine = Matter.Engine.create();
     const runner = Matter.Runner.create();
-
+    engine.world.gravity.y = 1.5;
     const render = Matter.Render.create({
       element: sceneRef.current,
       engine: engine,
@@ -19,13 +19,12 @@ const Plinko = () => {
       },
     });
 
-    // Inicijalno dodaj statičnu piramidu lopti
-    const radius = 20;
+    const radius = 10;
     const startX = 400;
     const startY = 100;
     const addRowOfBalls = (numBalls, offsetY) => {
       const balls = [];
-      const padding = 25; // Razmak između lopti po X osi
+      const padding = 40; // Razmak između lopti po X osi
 
       for (let i = 0; i < numBalls; i++) {
         const x = startX - (numBalls - 1) * (radius + padding) + i * 2 * (radius + padding);
@@ -39,10 +38,11 @@ const Plinko = () => {
     };
     
     addRowOfBalls(3, 0);
-    addRowOfBalls(4, 4 * radius);
-    addRowOfBalls(5, 8 * radius);
+    addRowOfBalls(4, 10 * radius);
+    addRowOfBalls(5, 20 * radius);
+    addRowOfBalls(6, 30 * radius);
+    addRowOfBalls(7, 40 * radius);
 
-    // Event listener za kreiranje loptice na klik
     const handleMouseClick = (event) => {
       // Koordinate klika miša u odnosu na scenu
       const rect = render.canvas.getBoundingClientRect();
@@ -50,8 +50,10 @@ const Plinko = () => {
       const mouseY = event.clientY - rect.top;
 
       // Kreiraj novu lopticu na mestu klika
-      const ball = Matter.Bodies.circle(mouseX, mouseY, radius, {
-        restitution: 0.8,
+      const ball = Matter.Bodies.circle(mouseX, mouseY, 15, {
+        restitution: 0.9,
+        frictionAir:0.045,
+        
         render: { fillStyle: '#e74c3c' },
       });
 

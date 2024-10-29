@@ -7,6 +7,10 @@ import MinesBetCard from '../../components/MinesBetCard/MinesBetCard'
 import MinesTable from '../../components/MinesTable/MinesTable'
 import { AppContext } from '../../Context/AppContext'
 import toast, { Toaster } from 'react-hot-toast'
+import GameExplanation from '../../components/GameExplanation/GameExplanation'
+import capture from "../../assets/icons/Capture.JPG"
+import capture1 from "../../assets/icons/Capture1.JPG"
+import capture2 from "../../assets/icons/Capture2.JPG"
 export default function Mines() {
   const {minesGameOn,setMinesGameOn}=useContext(AppContext)
   function CashOut(){
@@ -44,6 +48,7 @@ export default function Mines() {
     }
   }
   return (
+<>
 <div className='mines-full'>
       <div><Toaster position="bottom-center"/></div>
       <Navbar/>
@@ -60,5 +65,18 @@ export default function Mines() {
             </div>
         </div>
     </div>
+    <GameExplanation 
+    gameName="PLINKO" 
+    h1Card1={"CONFIGURE"} 
+    h1Card2={"BET"} 
+    h1Card3={"WIN"} 
+    h3Card1={"Chose the number of bombs and avoid them! More bombs higher the PRIZE."} 
+    h3Card2={"Press BET to play! With every guess you get more money"} 
+    h3Card3={"You can cashout after first field but longer you stay in game higher the cashout"}
+    img1={capture}
+    img2={capture1}
+    img3={capture2}
+    />
+</>
   )
 }

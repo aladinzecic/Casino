@@ -13,6 +13,7 @@ export default function MinesTable() {
     const newBombsIndexes = [];
     while (newBombsIndexes.length < numOfBombs) {
       const rand = Math.floor(Math.random() * (gridSize * gridSize));
+      console.log(rand)
       if (!newBombsIndexes.includes(rand)) {
         newBombsIndexes.push(rand);
       }
