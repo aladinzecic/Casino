@@ -46,8 +46,8 @@ const Plinko = () => {
     const handleMouseClick = (event) => {
       // Koordinate klika miša u odnosu na scenu
       const rect = render.canvas.getBoundingClientRect();
-      const mouseX = event.clientX - rect.left;
-      const mouseY = event.clientY - rect.top;
+      const mouseX = event.clientX ;
+      const mouseY = event.clientY ;
 
       // Kreiraj novu lopticu na mestu klika
       const ball = Matter.Bodies.circle(mouseX, mouseY, 15, {

@@ -15,20 +15,21 @@
     cursor: pointer;
   }
   .grid-item{
-    background-image: url(../../assets/icons/mines-background.png);
+    background-color: #271C3E;
+    background-image: url(../../assets/icons/stars-icon.png);
     background-size: 75%;
     background-position: center;
   }
   .bomb{
-
-    background-image: url(../../assets/icons/9167208-ezgif.com-webp-to-jpg-converter-removebg-preview.png) !important ;
+    background-color: transparent;
+    background-image: url(../../assets/icons/bomb-icon.webp) !important ;
     background-size: 80%;
     background-position: center;
     background-repeat:no-repeat;
   }
   .diamond{
-
-    background-image: url(../../assets/icons/sonic-the-hedgehog-icons-emerald-purple-purple-diamond-removebg-preview.png) !important ;
+    background-color: transparent;
+    background-image: url(../../assets/icons/diamond-icon.webp) !important ;
     background-size: 80%;
     background-position: center;
     background-repeat:no-repeat;

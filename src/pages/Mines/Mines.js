@@ -66,7 +66,7 @@ export default function Mines() {
         </div>
     </div>
     <GameExplanation 
-    gameName="PLINKO" 
+    gameName="MINES" 
     h1Card1={"CONFIGURE"} 
     h1Card2={"BET"} 
     h1Card3={"WIN"} 
