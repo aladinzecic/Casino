@@ -27,20 +27,28 @@ const PlinkoScene = () => {
     Matter.World.add(engineRef.current.world, balls);
   };
 
+  const rectangles = [];
   const addRowOfRectangles = (numBalls) => {
-    const rectangles = [];
     const padding = 40;
-
+    const colors = ['#55046b', '#7c099c', '#c32bed', '#c32bed', '#7c099c', '#55046b'];
+  
     for (let i = 0; i < numBalls; i++) {
-      const rectangle = Matter.Bodies.rectangle(150+i*100, 455, 80, 15, {
+      const fillColor = colors[i];
+      const rectangle = Matter.Bodies.rectangle(150 + i * 100, 450, 80, 20, {
+        chamfer: { radius: 3 },
         isStatic: true,
-        render: { fillStyle: '#3498db' },
-        label: 'Rectangle', // Dodajemo labelu da identifikujemo pravougaonik
+        render: { fillStyle: fillColor },
+        label: `Rectangle${i}`,
       });
+  
       rectangles.push(rectangle);
     }
+  
     Matter.World.add(engineRef.current.world, rectangles);
   };
+  
+
+  
 
   // Funkcija za kreiranje nove lopte na slučajnoj poziciji unutar scene
   const makeBall = () => {
@@ -51,6 +59,8 @@ const PlinkoScene = () => {
       restitution: 0.9,
       frictionAir: 0.045,
       render: { fillStyle: '#C137E5' },
+      label: `Ball`,
+
     });
 
     Matter.World.add(engineRef.current.world, ball);
@@ -79,7 +89,50 @@ const PlinkoScene = () => {
       addRowOfBalls(6, 30 * radius);
       addRowOfBalls(7, 40 * radius);
       addRowOfRectangles(6)
+      
     }
+
+    Matter.Events.on(renderRef.current, 'afterRender', () => {
+      const context = renderRef.current.context;
+      context.font = '15px';
+      context.fillStyle = '#fff';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+      const values=[2,1.4,0.6,0.6,1.4,2]
+      rectangles.forEach((rect,i) => {
+        const { x, y } = rect.position;
+        if(values[i]!=undefined)
+        context.fillText(`${values[i]}X`, x, y);
+      });
+    });
+  
+    Matter.Events.on(engineRef.current, 'collisionStart', (event) => {
+      event.pairs.forEach((pair) => {
+        const { bodyA, bodyB } = pair;
+    
+        rectangles.forEach((rectangle) => {
+          if (
+            (bodyA.label === 'Ball' && bodyB.label === rectangle.label) ||
+            (bodyA.label === rectangle.label && bodyB.label === 'Ball')
+          ) {
+            const ball = bodyA.label === 'Ball' ? bodyA : bodyB;
+            Matter.World.remove(engineRef.current.world, ball);
+    
+            // Pomeranje pravougaonika nadole za 5 piksela
+            Matter.Body.translate(rectangle, { x: 0, y: -2});
+    
+            // Nakon 500ms vraćamo pravougaonik na originalnu poziciju
+            setTimeout(() => {
+              Matter.Body.translate(rectangle, { x: 0, y: 2 });
+            }, 100);
+          }
+        });
+      });
+    });
+    
+  
+
+  
 
     return () => {
       Matter.World.clear(engineRef.current.world);
