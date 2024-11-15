@@ -1,0 +1,26 @@
+.plinko-full{
+    background-color: #0C012B;
+    overflow: hidden;
+}
+
+.plinko-main{
+    display: flex;
+}
+
+.plinko-left-main{
+width: 20%;
+height: 85vh;
+display: flex;
+flex-direction: column;
+}
+.plinko-right-main{
+    width: 75%;
+height: 80vh;
+display: flex;
+flex-direction: column-reverse;
+margin-left: 5vw;
+align-items: center;
+justify-content: center;
+position: relative;
+margin-top: 2vh;
+}

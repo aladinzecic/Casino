@@ -10,6 +10,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Roulette />} />
         <Route path="/Mines" element={<Mines />} />
+        <Route path="/Plinko" element={<Plinko />} />
       </Routes>
       {/* <Plinko/> */}
     </div>

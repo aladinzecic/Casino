@@ -12,10 +12,9 @@ import capture from "../../assets/icons/Capture.JPG"
 import capture1 from "../../assets/icons/Capture1.JPG"
 import capture2 from "../../assets/icons/Capture2.JPG"
 export default function Mines() {
-  const {minesGameOn,setMinesGameOn}=useContext(AppContext)
+  const {minesGameOn,setMinesGameOn,betsRef,setBetsContext,betsContent}=useContext(AppContext)
   function CashOut(){
     if(minesGameOn){
-      console.log("pobeda")
       toast.success('POBEDAAA.', {
         style: {
           border: '1px solid #713200',
@@ -28,6 +27,26 @@ export default function Mines() {
           secondary: '#FFFAEE',
         },
       });
+      if(betsRef.current.children.length%2==0){
+        setBetsContext([
+          <div className="nzm">
+          <h3 className="winnings-card-bet">10$</h3>
+            <h3 className="winnings-card-bet">1.5x</h3>
+            <h3 className="winnings-card-green">15$</h3>
+          </div>,
+          ...betsContent
+        ])
+      }
+      else{
+        setBetsContext([
+          <div className="znam">
+          <h3 className="winnings-card-bet">10$</h3>
+          <h3 className="winnings-card-bet">1.5x</h3>
+          <h3 className="winnings-card-green">15$</h3>
+          </div>,
+        ...betsContent
+        ])
+      }
       setTimeout(() => {
         setMinesGameOn(false);
       }, 2000);

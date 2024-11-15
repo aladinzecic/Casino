@@ -5,9 +5,54 @@
     border-radius: 10px;
     margin-left: 2vw;
     margin-top: 2vh;
-    padding: 10px;
 }
 .winnings-card-h3{
     color: rgb(241, 235, 235);
     font-size: 14px;
+}
+
+.winnings-card-header{
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-around;
+}
+.nzm{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    background-color: #2e1b4d;
+    padding: 0;
+}
+.znam{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 30px;
+    padding: 0;
+}
+.winnings-card-bet{
+    margin-left: -5px;
+    color: rgb(241, 235, 235);
+    font-size: 15px;
+    font-weight: 600;
+}
+.winnings-card-green{
+    margin-left: -5px;
+    color: rgb(19, 139, 19);
+    font-weight: 600;
+    font-size: 15px;
+}
+.winnings-card-red{
+    margin-left: -5px;
+    color: red;
+    font-weight: 600;
+    font-size: 15px;
+}
+.winnings-card-bet:nth-child(2){
+    margin-left: -14px;
+
 }

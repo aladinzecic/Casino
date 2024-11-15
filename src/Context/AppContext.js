@@ -1,4 +1,6 @@
-import React,{createContext,useState} from "react";
+import React,{createContext,useState,useRef, useEffect} from "react";
+import Matter from 'matter-js';
+
 const AppContext=createContext()
 
 function ContextProvider({children}){
@@ -110,7 +112,11 @@ function ContextProvider({children}){
       //MINES SECTION//////////////////////////////////////////////////////////////////////////////////////
       const [numOfBombs,setNumOfBombs]=useState(1)
       const [minesGameOn,setMinesGameOn]=useState(false)
-
+      const betsRef=useRef(null)
+      const [betsContent,setBetsContext]=useState([])
+      
+      
+      
     const values={
         wheelNumbers,
         roseNumbers,
@@ -131,7 +137,10 @@ function ContextProvider({children}){
         numOfBombs,
         setNumOfBombs,
         minesGameOn,
-        setMinesGameOn
+        setMinesGameOn,
+        betsRef,
+        betsContent,
+        setBetsContext,
     }
 
 

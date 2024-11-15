@@ -24,11 +24,13 @@ export default function Sidebar({activee}) {
     <h4 className={activee===1?"h4-side-active":"h4-side"}>Roulette</h4>
     </div>
       </NavLink>
+      <NavLink style={{ textDecoration: 'none' }} to="/Plinko">
       <div className="side-box">
       <img className="crash-img" src={plinkopng} alt=''/>
       <h4 className="h4-side">Plinko</h4>
 
       </div>
+      </NavLink>
       <NavLink style={{ textDecoration: 'none' }} to="/Mines">
 
       <div className="side-box">
