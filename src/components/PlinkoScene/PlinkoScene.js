@@ -1,7 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Matter from 'matter-js';
 import "./PlinkoScene.css"
+import { AppContext } from '../../Context/AppContext';
 const PlinkoScene = () => {
+  const {plinkoDifficulty}=useContext(AppContext)
   const sceneRef = useRef(null);
   const renderRef = useRef(null);
   const engineRef = useRef(Matter.Engine.create());
@@ -94,15 +96,28 @@ const PlinkoScene = () => {
 
     Matter.Events.on(renderRef.current, 'afterRender', () => {
       const context = renderRef.current.context;
-      context.font = '15px';
+      context.font = 'bold 14px Agdasima';
+      
       context.fillStyle = '#fff';
       context.textAlign = 'center';
       context.textBaseline = 'middle';
-      const values=[2,1.4,0.6,0.6,1.4,2]
+      const lowRiskValues = [1.2, 1.0, 0.8, 0.8, 1.0, 1.2];
+      const mediumRiskValues = [2.0, 1.5, 0.7, 0.7, 1.5, 2.0];
+      const highRiskValues = [5.0, 2.5, 0.5, 0.5, 2.5, 5.0];
+
       rectangles.forEach((rect,i) => {
         const { x, y } = rect.position;
-        if(values[i]!=undefined)
-        context.fillText(`${values[i]}X`, x, y);
+        if(lowRiskValues[i]!=undefined){
+          if(plinkoDifficulty==='Low'){
+            context.fillText(`${lowRiskValues[i]}X`, x, y);
+          }
+          else if(plinkoDifficulty==='Medium'){
+            context.fillText(`${mediumRiskValues[i]}X`, x, y);
+          }
+          else if(plinkoDifficulty==='High'){
+            context.fillText(`${highRiskValues[i]}X`, x, y);
+          }
+        }
       });
     });
   
@@ -145,7 +160,69 @@ const PlinkoScene = () => {
       }
     };
   }, []);
+  useEffect(() => {
+    if (sceneRef.current && !renderRef.current) {
+      const canvases = sceneRef.current.getElementsByTagName('canvas');
+      while (canvases.length > 0) {
+        canvases[0].remove();
+      }
+  
+      renderRef.current = Matter.Render.create({
+        element: sceneRef.current,
+        engine: engineRef.current,
+        options: { width: 900, height: 460, wireframes: false, background: '#0C012B' },
+      });
+  
+      Matter.Runner.run(runnerRef.current, engineRef.current);
+      Matter.Render.run(renderRef.current);
+  
+      // Add rows of balls and rectangles
+      addRowOfBalls(3, 0);
+      addRowOfBalls(4, 10 * radius);
+      addRowOfBalls(5, 20 * radius);
+      addRowOfBalls(6, 30 * radius);
+      addRowOfBalls(7, 40 * radius);
+      addRowOfRectangles(6);
+    }
+  
+    // Render event to draw text on rectangles
+    Matter.Events.on(renderRef.current, 'afterRender', () => {
+      const context = renderRef.current.context;
+      context.font = 'bold 14px Agdasima';
+      context.fillStyle = '#fff';
+      context.textAlign = 'center';
+      context.textBaseline = 'middle';
+  
+      const lowRiskValues = [1.2, 1.0, 0.8, 0.8, 1.0, 1.2];
+      const mediumRiskValues = [2.0, 1.5, 0.7, 0.7, 1.5, 2.0];
+      const highRiskValues = [5.0, 2.5, 0.5, 0.5, 2.5, 5.0];
+  
+      rectangles.forEach((rect, i) => {
+        const { x, y } = rect.position;
+        if (plinkoDifficulty === 'Low' && lowRiskValues[i] !== undefined) {
+          context.fillText(`${lowRiskValues[i]}X`, x, y);
+        } else if (plinkoDifficulty === 'Medium' && mediumRiskValues[i] !== undefined) {
+          context.fillText(`${mediumRiskValues[i]}X`, x, y);
+        } else if (plinkoDifficulty === 'High' && highRiskValues[i] !== undefined) {
+          context.fillText(`${highRiskValues[i]}X`, x, y);
+        }
+      });
+    });
+  
+    return () => {
+      Matter.World.clear(engineRef.current.world);
+      Matter.Engine.clear(engineRef.current);
+      Matter.Runner.stop(runnerRef.current);
+      if (renderRef.current) {
+        Matter.Render.stop(renderRef.current);
+        renderRef.current.canvas.remove();
+        renderRef.current = null;
+      }
+    };
+  }, [plinkoDifficulty]);
+  
 
+  
   return (
     <>
     <button onClick={makeBall} className='cash-out-btn'>Add Ball</button>

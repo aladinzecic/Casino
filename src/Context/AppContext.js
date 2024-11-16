@@ -116,6 +116,8 @@ function ContextProvider({children}){
       const [betsContent,setBetsContext]=useState([])
       
       
+      const [plinkoDifficulty,setPlinkoDifficulty]=useState('Low')
+      const [ballsAmount,setBallsAmount]=useState(1)
       
     const values={
         wheelNumbers,
@@ -141,6 +143,10 @@ function ContextProvider({children}){
         betsRef,
         betsContent,
         setBetsContext,
+        plinkoDifficulty,
+        setPlinkoDifficulty,
+        ballsAmount,
+        setBallsAmount
     }
 
 
