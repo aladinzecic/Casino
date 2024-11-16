@@ -51,8 +51,11 @@ margin-top: 5vh;
     height: 600px;
 }
 .results-text{
-    font-size: 32px;
+    position: absolute;
+    z-index: 10;
+    font-size: 42px;
     color: #Fff;
+    top: 250px;
 }
 
   @keyframes bounce{
