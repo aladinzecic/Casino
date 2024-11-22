@@ -72,7 +72,7 @@ else return 1
               </div>
             ))}
           </div>
-          <div className=""right-thirds >
+          <div className="right-thirds" >
             <div className="num third" onClick={()=>setUserBet("thirds-first")}
                             onMouseEnter={()=>setIsHovered("thirds-first")}
                             onMouseLeave={()=>setIsHovered(null)}

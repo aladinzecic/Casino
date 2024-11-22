@@ -8,6 +8,8 @@ function ContextProvider({children}){
     const roseNumbers=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
     const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
     const numberOfDivs=37;
+    const [money,setMoney]=useState(200)
+    const [moneyButtons,setMoneyButtons]=useState("Full")
     const [winningNumber,setWinningNumber]=useState(null)
     const [isSpinning,setIsSpinning]=useState(false)
     const [rotateWheelDeg,setRotateWheelDeg]=useState(0)
@@ -26,7 +28,7 @@ function ContextProvider({children}){
       };
 
       const winCheck = (userBetMoney,winningNumber,userBet) => {
-        let newMoney;
+        let newMoney=0;
         let userWin=true;
         if (userBet===winningNumber) {
             newMoney=winningNumber===0?userBetMoney*50:userBetMoney*35
@@ -65,6 +67,7 @@ function ContextProvider({children}){
         }
         else if(userBet==="rose"&&roseNumbers.includes(winningNumber)){
             newMoney=userBetMoney*2
+            console.log(newMoney)
             setRouletteResults({
                 money:newMoney,
                 win:userWin
@@ -104,7 +107,15 @@ function ContextProvider({children}){
                 win:false
             });
         }
-      };
+        console.log(money)
+        console.log(newMoney)
+        if(newMoney)
+            setMoney((prevMoney) => {
+                console.log("Previous money:", prevMoney);
+                console.log("Updating money to:", prevMoney + newMoney);
+                return prevMoney + newMoney;
+            });
+                };
 
 
 
@@ -120,12 +131,16 @@ function ContextProvider({children}){
       const [ballsAmount,setBallsAmount]=useState(1)
       
     const values={
+        money,
+        setMoney,
         wheelNumbers,
         roseNumbers,
         purpleNumbers,
         numberOfDivs,
         winningNumber,
         setWinningNumber,
+        moneyButtons,
+        setMoneyButtons,
         isSpinning,
         setIsSpinning,
         rotateWheelDeg,

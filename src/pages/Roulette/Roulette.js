@@ -12,10 +12,12 @@ import capture from "../../assets/icons/Capture3.JPG"
 import capture1 from "../../assets/icons/Capture4.JPG"
 import capture2 from "../../assets/icons/Capture6.JPG"
 import GameExplanation from '../../components/GameExplanation/GameExplanation'
+import { Toaster } from 'react-hot-toast'
 export default function Roulette() {
 const {winningNumber,getBackgroundColor,rouletteResults}=useContext(AppContext)
   return (
     <>
+          <div><Toaster position="bottom-center"/></div>
     <div className='roulette-full'>
       <Navbar/>
         <div className="roulette-main">

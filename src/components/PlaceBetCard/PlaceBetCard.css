@@ -51,9 +51,15 @@ cursor: pointer;
 font-size: 16px;
 }
 
-.percent-button:nth-child(4){
-background-color: #C137E5;
-
+.percent-button-active{
+    border-radius: 5px;
+    background-color: #C137E5;
+color: white;
+height: 30px;
+width: 55px;
+border: 0;
+cursor: pointer;
+font-size: 16px;
 }
 
 .place-bet-button{
@@ -66,4 +72,19 @@ background-color: #C137E5;
     border: 0;
     border-radius: 20px;
     font-size: 18px;
+}
+
+.card-enter-amount{
+    color: #fff;
+    font-size: 16px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.card-enter-amount-active{
+    border: 1px solid #C137E5;
+    color: #fff;
+    font-size: 16px;
 }

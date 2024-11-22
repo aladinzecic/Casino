@@ -15,7 +15,7 @@ export default function Plinko() {
   const {makeBall}=useContext(AppContext)
   return (
     <>
-<div className='plinko-full'>
+    <div className='plinko-full'>
       <div><Toaster position="bottom-center"/></div>
       <Navbar/>
         <div className="plinko-main">
