@@ -12,9 +12,11 @@ import capture from "../../assets/icons/Capture.JPG"
 import capture1 from "../../assets/icons/Capture1.JPG"
 import capture2 from "../../assets/icons/Capture2.JPG"
 export default function Mines() {
-  const {minesGameOn,setMinesGameOn,betsRef,setBetsContext,betsContent}=useContext(AppContext)
+  const {userMoneyMinesBet,setNumOfCorrectFields,setMoney,setCashoutMines,cashoutMines,minesGameOn,setMinesGameOn,betsRef,setBetsContext,betsContent}=useContext(AppContext)
   function CashOut(){
     if(minesGameOn){
+      setMoney((prev) => Math.round((prev + cashoutMines) * 100) / 100);
+      setNumOfCorrectFields(0)
       toast.success('POBEDAAA.', {
         style: {
           border: '1px solid #713200',
@@ -30,9 +32,9 @@ export default function Mines() {
       if(betsRef.current.children.length%2==0){
         setBetsContext([
           <div className="nzm">
-          <h3 className="winnings-card-bet">10$</h3>
-            <h3 className="winnings-card-bet">1.5x</h3>
-            <h3 className="winnings-card-green">15$</h3>
+          <h3 className="winnings-card-bet">${userMoneyMinesBet}</h3>
+            <h3 className="winnings-card-bet">{cashoutMines/userMoneyMinesBet}x</h3>
+            <h3 className="winnings-card-green">${cashoutMines}</h3>
           </div>,
           ...betsContent
         ])
@@ -50,6 +52,7 @@ export default function Mines() {
       setTimeout(() => {
         setMinesGameOn(false);
       }, 2000);
+      setCashoutMines(0)
     }
     else{
       toast.error('You didnt even start the game retard.', {
@@ -79,7 +82,7 @@ export default function Mines() {
             </div>
 
             <div className="mines-right-main">
-              <button className="cash-out-btn" onClick={()=>CashOut()}>Cash Out</button>
+              <button className="cash-out-btn" onClick={()=>CashOut()}>Cash Out {cashoutMines!==0&&'$'&&cashoutMines}</button>
               <MinesTable/>
             </div>
         </div>

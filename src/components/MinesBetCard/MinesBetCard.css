@@ -117,3 +117,12 @@ input[type="range"] {
     accent-color: #C137E5
   }
 
+  .mines-enter-amount{
+    color: #fff;
+    font-size: 16px;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

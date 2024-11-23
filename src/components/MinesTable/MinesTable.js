@@ -4,7 +4,7 @@ import { AppContext } from '../../Context/AppContext';
 import toast from 'react-hot-toast';
 
 export default function MinesTable() {
-  const { numOfBombs, minesGameOn, setMinesGameOn } = useContext(AppContext);
+  const {userMoneyMinesBet,cashoutMines,setCashoutMines,minesMoney, setNumOfCorrectFields,numOfBombs, minesGameOn, setMinesGameOn } = useContext(AppContext);
   const gridSize = 5;
   const [bombsIndexes, setBombsIndexes] = useState([]);
   const [revealed, setRevealed] = useState(Array(gridSize * gridSize).fill(''));
@@ -23,6 +23,8 @@ export default function MinesTable() {
 
   function CheckBomb(index) {
     if (bombsIndexes.includes(index)) {
+      setCashoutMines(0)
+      setNumOfCorrectFields(0)
       toast.error('jbgica.', {
         style: {
           border: '1px solid #713200',
@@ -44,11 +46,13 @@ export default function MinesTable() {
         return newRevealed;
       });
     } else {
+      setNumOfCorrectFields((prev)=>prev+1)
       setRevealed((prev) => {
         const newRevealed = [...prev];
         newRevealed[index] = 'diamond';
         return newRevealed;
       });
+      minesMoney(userMoneyMinesBet)
     }
   }
 

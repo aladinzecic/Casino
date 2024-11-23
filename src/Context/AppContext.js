@@ -122,15 +122,30 @@ function ContextProvider({children}){
 
       //MINES SECTION//////////////////////////////////////////////////////////////////////////////////////
       const [numOfBombs,setNumOfBombs]=useState(1)
+      const [numOfCorrectFields,setNumOfCorrectFields]=useState(0)
       const [minesGameOn,setMinesGameOn]=useState(false)
       const betsRef=useRef(null)
       const [betsContent,setBetsContext]=useState([])
-      
+      const [cashoutMines,setCashoutMines]=useState()
+      const [userMoneyMinesBet,setUserMoneyMinesBet]=useState(0)
+
+      const minesMoney=(userBetMoney)=>{
+        const moneyy = Math.round((userBetMoney * 25 / (25 - numOfBombs - numOfCorrectFields)) * 100) / 100;
+                setCashoutMines(moneyy)
+        
+      }
       
       const [plinkoDifficulty,setPlinkoDifficulty]=useState('Low')
       const [ballsAmount,setBallsAmount]=useState(1)
       
     const values={
+        userMoneyMinesBet,
+        setUserMoneyMinesBet,
+        numOfCorrectFields,
+        setNumOfCorrectFields,
+        cashoutMines,
+        setCashoutMines,
+        minesMoney,
         money,
         setMoney,
         wheelNumbers,
