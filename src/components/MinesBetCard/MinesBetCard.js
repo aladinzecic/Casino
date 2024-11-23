@@ -4,7 +4,7 @@ import {AppContext} from "../../Context/AppContext"
 import toast from 'react-hot-toast';
 export default function MinesBetCard() {
 
-    const {userMoneyMinesBet,setUserMoneyMinesBet,setMoney,numOfBombs,setNumOfBombs,setMinesGameOn}=useContext(AppContext);
+    const {money,minesGameOn,userMoneyMinesBet,setUserMoneyMinesBet,setMoney,numOfBombs,setNumOfBombs,setMinesGameOn}=useContext(AppContext);
   return (
     <div className='mines-bet-card'>
         <h3 className="mines-bet-card-h4">Place your bet</h3>
@@ -37,9 +37,40 @@ export default function MinesBetCard() {
         </div>
         <button className="mines-bet-button"
         onClick={()=>{
-            setMinesGameOn(true)
-            if(userMoneyMinesBet)
-            setMoney((prevMoney)=>prevMoney-userMoneyMinesBet)
+            if(userMoneyMinesBet){
+                if(userMoneyMinesBet>money){
+                    toast.error('Not enough money!', {
+                        style: {
+                          border: '1px solid #713200',
+                          padding: '16px',
+                          color: '#713200',
+                          fontSize: '18px'
+                        },
+                        iconTheme: {
+                          primary: '#713200',
+                          secondary: '#FFFAEE',
+                        },
+                      });
+                }
+                else{
+                    setMinesGameOn(true)
+                    if(!minesGameOn&&userMoneyMinesBet){
+                    setMoney((prevMoney)=>prevMoney-userMoneyMinesBet)
+                    toast.success('Game successfuly started. Click on field!', {
+                        style: {
+                          border: '1px solid #713200',
+                          padding: '16px',
+                          color: '#713200',
+                          fontSize: '18px'
+                        },
+                        iconTheme: {
+                          primary: '#713200',
+                          secondary: '#FFFAEE',
+                        },
+                      });}
+                }
+                }
+                
         else{
             toast.error('You need to enter money first!', {
                 style: {

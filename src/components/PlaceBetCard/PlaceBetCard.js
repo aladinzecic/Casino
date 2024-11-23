@@ -25,7 +25,6 @@ const [userMoneyBet,setUserMoneyBet]=useState(0)
       win:false
   });
     CalculateSpinningDeg(num)
-    console.log(userMoneyBet)
     const interval=setTimeout(() => {
       setWinningNumber(num)
       if(userMoneyBet){

@@ -1,5 +1,6 @@
 import React,{createContext,useState,useRef, useEffect} from "react";
 import Matter from 'matter-js';
+import { color } from "framer-motion";
 
 const AppContext=createContext()
 
@@ -9,6 +10,8 @@ function ContextProvider({children}){
     const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
     const numberOfDivs=37;
     const [money,setMoney]=useState(200)
+    const [betsContentRoulette,setBetsContentRoulette]=useState([])
+    const betsRefRoulette=useRef(null)
     const [moneyButtons,setMoneyButtons]=useState("Full")
     const [winningNumber,setWinningNumber]=useState(null)
     const [isSpinning,setIsSpinning]=useState(false)
@@ -26,7 +29,12 @@ function ContextProvider({children}){
         }
         else return "#0baf34"
       };
-
+      const returnX=(userBet)=>{
+        if(userBet==="0")return 50
+        else if(userBet==="left-half"||userBet==="right-half"||userBet==="even"||userBet==="odd"||userBet==="rose"||userBet==="purple")return 2
+        else if(userBet==="thirds-first"||userBet==="thirds-second"||userBet==="thirds-third")return 3
+            else return 35
+      }
       const winCheck = (userBetMoney,winningNumber,userBet) => {
         let newMoney=0;
         let userWin=true;
@@ -115,7 +123,31 @@ function ContextProvider({children}){
                 console.log("Updating money to:", prevMoney + newMoney);
                 return prevMoney + newMoney;
             });
-                };
+
+            if(betsRefRoulette.current.children.length%2==0){
+                setBetsContentRoulette([
+                  <div className="nzm">
+                  <h3 className="winnings-card-bet">${userBetMoney}</h3>
+                  <h3 className="winnings-card-bet">{userBet}</h3>
+                  <h3  className="winnings-card-bet">{returnX(userBet)}x</h3>
+                    <h3 style={{ color: newMoney / userBetMoney ? "green" : "red" }}
+                 className="winnings-card-green">${newMoney}</h3>
+                  </div>,
+                  ...betsContentRoulette
+                ])
+              }
+              else{
+                setBetsContentRoulette([
+                  <div className="znam">
+                  <h3 className="winnings-card-bet">${userBetMoney}</h3>
+                  <h3 className="winnings-card-bet">{userBet}</h3>
+                  <h3  className="winnings-card-bet">{returnX(userBet)}x</h3>
+                  <h3 style={{ color: newMoney / userBetMoney ? "green" : "red" }}
+                 className="winnings-card-green">${newMoney}</h3>                  </div>,
+                ...betsContentRoulette
+                ])
+              }
+        };
 
 
 
@@ -125,7 +157,7 @@ function ContextProvider({children}){
       const [numOfCorrectFields,setNumOfCorrectFields]=useState(0)
       const [minesGameOn,setMinesGameOn]=useState(false)
       const betsRef=useRef(null)
-      const [betsContent,setBetsContext]=useState([])
+      const [betsContentMines,setBetsContentMines]=useState([])
       const [cashoutMines,setCashoutMines]=useState()
       const [userMoneyMinesBet,setUserMoneyMinesBet]=useState(0)
 
@@ -139,6 +171,8 @@ function ContextProvider({children}){
       const [ballsAmount,setBallsAmount]=useState(1)
       
     const values={
+        betsContentRoulette,
+        setBetsContentRoulette,
         userMoneyMinesBet,
         setUserMoneyMinesBet,
         numOfCorrectFields,
@@ -171,12 +205,13 @@ function ContextProvider({children}){
         minesGameOn,
         setMinesGameOn,
         betsRef,
-        betsContent,
-        setBetsContext,
+        betsContentMines,
+        setBetsContentMines,
         plinkoDifficulty,
         setPlinkoDifficulty,
         ballsAmount,
-        setBallsAmount
+        setBallsAmount,
+        betsRefRoulette
     }
 
 

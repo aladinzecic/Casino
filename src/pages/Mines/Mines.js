@@ -12,7 +12,7 @@ import capture from "../../assets/icons/Capture.JPG"
 import capture1 from "../../assets/icons/Capture1.JPG"
 import capture2 from "../../assets/icons/Capture2.JPG"
 export default function Mines() {
-  const {userMoneyMinesBet,setNumOfCorrectFields,setMoney,setCashoutMines,cashoutMines,minesGameOn,setMinesGameOn,betsRef,setBetsContext,betsContent}=useContext(AppContext)
+  const {userMoneyMinesBet,setNumOfCorrectFields,setMoney,setCashoutMines,cashoutMines,minesGameOn,setMinesGameOn,betsRef,setBetsContentMines,betsContentMines}=useContext(AppContext)
   function CashOut(){
     if(minesGameOn){
       setMoney((prev) => Math.round((prev + cashoutMines) * 100) / 100);
@@ -30,23 +30,23 @@ export default function Mines() {
         },
       });
       if(betsRef.current.children.length%2==0){
-        setBetsContext([
+        setBetsContentMines([
           <div className="nzm">
           <h3 className="winnings-card-bet">${userMoneyMinesBet}</h3>
-            <h3 className="winnings-card-bet">{cashoutMines/userMoneyMinesBet}x</h3>
+            <h3 className="winnings-card-bet">{Math.round((cashoutMines/userMoneyMinesBet) * 100) / 100}x</h3>
             <h3 className="winnings-card-green">${cashoutMines}</h3>
           </div>,
-          ...betsContent
+          ...betsContentMines
         ])
       }
       else{
-        setBetsContext([
+        setBetsContentMines([
           <div className="znam">
-          <h3 className="winnings-card-bet">10$</h3>
-          <h3 className="winnings-card-bet">1.5x</h3>
-          <h3 className="winnings-card-green">15$</h3>
+          <h3 className="winnings-card-bet">${userMoneyMinesBet}</h3>
+          <h3 className="winnings-card-bet">{Math.round((cashoutMines/userMoneyMinesBet) * 100) / 100}x</h3>
+          <h3 className="winnings-card-green">${cashoutMines}</h3>
           </div>,
-        ...betsContent
+        ...betsContentMines
         ])
       }
       setTimeout(() => {
