@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 export default function PlaceBetCard() {
 const [lastNumIndex,setLastNumIndex]=useState(0)
 const [userMoneyBet,setUserMoneyBet]=useState(0)
-  const {money,setMoney,setMoneyButtons,moneyButtons,setRotateWheelDeg,wheelNumbers,rotateWheelDeg,setWinningNumber,winCheck,userBet,setRouletteResults}=useContext(AppContext)
+  const {setUserBet,money,setMoney,setMoneyButtons,moneyButtons,setRotateWheelDeg,wheelNumbers,rotateWheelDeg,setWinningNumber,winCheck,userBet,setRouletteResults}=useContext(AppContext)
   const inputRef=useRef(null)
   function CalculateSpinningDeg(numb){
     const degPerNum=360/37;
@@ -27,6 +27,7 @@ const [userMoneyBet,setUserMoneyBet]=useState(0)
     CalculateSpinningDeg(num)
     const interval=setTimeout(() => {
       setWinningNumber(num)
+      setUserBet(-1)
       if(userMoneyBet){
       winCheck(userMoneyBet,num,userBet)
       }
@@ -51,9 +52,9 @@ const [userMoneyBet,setUserMoneyBet]=useState(0)
         <h5 className="place-bet-card-h6">Bet amount</h5>
         <input
         ref={inputRef}
+        className={userMoneyBet?"card-enter-amount-active":"card-enter-amount"}
+        placeholder="Amount"
         type='number'
-  className={userMoneyBet?"card-enter-amount-active":"card-enter-amount"}
-  placeholder="Amount"
   onChange={(e) => {
     const inputValue = parseFloat(e.target.value) || 0; // Handle NaN cases
     

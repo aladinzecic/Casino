@@ -12,7 +12,7 @@ import capture7 from "../../assets/icons/Capture7.JPG"
 import capture8 from "../../assets/icons/Capture8.JPG"
 import capture9 from "../../assets/icons/Capture9.JPG"
 export default function Plinko() {
-  const {makeBall}=useContext(AppContext)
+  const {plinkoBetMoney}=useContext(AppContext)
   return (
     <>
     <div className='plinko-full'>
@@ -26,7 +26,7 @@ export default function Plinko() {
             </div>
 
             <div className="plinko-right-main">
-              <PlinkoScene/>
+            <PlinkoScene/>
             </div>
         </div>
     </div>

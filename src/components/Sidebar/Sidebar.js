@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./Sidebar.css"
 import rouletteActivepng from "../../assets/icons/roulette-active.png"
 import roulettePng from "../../assets/icons/roulette.png"
@@ -8,12 +8,13 @@ import minesActivePng from "../../assets/icons/mines-active.png"
 import plinkoActive from "../../assets/icons/plinko-active.png"
 import slotpng from "../../assets/icons/slots.png"
 import { NavLink } from 'react-router-dom'
+import { AppContext } from '../../Context/AppContext'
 
 export default function Sidebar({activee}) {
-  console.log("Activee value: ", activee);
+  const {setRotateWheelDeg,setWinningNumber}=useContext(AppContext)
   return (
     <div className='side'>
-      <NavLink style={{ textDecoration: 'none' }} to="/">
+      <NavLink onClick={(()=>{setRotateWheelDeg(0);setWinningNumber(null)})} style={{ textDecoration: 'none' }} to="/">
       <div className="active side-box">
       
       {activee === 1 

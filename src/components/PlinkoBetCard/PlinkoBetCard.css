@@ -1,6 +1,6 @@
 .plinko-bet-card{
     width: 100%;
-    height: 55vh;
+    height: 35vh;
     background-color: #1B0C33;
     border-radius: 10px;
     margin-left: 2vw;
@@ -11,7 +11,7 @@
     color: rgb(241, 235, 235);
 }
 .plinko-bet-card-h6{
-    margin-top: 10px;
+    margin-top: 20px;
     color: gray;
     font-weight: 200;
 }

@@ -9,7 +9,7 @@ function ContextProvider({children}){
     const roseNumbers=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
     const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
     const numberOfDivs=37;
-    const [money,setMoney]=useState(200)
+    const [money,setMoney]=useState(1000)
     const [betsContentRoulette,setBetsContentRoulette]=useState([])
     const betsRefRoulette=useRef(null)
     const [moneyButtons,setMoneyButtons]=useState("Full")
@@ -168,8 +168,9 @@ function ContextProvider({children}){
       }
       
       const [plinkoDifficulty,setPlinkoDifficulty]=useState('Low')
-      const [ballsAmount,setBallsAmount]=useState(1)
-      
+      const [numOfPlinkoBalls,setNumOfPlinkoBalls]=useState(0)
+      const [plinkoBetMoney,setPlinkoBetMoney]=useState(0)
+      const plinkoRef=useRef(null)
     const values={
         betsContentRoulette,
         setBetsContentRoulette,
@@ -209,9 +210,12 @@ function ContextProvider({children}){
         setBetsContentMines,
         plinkoDifficulty,
         setPlinkoDifficulty,
-        ballsAmount,
-        setBallsAmount,
-        betsRefRoulette
+        numOfPlinkoBalls,
+        setNumOfPlinkoBalls,
+        betsRefRoulette,
+        plinkoBetMoney,
+        setPlinkoBetMoney,
+        plinkoRef
     }
 
 
