@@ -32,6 +32,7 @@ if(temp){
      else if (plinkoDifficulty === 'High'&&highRiskValues[text]!==undefined) {
         mul=highRiskValues[text]
   }  let newMoney=mul*plinkoBetMoney
+  console.log(mul)
   setMoney(m=>m+newMoney)
 }
       },[temp])
@@ -192,10 +193,10 @@ useEffect(()=>{
               if(i){
                 if(i>5)
                   setText(i-6)
-              }else{
+              else{
                 setText(i)
               }
-    
+            }
               // Loguj tekst pravougaonika samo jednom
               if (text !== undefined) {
                 setTemp(t=>t+1)

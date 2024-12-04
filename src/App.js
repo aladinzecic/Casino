@@ -1,4 +1,5 @@
 import './App.css';
+import LogIn from './components/LogIn/LogIn';
 import Mines from './pages/Mines/Mines';
 import Plinko from './pages/Plinko/Plinko';
 import Roulette from './pages/Roulette/Roulette';
@@ -7,12 +8,12 @@ import { Routes, Route } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      <Routes>
+      {/* <Routes>
         <Route path="/" element={<Roulette />} />
         <Route path="/Mines" element={<Mines />} />
         <Route path="/Plinko" element={<Plinko />} />
-      </Routes>
-      {/* <Plinko/> */}
+      </Routes> */}
+      <LogIn/>
     </div>
   );
 }

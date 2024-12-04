@@ -1,0 +1,43 @@
+.log-full{
+    width: 100%;
+    height: 100vh;
+    background: url(../../assets/icons/csn-bgd.jpg)250px;
+    background-size: contain;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.log-center{
+    height: 70vh;
+    width: 30%;
+    background-color: #252628;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.log-center input{
+    width: 70%;
+    background-color: #0f0f0f;
+    margin-top: 15px;
+    height: 38px;
+    font-size: 16px;
+}
+
+.log-center h1{
+    font-size: 36px;
+    margin-top: 20px;
+    color: black;
+}
+.btn{
+    margin-top: 15px;
+    border-radius: 5px;
+background-color: gray;
+color: #0f0f0f;
+font-weight: 600;
+height: 38px;
+width: 70%;
+border: 0;
+cursor: pointer;
+font-size: 18px;
+}
