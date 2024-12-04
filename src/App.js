@@ -1,19 +1,21 @@
 import './App.css';
-import LogIn from './components/LogIn/LogIn';
+import Register from './pages/Register/Register';
 import Mines from './pages/Mines/Mines';
 import Plinko from './pages/Plinko/Plinko';
 import Roulette from './pages/Roulette/Roulette';
 import { Routes, Route } from 'react-router-dom';
+import Login from './pages/Login/Login';
 
 function App() {
   return (
     <div className="App">
-      {/* <Routes>
-        <Route path="/" element={<Roulette />} />
+      <Routes>
+        <Route path="/Register" element={<Register />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Roulette" element={<Roulette />} />
         <Route path="/Mines" element={<Mines />} />
         <Route path="/Plinko" element={<Plinko />} />
-      </Routes> */}
-      <LogIn/>
+      </Routes>
     </div>
   );
 }
