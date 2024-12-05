@@ -1,0 +1,26 @@
+.cashHunt-full{
+    background-color: #0C012B;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow-y: hidden!important;
+    justify-content: center;
+    
+}
+
+.canon{
+    position: absolute;
+    top: 76vh;
+    width: 160px;
+    height: 160px;
+    left: 75vw;
+}
+
+.canon-down{
+    z-index: 10;
+}
+.canon-top{
+    z-index: 1;
+
+}
+
