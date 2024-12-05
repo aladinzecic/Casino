@@ -23,6 +23,7 @@ export default function Login() {
             })
             console.log(response)
             if(response.status===200){
+                localStorage.setItem("token",loginInfo.username)
                 navigate("/Roulette")
             }
 

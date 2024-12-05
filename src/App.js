@@ -5,6 +5,7 @@ import Plinko from './pages/Plinko/Plinko';
 import Roulette from './pages/Roulette/Roulette';
 import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
+import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js"
 
 function App() {
   return (
@@ -12,9 +13,9 @@ function App() {
       <Routes>
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Roulette" element={<Roulette />} />
-        <Route path="/Mines" element={<Mines />} />
-        <Route path="/Plinko" element={<Plinko />} />
+        <Route path="/Roulette" element={<ProtectedRoute> <Roulette /></ProtectedRoute>} />
+        <Route path="/Mines" element={<ProtectedRoute> <Mines /></ProtectedRoute>} />
+        <Route path="/Plinko" element={<ProtectedRoute> <Plinko /></ProtectedRoute>} />
       </Routes>
     </div>
   );
