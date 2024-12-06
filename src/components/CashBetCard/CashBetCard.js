@@ -1,12 +1,10 @@
-import React,{useState,useContext, useEffect} from 'react'
+import React,{useContext} from 'react'
 import {AppContext} from "../../Context/AppContext"
 import toast from 'react-hot-toast';
 import "./CashBetCard.css"
 export default function CashBetCard() {
-    const {plinkoBetMoney,setPlinkoBetMoney,plinkoDifficulty,setPlinkoDifficulty,numOfPlinkoBalls}=useContext(AppContext);
-    useEffect(()=>{
-      console.log(plinkoBetMoney)
-    },[plinkoBetMoney])
+    const {isHuntGameOn,setHuntBetMoney,huntBetDifficulty,setHuntBetDifficulty,setIsHuntGameOn}=useContext(AppContext);
+
     return (
       <div className='cash-bet-card'>
           <h3 className="cash-bet-card-h4">Place your bet</h3>
@@ -19,7 +17,7 @@ export default function CashBetCard() {
       
       const inputValue = parseFloat(e.target.value) || 0; // Handle NaN cases
       if(inputValue>0)
-        setPlinkoBetMoney(inputValue); // Update only valid values
+        setHuntBetMoney(inputValue); // Update only valid values
       
     }}
   />
@@ -27,9 +25,8 @@ export default function CashBetCard() {
   
           <h5 className="cash-bet-card-h6">Difficulty</h5>
           <div className="bombs-div">
-              <button className={plinkoDifficulty==='Low'?"bombNum-button-active":"bombNum-button"} onClick={() => { 
-                console.log(numOfPlinkoBalls)
-                if (numOfPlinkoBalls===0) setPlinkoDifficulty('Low');
+              <button className={huntBetDifficulty==='Low'?"bombNum-button-active":"bombNum-button"} onClick={() => { 
+                if (!isHuntGameOn) setHuntBetDifficulty('Low');
                 else toast.error('Game is not finished!', {
                   style: {
                     border: '1px solid #713200',
@@ -43,8 +40,8 @@ export default function CashBetCard() {
                   },
                 });
                 }}>Low</button>
-              <button className={plinkoDifficulty==='Medium'?"bombNum-button-active":"bombNum-button"} onClick={() => { 
-                if (numOfPlinkoBalls===0) setPlinkoDifficulty('Medium'); 
+              <button className={huntBetDifficulty==='Medium'?"bombNum-button-active":"bombNum-button"} onClick={() => { 
+                if (!isHuntGameOn) setHuntBetDifficulty('Medium'); 
                 else toast.error('Game is not finished!', {
                   style: {
                     border: '1px solid #713200',
@@ -58,8 +55,8 @@ export default function CashBetCard() {
                   },
                 });
                 }}            >Medium</button>
-              <button className={plinkoDifficulty==='High'?"bombNum-button-active":"bombNum-button"} onClick={() => { 
-                if (numOfPlinkoBalls===0) setPlinkoDifficulty('High'); 
+              <button className={huntBetDifficulty==='High'?"bombNum-button-active":"bombNum-button"} onClick={() => { 
+                if (!isHuntGameOn) setHuntBetDifficulty('High'); 
                 else toast.error('Game is not finished!', {
                   style: {
                     border: '1px solid #713200',
@@ -74,7 +71,7 @@ export default function CashBetCard() {
                 });
                 }}            >High</button>
           </div>
-          <button className="place-bet-button">Start game</button>
+          <button className="place-bet-button" onClick={()=>setIsHuntGameOn(true)}>Start game</button>
           
       </div>
     )

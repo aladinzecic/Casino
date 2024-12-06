@@ -7,19 +7,27 @@
   
   .carousel-track-left {
     display: flex;
+    transition: none;
+
     /* animation: slide-left 1s linear infinite; */
   }
   .carousel-track-left-fast {
     display: flex;
+    transition: none;
+
     /* animation: slide-left 0.5s linear infinite; */
   }
   .carousel-track-right {
     margin-left: -440px;
+    transition: none;
+
     display: flex;
     /* animation: slide-right 2s linear infinite ; */
   }
   .carousel-track-right-fast {
     margin-left: -440px;
+    transition: none;
+
     display: flex;
     /* animation: slide-right 1s linear infinite ; */
   }

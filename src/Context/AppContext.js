@@ -171,7 +171,21 @@ function ContextProvider({children}){
       const [numOfPlinkoBalls,setNumOfPlinkoBalls]=useState(0)
       const [plinkoBetMoney,setPlinkoBetMoney]=useState(0)
       const plinkoRef=useRef(null)
-    const values={
+
+
+
+
+
+      const [huntBetMoney,setHuntBetMoney]=useState(0)
+      const [huntBetDifficulty,setHuntBetDifficulty]=useState('Low')
+      const [isHuntGameOn,setIsHuntGameOn]=useState(false)
+      const values={
+        huntBetMoney,
+        setHuntBetMoney,
+        huntBetDifficulty,
+        setHuntBetDifficulty,
+        isHuntGameOn,
+        setIsHuntGameOn,
         betsContentRoulette,
         setBetsContentRoulette,
         userMoneyMinesBet,

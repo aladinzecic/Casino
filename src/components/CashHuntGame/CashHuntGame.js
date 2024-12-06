@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./CashHuntGame.css"
 import balloon from "../../assets/CashHuntIcons/air-hot-balloon.png"
 import cactus from "../../assets/CashHuntIcons/cactus.png"
@@ -10,7 +10,10 @@ import chest from "../../assets/CashHuntIcons/top-hat.png"
 import hat from "../../assets/CashHuntIcons/treasure.png"
 import splash from "../../assets/CashHuntIcons/splash.png"
 import Proba from '../Proba/Proba'
+import { AppContext } from '../../Context/AppContext'
+
 export default function CashHuntGame() {
+  const {isHuntGameOn}=useContext(AppContext)
     const div=useRef(null)
     const cashHuntIcons=[balloon,cactus,bell,clock,gift,rabbit,chest,hat]
     const [gridData,setGridData]=useState([])
@@ -78,6 +81,7 @@ export default function CashHuntGame() {
             generateGrid();
         }
     }, [gridData]);
+
       return (
         <>
         <img
