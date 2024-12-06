@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "./CashHuntGame.css"
 import balloon from "../../assets/CashHuntIcons/air-hot-balloon.png"
 import cactus from "../../assets/CashHuntIcons/cactus.png"
@@ -8,9 +8,14 @@ import gift from "../../assets/CashHuntIcons/gift-box.png"
 import rabbit from "../../assets/CashHuntIcons/rabbit.png"
 import chest from "../../assets/CashHuntIcons/top-hat.png"
 import hat from "../../assets/CashHuntIcons/treasure.png"
+import splash from "../../assets/CashHuntIcons/splash.png"
+import Proba from '../Proba/Proba'
 export default function CashHuntGame() {
+    const div=useRef(null)
     const cashHuntIcons=[balloon,cactus,bell,clock,gift,rabbit,chest,hat]
     const [gridData,setGridData]=useState([])
+    const [grid,setGrid]=useState([])
+    const [splashPosition,setSplashPosition]=useState([0,0])
     const shuffleArray = (array) => {
         for (let i = array.length - 1; i > 0; i--) {
           const j = Math.floor(Math.random() * (i + 1));
@@ -29,18 +34,74 @@ export default function CashHuntGame() {
         return shuffleArray(gridData);
       };
 
+      const generateGrid = () =>{
+        const ProbaComponents = [];
+        console.log(gridData[0])
+            for (let i = 0; i < 8; i++) {
+                ProbaComponents.push(
+                    <Proba
+                        key={i}
+                        icon1={gridData[i * 8]}
+                        icon2={gridData[i * 8 + 1]}
+                        icon3={gridData[i * 8 + 2]}
+                        icon4={gridData[i * 8 + 3]}
+                        icon5={gridData[i * 8 + 4]}
+                        icon6={gridData[i * 8 + 5]}
+                        icon7={gridData[i * 8 + 6]}
+                        icon8={gridData[i * 8 + 7]}
+                        way={i===1||i===5?2:i===0||i===4?3:i % 2}
+                    />
+                );
+            }
+            setGrid(ProbaComponents)
+      }
+
+
+      const handleSplash = (event) => {
+
+        const mouseX = event.clientX;
+        const mouseY = event.clientY;
+        console.log(mouseX)
+        // Offset to center the splash image around the cursor
+        const splashSize = 50; // Size of the splash image
+        setSplashPosition([mouseX-splashSize/2-440, mouseY-splashSize/2-20-(10 * window.innerHeight) / 100]);
+        console.log(splashPosition)
+    };
+
+
       useEffect(()=>{
         setGridData(generateGridData())
       },[])
-      return (
-        <div className='grid-container'
 
-        >
-          {gridData.map((icon, index) => (
-            <div key={index} className='grid-cell'>
-              <img className="grid-img" src={icon} />
-            </div>
-          ))}
-        </div>
+      useEffect(() => {
+        if (gridData.length > 0) {
+            generateGrid();
+        }
+    }, [gridData]);
+      return (
+        <>
+        <img
+        className="splash-img"
+        src={splash}
+        alt="Splash"
+        style={{
+          position: "absolute",
+          top: `${splashPosition[1]}px`,
+          left: `${splashPosition[0]}px`,
+          height:"50px",
+          width:"50px",
+          zIndex:"10",
+          pointerEvents: "none", // Prevent the splash image from interfering with clicks
+        }}
+      />
+        <div className='grid-container'
+    onClick={handleSplash}
+    ref={div}
+>
+    {
+        grid
+    }
+</div>
+        </>
       );
 }

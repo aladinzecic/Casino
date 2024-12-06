@@ -10,10 +10,10 @@
 
 .canon{
     position: absolute;
-    top: 76vh;
+    top: 65vh;
     width: 160px;
     height: 160px;
-    left: 75vw;
+    left: 55vw;
 }
 
 .canon-down{
@@ -24,3 +24,29 @@
 
 }
 
+.cash-full{
+    background-color: #0C012B;
+    overflow: hidden;
+}
+
+.cash-main{
+    display: flex;
+}
+
+.cash-left-main{
+width: 20%;
+height: 85vh;
+display: flex;
+flex-direction: column;
+}
+.cash-right-main{
+    width: 65%;
+height: 80vh;
+display: flex;
+flex-direction: column-reverse;
+margin-left: 5vw;
+align-items: center;
+justify-content: center;
+position: relative;
+margin-top: 2vh;
+}

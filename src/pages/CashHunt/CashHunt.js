@@ -3,6 +3,12 @@ import "./CashHunt.css"
 import CashHuntGame from '../../components/CashHuntGame/CashHuntGame'
 import canonDown from "../../assets/CashHuntIcons/canon-down.png"
 import canonTop from "../../assets/CashHuntIcons/image.png"
+import WinningsCard from '../../components/WinningsCard/WinningsCard'
+import Sidebar from '../../components/Sidebar/Sidebar'
+import Navbar from '../../components/NavBar/Navbar'
+import PlaceBetCard from "../../components/PlaceBetCard/PlaceBetCard"
+import { Toaster } from 'react-hot-toast'
+import CashBetCard from '../../components/CashBetCard/CashBetCard'
 export default function CashHunt() {
   const [rotation, setRotation] = useState(0);
   const cannon=useRef(null)
@@ -20,13 +26,25 @@ export default function CashHunt() {
   };
 
   return (
-    <div className='cashHunt-full'
->
-      <div 
+      
+    <div className='cash-full'>
+    <div><Toaster position="bottom-center"/></div>
+    <Navbar/>
+      <div className="cash-main">
+      <Sidebar activee={3}/>
+          <div className="cash-left-main">
+              <CashBetCard/>
+              <WinningsCard/>
+          </div>
+
+          <div className="cash-right-main">
+          <div 
       onMouseMove={handleCanonMove}
       ><CashHuntGame/></div>
       <img className="canon canon-down" src={canonDown} />
       <img ref={cannon} className="canon canon-top" src={canonTop} style={{transform: `rotate(${rotation}deg)`}}/>
     </div>
+          </div>
+      </div>
   )
 }

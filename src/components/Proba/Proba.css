@@ -1,0 +1,51 @@
+.carousel-container {
+    width: 440px; /* Širina vidljive oblasti */
+    overflow: hidden; /* Sakriva sadržaj van vidljive oblasti */
+    position: relative;
+    height: 55px;
+  }
+  
+  .carousel-track-left {
+    display: flex;
+    /* animation: slide-left 1s linear infinite; */
+  }
+  .carousel-track-left-fast {
+    display: flex;
+    /* animation: slide-left 0.5s linear infinite; */
+  }
+  .carousel-track-right {
+    margin-left: -440px;
+    display: flex;
+    /* animation: slide-right 2s linear infinite ; */
+  }
+  .carousel-track-right-fast {
+    margin-left: -440px;
+    display: flex;
+    /* animation: slide-right 1s linear infinite ; */
+  }
+  
+  .carousel-icon {
+    width: 45px; /* Širina ikone */
+    height: 45px; /* Visina ikone */
+    flex-shrink: 0; /* Sprečava smanjivanje ikonica */
+    margin-right: 10px; /* Razmak između ikonica */
+  }
+  
+  @keyframes slide-left {
+    0% {
+      transform: translateX(0); /* Početna pozicija */
+    }
+    100% {
+      transform: translateX(-100%); /* Potpuno pomeranje ulevo */
+    }
+  }
+  
+  @keyframes slide-right {
+    0% {
+      transform: translateX(0); /* Početna pozicija */
+    }
+    100% {
+      transform: translateX(50%); /* Potpuno pomeranje ulevo */
+    }
+  }
+  
