@@ -44,6 +44,7 @@ export default function CashHuntGame() {
                 ProbaComponents.push(
                     <Proba
                         key={i}
+                        keyy={i}
                         icon1={gridData[i * 8]}
                         icon2={gridData[i * 8 + 1]}
                         icon3={gridData[i * 8 + 2]}
@@ -64,11 +65,9 @@ export default function CashHuntGame() {
 
         const mouseX = event.clientX;
         const mouseY = event.clientY;
-        console.log(mouseX)
         // Offset to center the splash image around the cursor
         const splashSize = 50; // Size of the splash image
         setSplashPosition([mouseX-splashSize/2-440, mouseY-splashSize/2-20-(10 * window.innerHeight) / 100]);
-        console.log(splashPosition)
     };
 
 
@@ -84,7 +83,7 @@ export default function CashHuntGame() {
 
       return (
         <>
-        <img
+        {/* <img
         className="splash-img"
         src={splash}
         alt="Splash"
@@ -97,7 +96,7 @@ export default function CashHuntGame() {
           zIndex:"10",
           pointerEvents: "none", // Prevent the splash image from interfering with clicks
         }}
-      />
+      /> */}
         <div className='grid-container'
     onClick={handleSplash}
     ref={div}
