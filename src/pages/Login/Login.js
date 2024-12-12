@@ -31,31 +31,62 @@ export default function Login() {
         catch(err){
             console.log(err)
         }
+        console.log(loginInfo)
     }
+
+    const changeMoney = async ()=>{
+        try{
+            const response= await axios.post("http://localhost:3001/auth/updateMoney",{
+                userId:1,
+                money:100
+            })
+            console.log(response)
+
+        }
+
+        catch(err){
+            console.log(err)
+        }
+    }
+    const getMoney = async ()=>{
+        try{
+            const response= await axios.get("http://localhost:3001/auth/getMoney/1")
+            console.log(response.data)
+
+        }
+
+        catch(err){
+            console.log(err)
+        }
+    }
+
+    
   return (
     <>
     <Toaster position="bottom-center"/>
     <div className='log-full'>
         <div className="log-center">
-            <h1>Login</h1>
-            <input 
-                name="email"
+            <div className="left">
+                <h2 className="h2">Log In</h2>
+                <h3 className="">USERNAME</h3>
+                <input 
+                name='email'
                 onChange={handleLoginChange}
                 className="email" 
                 type='email'
                 style={{
-                    backgroundImage: `url(${user})`,
+                    backgroundImage: `url(${email})`,
                     backgroundSize: "15px",
                     backgroundRepeat: "no-repeat",
                     backgroundPosition: "10px",
-                    paddingLeft: "30px",        
-                    }}
+                    paddingLeft: "30px", 
+                }}
                 placeholder="Email"
                 autocomplete="off"
-
             />
-            <input 
-                name="password"
+                <h3 className="">PASSWORD</h3>
+                <input 
+                name='password'
                 onChange={handleLoginChange}
                 className="password" 
                 type='password'
@@ -70,7 +101,15 @@ export default function Login() {
                 placeholder="Password"
                 autocomplete="current-password"            
                 />
-            <button className="btn" onClick={()=>handleLoginSubmit()}>Log In</button>
+                            <button className="btn" onClick={handleLoginSubmit}>Log In</button>
+
+            </div>
+            <div className="right">
+                <h1 className="">Welcome to login</h1>
+                <h2 className="">Don't have an account?</h2>
+                <button className="" onClick={getMoney}>Sign In</button>
+
+            </div>
         </div>
     </div>
     </>

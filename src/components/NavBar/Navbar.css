@@ -18,3 +18,19 @@
     margin-right: 20px;
     color: #fff;
 }
+
+.profile-img{
+    height: 7vh;
+    width: 7vh;
+    border-radius: 50%;
+    border: 1px solid black;
+    overflow: hidden;
+}
+.rght{
+    display: flex;
+    margin-right: 20px;
+}
+.profile-img img{
+    width: 7vh;
+    width: 7vh;
+}

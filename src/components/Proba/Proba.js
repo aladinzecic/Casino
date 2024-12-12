@@ -22,10 +22,12 @@ export default function Proba({icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,w
 
 
 
-
+    const rotateImage= (img)=>{
+      
+    } 
 
     useEffect(() => {
-if(way===0&&isHuntGameOn){
+if(way===0&&isHuntGameOn===true){
             const interval = setInterval(() => {
           setCounter((prev) => (prev + 1) % iconsEven.length); // Povećava counter na sledeći index
     
@@ -37,7 +39,7 @@ if(way===0&&isHuntGameOn){
     
         return () => clearInterval(interval); // Čisti interval kad se komponenta unmountuje
 }
-else if(way===3&&isHuntGameOn){
+else if(way===3&&isHuntGameOn===true){
             const interval = setInterval(() => {
           setCounter((prev) => (prev + 1) % iconsEven.length); // Povećava counter na sledeći index
     

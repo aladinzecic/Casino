@@ -8,7 +8,7 @@ export default function CashBetCard() {
     return (
       <div className='cash-bet-card'>
           <h3 className="cash-bet-card-h4">Place your bet</h3>
-          <h5 className="cash-bet-card-h6">Bet amount</h5>
+          <h5 className="cash-bet-card-h6">Bet amount per bullet</h5>
           <input
           className={"cash-enter-amount"}
           placeholder="Amount"

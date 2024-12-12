@@ -82,5 +82,5 @@ useEffect(()=>{
     ></div>
   ));
 
-  return <div className="grid-container">{gridItems}</div>;
+  return <div className="grid-containerr">{gridItems}</div>;
 }

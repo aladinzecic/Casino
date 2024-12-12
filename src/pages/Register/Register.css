@@ -1,43 +1,99 @@
 .log-full{
     width: 100%;
     height: 100vh;
-    background: url(../../assets/icons/csn-bgd.jpg)250px;
-    background-size: contain;
+    background-color: #F8F9FD;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
+.log-center .left, .log-center .right{
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+}
+.left h2{
+    color:black ;
+    padding-top: 40px;
+    font-size: 32px;
+    margin-left: 60px;
+
+}
+.left h3{
+    color:black ;
+    padding-top: 10px;
+    font-size: 16PX;
+    margin-left: 60px;
+
+}
+.log-center .right{
+    background: linear-gradient(to bottom right, #5d029e, #1B0C33);
+}
 .log-center{
     height: 70vh;
-    width: 30%;
-    background-color: #252628;
-    border-radius: 20px;
+    width:60%;
+    background-color: #FFFFFF;
     display: flex;
     align-items: center;
-    flex-direction: column;
-}
+    box-shadow: 12px 12px 12px rgba(0, 0, 0, 0.2);}
 .log-center input{
     width: 70%;
-    background-color: #0f0f0f;
-    margin-top: 15px;
+    background-color: #F2F2F2;
+    margin-top:     5px;
     height: 38px;
     font-size: 16px;
+    margin-left: 60px;
+
 }
 
 .log-center h1{
     font-size: 36px;
     margin-top: 20px;
     color: black;
+
 }
 .btn{
-    margin-top: 15px;
+    margin-top: 35px;
     border-radius: 5px;
-background-color: gray;
-color: #0f0f0f;
+    background: linear-gradient(to bottom right, #5d029e, #1B0C33);
 font-weight: 600;
 height: 38px;
 width: 70%;
 border: 0;
 cursor: pointer;
 font-size: 18px;
+color: #fff;
+margin-left: 60px;
+}
+
+.log-center .right{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.right h1{
+    color: #fff;
+    font-size: 44px;
+}
+
+.right h2{
+    color: #fff;
+    font-size: 20px;
+
+}
+
+.right button{
+    border-radius: 5px;
+    font-weight: 600;
+    height: 38px;
+    width: 30%;
+    border: 0;
+    cursor: pointer;
+    font-size: 18px;
+    background-color: transparent;
+    color: #Fff;
+    border: 1px solid #fff;
 }

@@ -14,7 +14,7 @@ export default function Sidebar({activee}) {
   const {setRotateWheelDeg,setWinningNumber}=useContext(AppContext)
   return (
     <div className='side'>
-      <NavLink onClick={(()=>{setRotateWheelDeg(0);setWinningNumber(null)})} style={{ textDecoration: 'none' }} to="/">
+      <NavLink onClick={(()=>{setRotateWheelDeg(0);setWinningNumber(null)})} style={{ textDecoration: 'none' }} to="/Roulette">
       <div className="active side-box">
       
       {activee === 1 

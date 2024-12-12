@@ -54,8 +54,10 @@ export default function Register() {
     <Toaster position="bottom-center"/>
     <div className='log-full'>
         <div className="log-center">
-            <h1>Register</h1>
-            <input 
+            <div className="left">
+                <h2 className="h2">Sign In</h2>
+                <h3 className="">USERNAME</h3>
+                <input 
                 name='username'
                 onChange={handleLoginChange}
                 className="username" 
@@ -69,7 +71,24 @@ export default function Register() {
                     }}
                 placeholder="Username"
             />
-            <input 
+                <h3 className="">EMAIL</h3>
+                <input 
+                name='email'
+                onChange={handleLoginChange}
+                className="email" 
+                type='email'
+                style={{
+                    backgroundImage: `url(${email})`,
+                    backgroundSize: "15px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "10px",
+                    paddingLeft: "30px", 
+                }}
+                placeholder="Email"
+                autocomplete="off"
+            />
+                <h3 className="">PASSWORD</h3>
+                <input 
                 name='password'
                 onChange={handleLoginChange}
                 className="password" 
@@ -85,22 +104,15 @@ export default function Register() {
                 placeholder="Password"
                 autocomplete="current-password"            
                 />
-            <input 
-                name='email'
-                onChange={handleLoginChange}
-                className="email" 
-                type='email'
-                style={{
-                    backgroundImage: `url(${email})`,
-                    backgroundSize: "15px",
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "10px",
-                    paddingLeft: "30px", 
-                }}
-                placeholder="Email"
-                autocomplete="off"
-            />
-            <button className="btn" onClick={()=>handleSubmit()}>Register</button>
+                            <button className="btn" onClick={handleSubmit}>Sign In</button>
+
+            </div>
+            <div className="right">
+                <h1 className="">Welcome to sign in</h1>
+                <h2 className="">Already have an account?</h2>
+                <button className="" onClick={(()=>navigate("/Login"))}>Log In</button>
+
+            </div>
         </div>
     </div>
     </>
