@@ -121,16 +121,49 @@ else if(way===3&&isHuntGameOn===true){
           <motion.img
               onClick={()=>{
                 if (way===2) {
-                  console.log(keyy*8+index-8)
-                  setArrOfClicked((prev)=>[...prev,keyy*8+index-8])
-                  setMoney((prev)=>prev+arrOfValues[keyy*8+index-8])
+                  if(isHuntGameOn){
+
+                    console.log(keyy*8+index-8)
+                    setArrOfClicked((prev)=>[...prev,keyy*8+index-8])
+                    setMoney((prev)=>prev+arrOfValues[keyy*8+index-8])
+                  }
+                  else{
+                    toast.error('zapocni grui!', {
+                      style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                        fontSize: '18px'
+                      },
+                      iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                      },
+                    });
+                  }
 
                 }
                 else{
-                  console.log(keyy*8+index)
-                  setArrOfClicked((prev)=>[...prev,keyy*8+index])
-                  setMoney((prev)=>prev+arrOfValues[keyy*8+index])
+                  if(isHuntGameOn){
 
+                    console.log(keyy*8+index)
+                    setArrOfClicked((prev)=>[...prev,keyy*8+index])
+                    setMoney((prev)=>prev+arrOfValues[keyy*8+index])
+                  }
+                  else{
+                    toast.error('zapocni grui!', {
+                      style: {
+                        border: '1px solid #713200',
+                        padding: '16px',
+                        color: '#713200',
+                        fontSize: '18px'
+                      },
+                      iconTheme: {
+                        primary: '#713200',
+                        secondary: '#FFFAEE',
+                      },
+                    });
+                  }
 
                 }
               }}
@@ -183,7 +216,21 @@ else if(way===3&&isHuntGameOn===true){
           <motion.img
               key={keyy*8+index}
               onClick={()=>{
-                if(money>=huntBetMoney){
+                if(!isHuntGameOn){
+                  toast.error('zapocni grui!', {
+                    style: {
+                      border: '1px solid #713200',
+                      padding: '16px',
+                      color: '#713200',
+                      fontSize: '18px'
+                    },
+                    iconTheme: {
+                      primary: '#713200',
+                      secondary: '#FFFAEE',
+                    },
+                  });
+                }
+                else if(money>=huntBetMoney){
                   setArrOfClicked((prev)=>[...prev,keyy*8+index])
                   setMoney((prev)=>prev+arrOfValues[keyy*8+index])
                 }
