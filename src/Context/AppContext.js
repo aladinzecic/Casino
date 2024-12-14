@@ -1,7 +1,15 @@
 import React,{createContext,useState,useRef, useEffect} from "react";
 import Matter from 'matter-js';
 import { color } from "framer-motion";
-
+import balloon from "../assets/CashHuntIcons/air-hot-balloon.png"
+import cactus from "../assets/CashHuntIcons/cactus.png"
+import bell from "../assets/CashHuntIcons/christmas-bell.png"
+import clock from "../assets/CashHuntIcons/clock.png"
+import gift from "../assets/CashHuntIcons/gift-box.png"
+import rabbit from "../assets/CashHuntIcons/rabbit.png"
+import chest from "../assets/CashHuntIcons/top-hat.png"
+import hat from "../assets/CashHuntIcons/treasure.png"
+import Proba from '../components/Proba/Proba'
 const AppContext=createContext()
 
 function ContextProvider({children}){
@@ -179,7 +187,220 @@ function ContextProvider({children}){
       const [huntBetMoney,setHuntBetMoney]=useState(0)
       const [huntBetDifficulty,setHuntBetDifficulty]=useState('Low')
       const [isHuntGameOn,setIsHuntGameOn]=useState(false)
+      const [arrOfClicked,setArrOfClicked]=useState([])
+
+
+      const revealAll = () => {
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev, i]); // Funkcionalni pristup
+          }, i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev, 8+i]); // Funkcionalni pristup
+          }, 100+i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev, 16+i]); // Funkcionalni pristup
+          },200+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev, 8*3+i]); // Funkcionalni pristup
+          },300+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev, 32+i]); // Funkcionalni pristup
+          },400 +i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev,8*5+ i]); // Funkcionalni pristup
+          },500+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev,48+ i]); // Funkcionalni pristup
+          },600+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev,8*7+ i]); // Funkcionalni pristup
+          },700+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => [...prev,8*8+ i]); // Funkcionalni pristup
+          },800+ i * 40); // Razmak između prikazivanja elemenata
+        }
+
+      } 
+      const hideAll = () => {
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==i)); // Funkcionalni pristup
+          }, i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==8+i)); // Funkcionalni pristup
+          }, 100+i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==16+i)); // Funkcionalni pristup
+          },200+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==24+i)); // Funkcionalni pristup
+          },300+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==32+i)); // Funkcionalni pristup
+          },400 +i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==40+i)); // Funkcionalni pristup
+          },500+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==48+i)); // Funkcionalni pristup
+          },600+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==56+i)); // Funkcionalni pristup
+          },700+ i * 40); // Razmak između prikazivanja elemenata
+        }
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            setArrOfClicked((prev) => prev.filter((val)=>val!==64+i)); // Funkcionalni pristup
+          },800+ i * 40); // Razmak između prikazivanja elemenata
+        }
+      }
+
+
+      function createShuffledArray() {
+        const values = [-huntBetMoney,huntBetMoney]; // Moguće vrednosti
+
+        const countPerValue = 72 / values.length; // Broj pojavljivanja svake vrednosti
+        console.log(huntBetMoney)
+        // Kreiranje niza sa ravnomernim brojem elemenata
+        const array = [];
+        if(huntBetDifficulty==="Low"){
+
+          for (let value of values) {
+            for (let i = 0; i < countPerValue; i++) {
+              array.push(value);
+            }
+          }
+        }
+        else if(huntBetDifficulty==="Medium"){
+          for(let i=0;i<72/0.3;i++){
+            array.push(-huntBetMoney);
+
+          }
+          for(let i=0;i<72/0.7;i++){
+            array.push(2*huntBetMoney);
+
+          }
+        }
+        else if(huntBetDifficulty==="High"){
+          for(let i=0;i<72/0.23;i++){
+            array.push(-huntBetMoney);
+
+          }
+          for(let i=0;i<72/0.77;i++){
+            array.push(3*huntBetMoney);
+          }
+        }
+        // Funkcija za mešanje niza (Fisher-Yates algoritam)
+        function shuffle(array) {
+          for (let i = array.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1)); // Nasumičan indeks
+            [array[i], array[j]] = [array[j], array[i]]; // Zamena elemenata
+          }
+        }
+      
+        // Višestruko mešanje niza
+        for (let i = 0; i < 10; i++) { // Pet puta meša niz
+          shuffle(array);
+        }
+        
+        return array;
+      }
+          const [arrOfValues,setArrOfValues]=useState([])
+    const cashHuntIcons=[balloon,cactus,bell,clock,gift,rabbit,chest,hat]
+    const [gridData,setGridData]=useState([])
+    const [grid,setGrid]=useState([])
+
+    const shuffleArray = (array) => {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    };
+          const generateGridData = () => {
+                  const gridData = [];
+                  cashHuntIcons.forEach((icon) => {
+                    for (let i = 0; i < 8; i++) {
+                      gridData.push(icon);
+                    }
+                  });
+                  return shuffleArray(gridData);
+                };
+                
+                
+                const generateGrid = () =>{
+                  const ProbaComponents = [];
+                  console.log(gridData[0])
+                      for (let i = 0; i < 8; i++) {
+                          ProbaComponents.push(
+                              <Proba
+                                  key={i}
+                                  keyy={i}
+                                  icon1={gridData[i * 8]}
+                                  icon2={gridData[i * 8 + 1]}
+                                  icon3={gridData[i * 8 + 2]}
+                                  icon4={gridData[i * 8 + 3]}
+                                  icon5={gridData[i * 8 + 4]}
+                                  icon6={gridData[i * 8 + 5]}
+                                  icon7={gridData[i * 8 + 6]}
+                                  icon8={gridData[i * 8 + 7]}
+                                  way={i===1||i===5?2:i===0||i===4?3:i % 2}
+                                  arrOfValues={arrOfValues}
+                              />
+                          );
+                      }
+                      setGrid([])
+                      setTimeout(() => {
+                        
+                        setGrid(ProbaComponents)
+                      }, 1);
+
+                }
+      
       const values={
+        grid,
+        gridData,
+        setGridData,
+        generateGrid,
+        generateGridData,
+        arrOfValues,
+        setArrOfValues,
+        createShuffledArray,
+        revealAll,
+        hideAll,
+        arrOfClicked,
+        setArrOfClicked,
         huntBetMoney,
         setHuntBetMoney,
         huntBetDifficulty,

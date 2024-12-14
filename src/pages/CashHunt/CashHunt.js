@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import "./CashHunt.css"
 import CashHuntGame from '../../components/CashHuntGame/CashHuntGame'
 import canonDown from "../../assets/CashHuntIcons/canon-down.png"
@@ -9,10 +9,11 @@ import Navbar from '../../components/NavBar/Navbar'
 import PlaceBetCard from "../../components/PlaceBetCard/PlaceBetCard"
 import { Toaster } from 'react-hot-toast'
 import CashBetCard from '../../components/CashBetCard/CashBetCard'
+import { AppContext } from '../../Context/AppContext'
 export default function CashHunt() {
   const [rotation, setRotation] = useState(0);
   const cannon=useRef(null)
-  
+  const {setIsHuntGameOn,hideAll}=useContext(AppContext)
 
   const handleCanonMove = (event) => {
     if (!cannon.current) return; // Ensure cannon.current exists
@@ -38,9 +39,16 @@ export default function CashHunt() {
           </div>
 
           <div className="cash-right-main">
+          <button className="cash-out-btn" onClick={()=>{
+          setIsHuntGameOn("ende")
+          hideAll()
+        }}>Cash Out</button>
           <div 
       onMouseMove={handleCanonMove}
-      ><CashHuntGame/></div>
+      >
+        <CashHuntGame/>
+        </div>
+
       <img className="canon canon-down" src={canonDown} />
       <img ref={cannon} className="canon canon-top" src={canonTop} style={{transform: `rotate(${rotation}deg)`}}/>
     </div>

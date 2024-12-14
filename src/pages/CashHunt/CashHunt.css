@@ -41,7 +41,7 @@ flex-direction: column;
 }
 .cash-right-main{
     width: 65%;
-height: 80vh;
+height: 85vh;
 display: flex;
 flex-direction: column-reverse;
 margin-left: 5vw;

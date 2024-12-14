@@ -2,12 +2,12 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import {motion} from "framer-motion"
 import "./Proba.css"
 import { AppContext } from "../../Context/AppContext";
+import toast from "react-hot-toast";
 export default function Proba({icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,way,keyy}) {
     const [iconsEven, setIconsEven] = useState([icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon1]);
     const [iconsOdd, setIconsOdd] = useState([icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8]);
     const [counter, setCounter] = useState(1);
-    const [arrOfClicked,setArrOfClicked]=useState([])
-    const {isHuntGameOn,setIsHuntGameOn}=useContext(AppContext)
+    const {money,huntBetMoney,setMoney,isHuntGameOn,setIsHuntGameOn,arrOfClicked,setArrOfClicked,arrOfValues}=useContext(AppContext)
     const ref1=useRef(null)
     const variants = {
       left: {
@@ -21,94 +21,9 @@ export default function Proba({icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,w
     };
     
 
-    useEffect(()=>{
-      revealAll()
-    },[])
 
-    const revealAll = () => {
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, i]); // Funkcionalni pristup
-        }, i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 8+i]); // Funkcionalni pristup
-        }, 100+i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 16+i]); // Funkcionalni pristup
-        },200+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 8*3+i]); // Funkcionalni pristup
-        },300+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 32+i]); // Funkcionalni pristup
-        },400 +i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev,8*5+ i]); // Funkcionalni pristup
-        },500+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev,48+ i]); // Funkcionalni pristup
-        },600+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev,8*7+ i]); // Funkcionalni pristup
-        },700+ i * 40); // Razmak između prikazivanja elemenata
-      }
-    } 
-    const hideAll = () => {
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, i]); // Funkcionalni pristup
-        }, i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 8+i]); // Funkcionalni pristup
-        }, 100+i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 16+i]); // Funkcionalni pristup
-        },200+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 8*3+i]); // Funkcionalni pristup
-        },300+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev, 32+i]); // Funkcionalni pristup
-        },400 +i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev,8*5+ i]); // Funkcionalni pristup
-        },500+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev,48+ i]); // Funkcionalni pristup
-        },600+ i * 40); // Razmak između prikazivanja elemenata
-      }
-      for (let i = 0; i < 8; i++) {
-        setTimeout(() => {
-          setArrOfClicked((prev) => [...prev,8*7+ i]); // Funkcionalni pristup
-        },700+ i * 40); // Razmak između prikazivanja elemenata
-      }
-    } 
+    
+     
 
     useEffect(() => {
 if(way===0&&isHuntGameOn===true){
@@ -178,6 +93,7 @@ else if(way===3&&isHuntGameOn===true){
             {way===1||way===2?iconsOdd.map((icon, index) => (
               <>
               <motion.div
+
             style={{
               position: "absolute",
               zIndex:"-10",
@@ -197,17 +113,40 @@ else if(way===3&&isHuntGameOn===true){
               backfaceVisibility: "hidden", // Sakriva stranu kada nije okrenuta
             }}
           >
-            {"2X"}
+{way === 2
+  ? arrOfValues[keyy * 8 + index-8] // Ako je way 2, koristi ovu vrednost
+  : arrOfValues[keyy * 8 + index ] // Ako nije, koristi ovu (minus 8)
+}
           </motion.div>
           <motion.img
-              // onClick={()=>setIsClicked(keyy*8+index-8)}
-              
+              onClick={()=>{
+                if (way===2) {
+                  console.log(keyy*8+index-8)
+                  setArrOfClicked((prev)=>[...prev,keyy*8+index-8])
+                  setMoney((prev)=>prev+arrOfValues[keyy*8+index-8])
+
+                }
+                else{
+                  console.log(keyy*8+index)
+                  setArrOfClicked((prev)=>[...prev,keyy*8+index])
+                  setMoney((prev)=>prev+arrOfValues[keyy*8+index])
+
+
+                }
+              }}
               key={keyy*8+index}
               src={icon}
               alt={`icon-${index}`}
               className="carousel-icon"
-              animate={arrOfClicked.some((item) => item === keyy * 8 + index-8)
-                ? { rotateX: -90} : { rotateX: 0, opacity: 1 }}
+              animate={
+                arrOfClicked.some((item) =>
+                  way === 2
+                    ? item === keyy * 8 + index - 8
+                    : item === keyy * 8 + index
+                )
+                  ? { rotateX: -90 }
+                  : { rotateX: 0, opacity: 1 }
+              }
                   transition={{ duration: 0.4, ease: "linear" }}
                   style={{
                     transformOrigin: "center bottom", // Podešava ose rotacije
@@ -237,12 +176,35 @@ else if(way===3&&isHuntGameOn===true){
               fontWeight: "bold",
               backfaceVisibility: "hidden", // Sakriva stranu kada nije okrenuta
             }}
+
           >
-            {"2X"}
-          </motion.div>
+            {arrOfValues[keyy*8+index]}
+            </motion.div>
           <motion.img
               key={keyy*8+index}
-              // onClick={()=>setIsClicked(keyy*8+index)}
+              onClick={()=>{
+                if(money>=huntBetMoney){
+                  setArrOfClicked((prev)=>[...prev,keyy*8+index])
+                  setMoney((prev)=>prev+arrOfValues[keyy*8+index])
+                }
+                else{
+                  toast.error('nemas para geng!', {
+                    style: {
+                      border: '1px solid #713200',
+                      padding: '16px',
+                      color: '#713200',
+                      fontSize: '18px'
+                    },
+                    iconTheme: {
+                      primary: '#713200',
+                      secondary: '#FFFAEE',
+                    },
+                  });
+                }
+
+              }
+
+              }
                   src={icon}
                   alt={`icon-${index}`}
                   className="carousel-icon"

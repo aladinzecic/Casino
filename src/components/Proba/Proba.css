@@ -35,6 +35,7 @@
   .carousel-icon {
     width: 45px; /* Širina ikone */
     height: 45px; /* Visina ikone */
+    background-color: #F0F0F0;
     flex-shrink: 0; /* Sprečava smanjivanje ikonica */
     margin-right: 10px; /* Razmak između ikonica */
   }
