@@ -32,7 +32,7 @@ export default function CashHunt() {
     <div><Toaster position="bottom-center"/></div>
     <Navbar/>
       <div className="cash-main">
-      <Sidebar activee={3}/>
+      <Sidebar activee={4}/>
           <div className="cash-left-main">
               <CashBetCard/>
               <WinningsCard/>

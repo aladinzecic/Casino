@@ -7,7 +7,7 @@
     margin: 20px auto;
     background-color: #f0f0f0;
     padding-top: 2px;
-    border-radius: 10px;
+    border-radius: 5px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     cursor: url("../../assets/CashHuntIcons/target.png") 32 32, auto;
 }

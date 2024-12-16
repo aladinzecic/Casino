@@ -10,14 +10,17 @@ import rabbit from "../assets/CashHuntIcons/rabbit.png"
 import chest from "../assets/CashHuntIcons/top-hat.png"
 import hat from "../assets/CashHuntIcons/treasure.png"
 import Proba from '../components/Proba/Proba'
+import axios from "axios"
 const AppContext=createContext()
 
 function ContextProvider({children}){
+
     const wheelNumbers=[0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26]
     const roseNumbers=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
     const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
     const numberOfDivs=37;
-    const [money,setMoney]=useState(1000)
+    const [money,setMoney]=useState()
+    const [id,setId]=useState()
     const [betsContentRoulette,setBetsContentRoulette]=useState([])
     const betsRefRoulette=useRef(null)
     const [moneyButtons,setMoneyButtons]=useState("Full")
@@ -29,6 +32,25 @@ function ContextProvider({children}){
         money: 0,
         win: null
     });
+    useEffect(()=>{
+      if(money)
+      setMoneyF()
+    },[money])
+
+    const setMoneyF = async ()=>{
+      console.log(id)
+      try{
+          const response= await axios.post(`http://localhost:3001/auth/updateMoney`,{
+           userId:id,
+           money:money
+          })
+          console.log(response)
+      }
+
+      catch(err){
+          console.log(err)
+      }
+  }
     const getBackgroundColor = (number) => {
         if (roseNumbers.includes(number)) {
           return '#BC4EFF';
@@ -450,7 +472,9 @@ function ContextProvider({children}){
         betsRefRoulette,
         plinkoBetMoney,
         setPlinkoBetMoney,
-        plinkoRef
+        plinkoRef,
+        setId,
+        id
     }
 
 

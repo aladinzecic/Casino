@@ -1,12 +1,14 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import user from "../../assets/icons/user.png"
 import password from "../../assets/icons/padlock.png"
 import email from "../../assets/icons/email.png"
 import axios from "axios"
 import toast, { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../../Context/AppContext'
 
 export default function Login() {
+    const {setMoney,setId,id}=useContext(AppContext)
     const [loginInfo,setLoginInfo]=useState({
         password:"",
         email:""
@@ -34,25 +36,12 @@ export default function Login() {
         console.log(loginInfo)
     }
 
-    const changeMoney = async ()=>{
+    
+    const getId = async ()=>{
         try{
-            const response= await axios.post("http://localhost:3001/auth/updateMoney",{
-                userId:1,
-                money:100
-            })
-            console.log(response)
-
-        }
-
-        catch(err){
-            console.log(err)
-        }
-    }
-    const getMoney = async ()=>{
-        try{
-            const response= await axios.get("http://localhost:3001/auth/getMoney/1")
+            const response= await axios.post("http://localhost:3001/auth/getId",{email:loginInfo.email})
             console.log(response.data)
-
+            setId(response.data.id)
         }
 
         catch(err){
@@ -68,7 +57,7 @@ export default function Login() {
         <div className="log-center">
             <div className="left">
                 <h2 className="h2">Log In</h2>
-                <h3 className="">USERNAME</h3>
+                <h3 className="">EMAIL</h3>
                 <input 
                 name='email'
                 onChange={handleLoginChange}
@@ -101,13 +90,16 @@ export default function Login() {
                 placeholder="Password"
                 autocomplete="current-password"            
                 />
-                            <button className="btn" onClick={handleLoginSubmit}>Log In</button>
+                            <button className="btn" onClick={()=>{
+                                handleLoginSubmit()
+                                getId()
+                            }}>Log In</button>
 
             </div>
             <div className="right">
                 <h1 className="">Welcome to login</h1>
                 <h2 className="">Don't have an account?</h2>
-                <button className="" onClick={getMoney}>Sign In</button>
+                <button className=""    onClick={()=>navigate("/Register")}>Sign In</button>
 
             </div>
         </div>

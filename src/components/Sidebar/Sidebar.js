@@ -6,7 +6,8 @@ import plinkopng from "../../assets/icons/plinko.png"
 import minesPng from "../../assets/icons/mines.png"
 import minesActivePng from "../../assets/icons/mines-active.png"
 import plinkoActive from "../../assets/icons/plinko-active.png"
-import slotpng from "../../assets/icons/slots.png"
+import huntingActive from "../../assets/icons/hunting-active.png"
+import hunting from "../../assets/icons/hunting.png"
 import { NavLink } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
 
@@ -49,12 +50,20 @@ export default function Sidebar({activee}) {
 
       </div>
       </NavLink>
-      
+      <NavLink style={{ textDecoration: 'none' }} to="/CashHunt">
+
       <div className="side-box">
-      <img className="crash-img" src={slotpng} alt=''/>
-      <h4 className="h4-side">Slots</h4>
+      {activee === 4
+          ? <img className="crash-img" src={huntingActive} alt='' /> 
+          : <img className="crash-img" src={hunting} alt='' />
+        }      
+              <h4 className={activee===4?"h4-side-active":"h4-side"}>Cash Hunt</h4>
+
 
       </div>
+      </NavLink>
+
+
     </div>
   )
 }
