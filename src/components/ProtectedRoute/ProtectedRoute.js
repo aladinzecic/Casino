@@ -1,11 +1,12 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import "./ProtectedRoute.css"
 import { useNavigate } from 'react-router-dom'
 import police from "../../assets/icons/police.png"
+import { AppContext } from '../../Context/AppContext'
 export default function ProtectedRoute({children}) {
     const navigate=useNavigate()
-    const token=localStorage.getItem("token")
-    if(token) return <>{children}</>
+    const {id}=useContext(AppContext)
+      if(id) return <>{children}</>
     else 
   return (
     <div className='protected-full'>

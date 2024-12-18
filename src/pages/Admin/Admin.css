@@ -1,0 +1,129 @@
+.admin-full-page{
+    width: 100%;
+    height: 100vh;
+    background-color: #1E244C;
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-full-page-top{
+    width: 100%;
+    height: 55vh;
+    display: flex;
+}
+
+.admin-full-page-top-left,.admin-full-page-top-right{
+
+    display: flex;
+    width: 50%;
+    height: 90%;
+    justify-content: center;
+    align-items: center;
+}
+.admin-full-page-top-left{
+    padding-left: 5vw;
+}
+.admin-full-page-top-right{
+    padding-right: 5vw;
+}
+.left-div,.right-div {
+    width: 70%;
+    height: 80%;
+    display: flex;
+}
+
+.left-left, .right-left,.left-right, .right-right{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.left-box{
+    width: 85%;
+    height: 40%;
+    display: flex;
+    background-color: #13162c;
+    align-items: center;
+    border-radius: 10px;
+    padding-left: 5%;
+}
+.box-circle{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color:#1E244C ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.box-circle img{
+    width: 60%;
+    height: 60%;
+}
+.right-box{
+
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+    padding-left: 5%;
+    height: 90%;
+    width: 85%;
+    border-radius: 10px;
+    
+    background-color: #13162c;
+    position: relative;
+ }
+
+.left-box-right{
+    margin-left: 10px;
+    color: #A5E5FF;
+}
+
+.left-box-right h1{
+    text-align: center;
+    font-size: 38px;
+}
+.left-box-right h3{
+    font-size: 20px;
+    text-align: center;
+}
+#largeH1{
+    text-align: center;
+    font-size: 48px;
+    
+}
+#largeH3{
+    font-size: 28px;
+    text-align: center;
+    
+}
+#largeImg{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background-color:#1E244C ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#imgRel{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color:#1E244C ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+#imgRel img{
+    width: 90%;
+    height: 90%;
+}

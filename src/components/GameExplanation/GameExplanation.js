@@ -31,6 +31,7 @@ export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card
         })
         console.log(response)
         setShowPage(response.data)
+        console.log(response.data)
       }
       catch(err){
           console.log(err)
@@ -43,7 +44,7 @@ export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card
     }, [id]);
   return (
     <>
-    {<div ref={ref1} style={{ zIndex: showPage === false ? -1 : '1000' }}
+    {<div ref={ref1} style={{ zIndex: showPage === 1 ? -1 : 1000 }}
  className='full-page' onClick={()=>{
             ref1.current.style.zIndex="-1"
             updatePage()

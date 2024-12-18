@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './pages/Login/Login';
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js"
 import CashHunt from './pages/CashHunt/CashHunt.js';
+import Admin from './pages/Admin/Admin.js';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/Roulette" element={<ProtectedRoute><Roulette /></ProtectedRoute>} />
         <Route path="/Mines" element={<ProtectedRoute><Mines /></ProtectedRoute>} />
         <Route path="/Plinko" element={ <ProtectedRoute><Plinko /></ProtectedRoute>} />
+        <Route path="/Admin" element={ <Admin />} />
       </Routes>
     </div>
   );

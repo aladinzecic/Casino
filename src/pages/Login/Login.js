@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
 
 export default function Login() {
-    const {setMoney,setId,id}=useContext(AppContext)
+    const {setMoney,setId,id,money}=useContext(AppContext)
     const [loginInfo,setLoginInfo]=useState({
         password:"",
         email:""
@@ -61,8 +61,11 @@ export default function Login() {
     }
 
     useEffect(()=>{
-        getMoney()
+            getMoney()
     },[id])
+    useEffect(()=>{
+        console.log(money)
+    },[money])
   return (
     <>
     <Toaster position="bottom-center"/>
