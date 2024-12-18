@@ -8,11 +8,12 @@ import minesActivePng from "../../assets/icons/mines-active.png"
 import plinkoActive from "../../assets/icons/plinko-active.png"
 import huntingActive from "../../assets/icons/hunting-active.png"
 import hunting from "../../assets/icons/hunting.png"
+import bulb from "../../assets/icons/question.png"
 import { NavLink } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
 
 export default function Sidebar({activee}) {
-  const {setRotateWheelDeg,setWinningNumber}=useContext(AppContext)
+  const {setRotateWheelDeg,setWinningNumber,ref1}=useContext(AppContext)
   return (
     <div className='side'>
       <NavLink onClick={(()=>{setRotateWheelDeg(0);setWinningNumber(null)})} style={{ textDecoration: 'none' }} to="/Roulette">
@@ -63,6 +64,17 @@ export default function Sidebar({activee}) {
       </div>
       </NavLink>
 
+      <div className="side-box" onClick={()=>{
+        ref1.current.style.zIndex="1000"
+      }}>
+      
+           <img className="crash-img" src={bulb} alt='' /> 
+          
+              
+              <h4 className={"h4-side"}>Game Explanation</h4>
+
+
+      </div>
 
     </div>
   )

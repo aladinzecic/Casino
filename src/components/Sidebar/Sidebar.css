@@ -21,6 +21,9 @@
 .side-box:nth-child(1){
     margin-top: 20px;
 }
+.side-box:nth-child(5){
+    margin-top: 80px;
+}
 .crash-img{
     width: 2.5vw;
     height: 2.5vw;

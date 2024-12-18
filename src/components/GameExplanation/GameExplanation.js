@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./GameExplanation.css"
 import logo from "../../assets/icons/mines-dare-2-win-tile-auth__1_-removebg-preview.png"
 import ExplanationCard from '../ExplanationCard/ExplanationCard'
@@ -8,23 +8,45 @@ import capture2 from "../../assets/icons/Capture2.JPG"
 import { AppContext } from '../../Context/AppContext'
 import axios from "axios"
 export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card1,h3Card2,h3Card3,img1,img2,img3}) {
-    const ref1=useRef(null)
-    const {id,setMoney}=useContext(AppContext)
-    const getMoney = async ()=>{
-      console.log(id)
-      try{
-          const response= await axios.get(`http://localhost:3001/auth/getMoney/${id}`)
-          console.log(response.data.money)
-          setMoney(response.data.money)
-      }
+  const {id,ref1}=useContext(AppContext)
+    const [showPage, setShowPage] = useState(false);
 
+    const updatePage= async()=>{
+      try{
+        const response= await axios.post("http://localhost:3001/auth/updatePage",{userId:id,page:gameName})
+        console.log(response)
+      }
       catch(err){
           console.log(err)
       }
-  }
+    }
+
+    const getPage= async()=>{
+      try{
+        const response= await axios.get("http://localhost:3001/auth/getPage",{
+          params: {
+            userId: id,
+            page: gameName
+        }
+        })
+        console.log(response)
+        setShowPage(response.data)
+      }
+      catch(err){
+          console.log(err)
+      }
+    }
+    useEffect(() => {
+      if (id) {
+        getPage();
+      }
+    }, [id]);
   return (
-    <div ref={ref1} className='full-page' onClick={()=>{
+    <>
+    {<div ref={ref1} style={{ zIndex: showPage === false ? -1 : '1000' }}
+ className='full-page' onClick={()=>{
             ref1.current.style.zIndex="-1"
+            updatePage()
     }}>
       <h1 className="">{gameName}</h1>
       <img className="explanation-logo" src={logo} alt='' />
@@ -34,7 +56,9 @@ export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card
       <ExplanationCard imgSrc={img3} h1Text={h1Card3} h3Text={h3Card3}/>
 
       </div>
-      <h2 className="clk-to-cnt" onClick={getMoney}>CLICK TO CONTINUE!</h2>
-    </div>
+      <h2 className="clk-to-cnt">CLICK TO CONTINUE!</h2>
+    </div>}
+    </>
+    
   )
 }

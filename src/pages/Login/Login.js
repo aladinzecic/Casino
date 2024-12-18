@@ -35,7 +35,18 @@ export default function Login() {
         }
         console.log(loginInfo)
     }
-
+    const getMoney = async ()=>{
+        console.log(id)
+        try{
+            const response= await axios.get(`http://localhost:3001/auth/getMoney/${id}`)
+            console.log(response.data.money)
+            setMoney(response.data.money)
+        }
+  
+        catch(err){
+            console.log(err)
+        }
+    }
     
     const getId = async ()=>{
         try{
@@ -49,7 +60,9 @@ export default function Login() {
         }
     }
 
-    
+    useEffect(()=>{
+        getMoney()
+    },[id])
   return (
     <>
     <Toaster position="bottom-center"/>
@@ -93,6 +106,7 @@ export default function Login() {
                             <button className="btn" onClick={()=>{
                                 handleLoginSubmit()
                                 getId()
+                                
                             }}>Log In</button>
 
             </div>
