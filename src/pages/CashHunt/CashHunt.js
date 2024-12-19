@@ -10,6 +10,7 @@ import PlaceBetCard from "../../components/PlaceBetCard/PlaceBetCard"
 import { Toaster } from 'react-hot-toast'
 import CashBetCard from '../../components/CashBetCard/CashBetCard'
 import { AppContext } from '../../Context/AppContext'
+import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar'
 export default function CashHunt() {
   const [rotation, setRotation] = useState(0);
   const cannon=useRef(null)
@@ -30,6 +31,7 @@ export default function CashHunt() {
       
     <div className='cash-full'>
     <div><Toaster position="bottom-center"/></div>
+    <ProfileSideBar/>
     <Navbar/>
       <div className="cash-main">
       <Sidebar activee={4}/>

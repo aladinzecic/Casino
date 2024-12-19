@@ -11,12 +11,14 @@ import GameExplanation from '../../components/GameExplanation/GameExplanation'
 import capture7 from "../../assets/icons/Capture7.JPG"
 import capture8 from "../../assets/icons/Capture8.JPG"
 import capture9 from "../../assets/icons/Capture9.JPG"
+import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar'
 export default function Plinko() {
   const {plinkoBetMoney}=useContext(AppContext)
   return (
     <>
     <div className='plinko-full'>
       <div><Toaster position="bottom-center"/></div>
+          <ProfileSideBar/>
       <Navbar/>
         <div className="plinko-main">
         <Sidebar activee={3}/>

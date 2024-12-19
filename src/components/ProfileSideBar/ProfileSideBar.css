@@ -1,0 +1,63 @@
+.profile-full{
+    width: 20vw;
+    background-color: #1B0C33;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left:80vw;
+}
+.back{
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    top: 20px;
+    left: 20px;
+    cursor: pointer;
+}
+.circle-profile-img{
+    margin-top: 8vh;
+    width:8vw ;
+    height: 8vw;
+    border-radius: 50%;
+    background-color: #1B0C33;
+
+    overflow: hidden;
+}
+
+.circle-profile-img img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Prilagođava sliku tako da popuni prostor bez gubitka proporcija */
+
+}
+
+.profile-full h1{
+    color: #fff;
+    margin-top: 10px;
+    font-size: 42px;
+}
+.profile-full h3{
+    color: #fff;
+    margin-top: 20px;
+    font-size: 26px;
+}
+.profile-full h5{
+    color: #fff;
+    margin-top: 280px;
+    font-size: 18px;
+}
+.profile-full button{
+width: 140px;
+height: 50px;
+background-color: #C137E5;
+color: #fff;
+font-weight: 500;
+font-size: 18px;
+margin-top: 30px;
+border: 0;
+border-radius: 10px;
+cursor: pointer;
+}

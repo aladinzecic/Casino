@@ -21,6 +21,8 @@ function ContextProvider({children}){
     const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
     const numberOfDivs=37;
     const [money,setMoney]=useState()
+    const [isProfileVisible,setIsProfileVisible]=useState(false)
+    const [userData,setUserData]=useState(null)
     const [id,setId]=useState()
     const [betsContentRoulette,setBetsContentRoulette]=useState([])
     const betsRefRoulette=useRef(null)
@@ -37,7 +39,22 @@ function ContextProvider({children}){
       if(money)
       setMoneyF()
     },[money])
+    useEffect(()=>{
+      if(userData)
+      console.log(userData)
+    },[userData])
 
+    const getUserData = async()=>{
+      try{
+          const response= await axios.get(`http://localhost:3001/auth/getUserData/${id}`)
+
+          console.log(response)
+          setUserData(response.data.all)
+      }
+      catch(e){
+          console.log(e)
+      }
+    }
     const setMoneyF = async ()=>{
       console.log(id)
       try{
@@ -476,7 +493,12 @@ function ContextProvider({children}){
         plinkoRef,
         setId,
         id,
-        ref1
+        ref1,
+        getUserData,
+        userData,
+        setUserData,
+        setIsProfileVisible,
+        isProfileVisible
     }
 
 

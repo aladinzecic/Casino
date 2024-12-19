@@ -33,4 +33,5 @@
 .profile-img img{
     width: 7vh;
     width: 7vh;
+    cursor: pointer;
 }

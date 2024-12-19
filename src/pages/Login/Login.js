@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
 
 export default function Login() {
-    const {setMoney,setId,id,money}=useContext(AppContext)
+    const {setMoney,setId,id,money,getUserData}=useContext(AppContext)
     const [loginInfo,setLoginInfo]=useState({
         password:"",
         email:""
@@ -23,7 +23,6 @@ export default function Login() {
                 email:loginInfo.email,
                 password:loginInfo.password
             })
-            console.log(response)
             if(response.status===200){
                 localStorage.setItem("token",loginInfo.username)
                 navigate("/Roulette")
@@ -33,13 +32,10 @@ export default function Login() {
         catch(err){
             console.log(err)
         }
-        console.log(loginInfo)
     }
     const getMoney = async ()=>{
-        console.log(id)
         try{
             const response= await axios.get(`http://localhost:3001/auth/getMoney/${id}`)
-            console.log(response.data.money)
             setMoney(response.data.money)
         }
   
@@ -51,7 +47,6 @@ export default function Login() {
     const getId = async ()=>{
         try{
             const response= await axios.post("http://localhost:3001/auth/getId",{email:loginInfo.email})
-            console.log(response.data)
             setId(response.data.id)
         }
 
@@ -61,11 +56,13 @@ export default function Login() {
     }
 
     useEffect(()=>{
+        if(id){
             getMoney()
+            getUserData()
+        }
+
     },[id])
-    useEffect(()=>{
-        console.log(money)
-    },[money])
+
   return (
     <>
     <Toaster position="bottom-center"/>
@@ -109,7 +106,6 @@ export default function Login() {
                             <button className="btn" onClick={()=>{
                                 handleLoginSubmit()
                                 getId()
-                                
                             }}>Log In</button>
 
             </div>

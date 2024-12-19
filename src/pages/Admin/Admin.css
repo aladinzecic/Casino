@@ -21,10 +21,10 @@
     align-items: center;
 }
 .admin-full-page-top-left{
-    padding-left: 5vw;
+    padding-left: 3vw;
 }
 .admin-full-page-top-right{
-    padding-right: 5vw;
+    padding-right: 3vw;
 }
 .left-div,.right-div {
     width: 70%;
@@ -76,7 +76,7 @@
     
     background-color: #13162c;
     position: relative;
- }
+}
 
 .left-box-right{
     margin-left: 10px;
@@ -127,3 +127,31 @@
     width: 90%;
     height: 90%;
 }
+
+.admin-full-page-bot{
+    height: 50%;
+    display: flex;
+    width: 78%;
+    margin-left: 11%;
+    justify-content: space-between;
+}
+
+.down-box{
+    height: 60%;
+    width: 20%;
+    border-radius: 10px;
+    background-color: #13162c;
+}
+
+.down-box h2{
+    text-align: center;
+    margin-top: 15px;
+    color: #A5E5FF;
+}
+.down-box h1{
+    text-align: center;
+    margin-top: 20px;
+    color: #A5E5FF;
+    font-size: 58px;
+}
+

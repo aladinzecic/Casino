@@ -86,8 +86,26 @@ export default function Admin() {
                 </div>
             </div>
         </div>
-        <div className="admin-full-page-bot">
+            <div className="admin-full-page-bot">
+                <div className="down-box">
+                    <h2 className="">ROULLETE</h2>
+                    <h1 className="">31%</h1>
+                </div>
+                <div className="down-box">
+                    <h2 className="">PLINKO</h2>
+                    <h1 className="">12%</h1>
+                    
+                </div>
+                <div className="down-box">
+                    <h2 className="">MINES</h2>
+                    <h1 className="">37%</h1>
 
+                </div>
+                <div className="down-box">
+                    <h2 className="">CASH HUNT</h2>
+                    <h1 className="">23%</h1>
+
+                </div>
         </div>
     </div>  
   )

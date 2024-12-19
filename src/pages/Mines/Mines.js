@@ -11,6 +11,7 @@ import GameExplanation from '../../components/GameExplanation/GameExplanation'
 import capture from "../../assets/icons/Capture.JPG"
 import capture1 from "../../assets/icons/Capture1.JPG"
 import capture2 from "../../assets/icons/Capture2.JPG"
+import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar'
 export default function Mines() {
   const {userMoneyMinesBet,setNumOfCorrectFields,setMoney,setCashoutMines,cashoutMines,minesGameOn,setMinesGameOn,betsRef,setBetsContentMines,betsContentMines}=useContext(AppContext)
   function CashOut(){
@@ -73,6 +74,8 @@ export default function Mines() {
 <>
 <div className='mines-full'>
       <div><Toaster position="bottom-center"/></div>
+          <ProfileSideBar/>
+    
       <Navbar/>
         <div className="mines-main">
         <Sidebar activee={2}/>

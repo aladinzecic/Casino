@@ -13,12 +13,14 @@ import capture2 from "../../assets/icons/Capture6.JPG"
 import GameExplanation from '../../components/GameExplanation/GameExplanation'
 import { Toaster } from 'react-hot-toast'
 import WinningsCardRoulette from '../../components/WinningsCardRoulette/WinningsCardRoulette'
+import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar'
 export default function Roulette() {
 const {winningNumber,getBackgroundColor,rouletteResults}=useContext(AppContext)
   return (
     <>
           <div><Toaster position="bottom-center"/></div>
     <div className='roulette-full'>
+      <ProfileSideBar/>
       <Navbar/>
         <div className="roulette-main">
         <Sidebar activee={1}/>
