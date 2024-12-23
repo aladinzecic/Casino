@@ -46,10 +46,10 @@
 }
 .profile-full h5{
     color: #fff;
-    margin-top: 280px;
+    margin-top: 20px;
     font-size: 18px;
 }
-.profile-full button{
+.btn1{
 width: 140px;
 height: 50px;
 background-color: #C137E5;
@@ -60,4 +60,19 @@ margin-top: 30px;
 border: 0;
 border-radius: 10px;
 cursor: pointer;
+}
+
+.btn2{
+    width: 100px;
+height: 40px;
+background-color: #C137E5;
+color: #fff;
+font-weight: 500;
+font-size: 18px;
+margin-top: 30px;
+border: 0;
+border-radius: 10px;
+cursor: pointer;
+    margin-top: 180px!important;
+
 }

@@ -17,51 +17,39 @@ export default function Login() {
         setLoginInfo({ ...loginInfo, [e.target.name]: e.target.value });
       };
     const navigate=useNavigate()
-    const handleLoginSubmit = async ()=>{
-        try{
-            const response= await axios.post('http://localhost:3001/auth/login',{
-                email:loginInfo.email,
-                password:loginInfo.password
-            })
-            if(response.status===200){
-                localStorage.setItem("token",loginInfo.username)
-                navigate("/Roulette")
-            }
-
-        }
-        catch(err){
-            console.log(err)
-        }
-    }
-    const getMoney = async ()=>{
-        try{
-            const response= await axios.get(`http://localhost:3001/auth/getMoney/${id}`)
-            setMoney(response.data.money)
-        }
-  
-        catch(err){
-            console.log(err)
-        }
-    }
+    const handleLoginSubmit = async () => {
+        try {
+            const response = await axios.post('http://localhost:3001/auth/login', {
+                email: loginInfo.email,
+                password: loginInfo.password
+            });
     
-    const getId = async ()=>{
-        try{
-            const response= await axios.post("http://localhost:3001/auth/getId",{email:loginInfo.email})
-            setId(response.data.id)
+            if (response.status === 200) {
+                const userId = response.data.user.id;
+                localStorage.setItem("token", loginInfo.username);
+    
+                // Ručno pozivanje funkcija nakon što se ID postavi
+                await getMoney(userId);
+                await getUserData(userId);
+    
+                navigate("/Roulette");
+            }
+        } catch (err) {
+            console.log(err);
         }
-
-        catch(err){
-            console.log(err)
+    };
+    
+    const getMoney = async (userId) => {
+        console.log(userId)
+        setId(userId)
+        try {
+            const response = await axios.get(`http://localhost:3001/auth/getMoney/${userId}`);
+            setMoney(response.data.money);
+        } catch (err) {
+            console.log(err);
         }
-    }
-
-    useEffect(()=>{
-        if(id){
-            getMoney()
-            getUserData()
-        }
-
-    },[id])
+    };
+    
 
   return (
     <>
@@ -105,7 +93,6 @@ export default function Login() {
                 />
                             <button className="btn" onClick={()=>{
                                 handleLoginSubmit()
-                                getId()
                             }}>Log In</button>
 
             </div>

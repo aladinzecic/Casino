@@ -8,6 +8,7 @@ import Login from './pages/Login/Login';
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js"
 import CashHunt from './pages/CashHunt/CashHunt.js';
 import Admin from './pages/Admin/Admin.js';
+import Deposit from './pages/Deposit/Deposit.js';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Mines" element={<ProtectedRoute><Mines /></ProtectedRoute>} />
         <Route path="/Plinko" element={ <ProtectedRoute><Plinko /></ProtectedRoute>} />
         <Route path="/Admin" element={ <Admin />} />
+        <Route path="/Deposit" element={ <Deposit />} />
       </Routes>
     </div>
   );

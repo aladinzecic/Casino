@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useEffect, useRef, useState } from 'react'
 import "./CashHunt.css"
 import CashHuntGame from '../../components/CashHuntGame/CashHuntGame'
 import canonDown from "../../assets/CashHuntIcons/canon-down.png"
@@ -26,7 +26,6 @@ export default function CashHunt() {
     const angle = Math.atan2(mouseY - centerY, mouseX - centerX) * (180 / Math.PI) +90;
     setRotation(angle); // Set rotation angle
   };
-
   return (
       
     <div className='cash-full'>

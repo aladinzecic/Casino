@@ -108,7 +108,7 @@ else if(way===3&&isHuntGameOn===true){
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "1.5rem",
+              fontSize: "1.4rem",
               fontWeight: "bold",
               backfaceVisibility: "hidden", // Sakriva stranu kada nije okrenuta
             }}
@@ -205,7 +205,7 @@ else if(way===3&&isHuntGameOn===true){
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "1.5rem",
+              fontSize: "1.4rem",
               fontWeight: "bold",
               backfaceVisibility: "hidden", // Sakriva stranu kada nije okrenuta
             }}

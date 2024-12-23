@@ -11,11 +11,12 @@ import chest from "../assets/CashHuntIcons/top-hat.png"
 import hat from "../assets/CashHuntIcons/treasure.png"
 import Proba from '../components/Proba/Proba'
 import axios from "axios"
+import { useNavigate } from "react-router-dom";
 const AppContext=createContext()
 
 function ContextProvider({children}){
     const ref1=useRef(null)
-
+    const navigate=useNavigate()
     const wheelNumbers=[0, 32, 15, 19, 4, 21, 2, 25, 17, 34, 6, 27, 13, 36, 11, 30, 8, 23, 10, 5, 24, 16, 33, 1, 20, 14, 31, 9, 22, 18, 29, 7, 28, 12, 35, 3, 26]
     const roseNumbers=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
     const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
@@ -23,7 +24,7 @@ function ContextProvider({children}){
     const [money,setMoney]=useState()
     const [isProfileVisible,setIsProfileVisible]=useState(false)
     const [userData,setUserData]=useState(null)
-    const [id,setId]=useState()
+    const [id,setId]=useState(0)
     const [betsContentRoulette,setBetsContentRoulette]=useState([])
     const betsRefRoulette=useRef(null)
     const [moneyButtons,setMoneyButtons]=useState("Full")
@@ -36,17 +37,22 @@ function ContextProvider({children}){
         win: null
     });
     useEffect(()=>{
-      if(money)
-      setMoneyF()
-    },[money])
-    useEffect(()=>{
-      if(userData)
-      console.log(userData)
+    
+    if(userData&&userData.type=="admin"){
+      console.log(userData.type)
+      navigate("/Admin")
+    }
     },[userData])
+    useEffect(()=>{
+    
+    if(money){
+      setMoneyF()
+    }
+    },[money])
 
-    const getUserData = async()=>{
+    const getUserData = async(userId)=>{
       try{
-          const response= await axios.get(`http://localhost:3001/auth/getUserData/${id}`)
+          const response= await axios.get(`http://localhost:3001/auth/getUserData/${userId}`)
 
           console.log(response)
           setUserData(response.data.all)

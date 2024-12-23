@@ -5,8 +5,8 @@ import police from "../../assets/icons/police.png"
 import { AppContext } from '../../Context/AppContext'
 export default function ProtectedRoute({children}) {
     const navigate=useNavigate()
-    const {id}=useContext(AppContext)
-      if(id) return <>{children}</>
+    const token=localStorage.getItem("token")
+      if(token) return <>{children}</>
     else 
   return (
     <div className='protected-full'>
