@@ -3,7 +3,7 @@ import "./RouletteNumbers.css"
 import chip from "../../assets/icons/chip.webp"
 import { AppContext } from '../../Context/AppContext'
 export default function RouletteNumbers() {
-    const {roseNumbers,purpleNumbers,userBet,setUserBet}=useContext(AppContext)
+    const {roseNumbers,purpleNumbers,userBet,setUserBet,isMobile}=useContext(AppContext)
     const allNumbers = [];
     const [isHovered,setIsHovered]=useState(null);
     for(let i=1;i<=12;i++){
@@ -37,7 +37,7 @@ else return 1
         }
       };
       return (
-        <div className="number-board">
+        <div className="number-board" style={{ width: isMobile ? '100%' : '75%' }}>
             <div className="board-up">
             <div className="zero" key={0} onClick={()=>setUserBet(0)}
               style={{opacity:isHovered!=null?"0.1":"1"}}
@@ -49,10 +49,11 @@ else return 1
         </div>
       )}
             </div>
-            <div className='number-board-red-black'>
+            <div className='number-board-red-black' style={{ gap: isMobile ? '6px' : '10px' }}
+            >
             {allNumbers.map((number) => (
               <div
-                className='num'
+                className={isMobile?'num-mobile':'num'}
                 key={number}
                 style={{
                   backgroundColor: getBackgroundColor(number),

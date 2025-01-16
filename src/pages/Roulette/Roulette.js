@@ -15,14 +15,14 @@ import { Toaster } from 'react-hot-toast'
 import WinningsCardRoulette from '../../components/WinningsCardRoulette/WinningsCardRoulette'
 import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar'
 export default function Roulette() {
-const {winningNumber,getBackgroundColor,rouletteResults}=useContext(AppContext)
+const {winningNumber,getBackgroundColor,rouletteResults,isMobile}=useContext(AppContext)
   return (
     <>
           <div><Toaster position="bottom-center"/></div>
     <div className='roulette-full'>
       <ProfileSideBar/>
       <Navbar/>
-        <div className="roulette-main">
+        <div className={isMobile?"roulette-main-mobile":"roulette-main"}>
         <Sidebar activee={1}/>
             <div className="roulette-left-main">
                 <PlaceBetCard/>
@@ -30,7 +30,7 @@ const {winningNumber,getBackgroundColor,rouletteResults}=useContext(AppContext)
                 
             </div>
 
-            <div className="roulette-right-main">
+            <div className={isMobile?"roulette-right-main-mobile":"roulette-right-main"}>
                 <RouletteNumbers/>
                 <div className="results-text">    {rouletteResults.win ? "You won!":""}
                 </div>
