@@ -9,6 +9,27 @@
     align-items: center;
     left:80vw;
 }
+
+.profile-full-mobile{
+    width: 100vw;
+    background-color: #1B0C33;
+    height: 100vh;
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    left:80vw;
+}
+.profile-full-mobile .circle-profile-img{
+    margin-top: 8vh;
+    width:20vw ;
+    height: 20vw;
+    border-radius: 50%;
+    background-color: #1B0C33;
+
+    overflow: hidden;
+}
 .back{
     position: absolute;
     width: 25px;
@@ -34,17 +55,17 @@
 
 }
 
-.profile-full h1{
+.profile-full h1 , .profile-full-mobile h1{
     color: #fff;
     margin-top: 10px;
     font-size: 42px;
 }
-.profile-full h3{
+.profile-full h3 ,.profile-full-mobile h3{
     color: #fff;
     margin-top: 20px;
     font-size: 26px;
 }
-.profile-full h5{
+.profile-full h5 , .profile-full-mobile h5{
     color: #fff;
     margin-top: 20px;
     font-size: 18px;

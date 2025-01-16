@@ -36,7 +36,7 @@ const {winningNumber,getBackgroundColor,rouletteResults,isMobile}=useContext(App
                 </div>
                 <div className={isMobile?"winning-number-mobile":"winning-number"}
                 style={{background:getBackgroundColor(winningNumber)}}
-                >{winningNumber}1</div>
+                >{winningNumber}</div>
                 <img className={isMobile?"arrow-mobile":"arrow"} alt='' src={arrow} />
                 <div className={isMobile?"mobile-wheel":""}>
                 <Wheel/>

@@ -7,7 +7,7 @@ import {motion} from "framer-motion"
 import { useNavigate } from 'react-router-dom'
 export default function ProfileSideBar() {
     
-    const {userData,money,setIsProfileVisible,isProfileVisible}=useContext(AppContext)
+    const {userData,money,setIsProfileVisible,isProfileVisible,isMobile}=useContext(AppContext)
     const navigate=useNavigate()
     if (!userData) {
         return <></>; // Prikaz dok se podaci učitavaju
@@ -20,6 +20,14 @@ export default function ProfileSideBar() {
             left: `80vw`
         },
     };
+      const variants3 = {
+          initial: {
+            left: `100vw`
+        },
+        animate: {
+            left: `0vw`
+        },
+    };
     const date = new Date(userData.createdAt);
     const formattedDate = new Intl.DateTimeFormat('en-GB', {
         day: '2-digit',
@@ -28,10 +36,10 @@ export default function ProfileSideBar() {
       }).format(date);
   return (
     <motion.div
-    variants={variants2}
+    variants={isMobile?variants3:variants2}
     initial="initial"
     animate={isProfileVisible===true?"animate":"initial"}
-    className='profile-full'>
+    className={isMobile?'profile-full-mobile':'profile-full'}>
         <img className="back" onClick={()=>setIsProfileVisible(false)} src={back}  alt='' />
       <div className="circle-profile-img">
         <img className="" src={profilna} alt=''/>
