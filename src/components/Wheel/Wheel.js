@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 import { AppContext } from '../../Context/AppContext';
 
 export default function Wheel() {
-  const { wheelNumbers, rotateWheelDeg, numberOfDivs, winningNumber, getBackgroundColor } = useContext(AppContext);
+  const { wheelNumbers, rotateWheelDeg, numberOfDivs, winningNumber, getBackgroundColor,isMobile } = useContext(AppContext);
 
   const variants1 = {
     initial: {
@@ -34,6 +34,7 @@ export default function Wheel() {
           style={{
             transform: `rotate(${(360 / numberOfDivs) * index}deg)`, // Rotacija segmenta
             background: getBackgroundColor(num),
+            fontSize:isMobile?"24px":"",
           }}
         >
           {num}
