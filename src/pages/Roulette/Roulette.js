@@ -34,11 +34,13 @@ const {winningNumber,getBackgroundColor,rouletteResults,isMobile}=useContext(App
                 <RouletteNumbers/>
                 <div className="results-text">    {rouletteResults.win ? "You won!":""}
                 </div>
-                <div className="winning-number"
+                <div className={isMobile?"winning-number-mobile":"winning-number"}
                 style={{background:getBackgroundColor(winningNumber)}}
-                >{winningNumber}</div>
-                <img className="arrow" alt='' src={arrow} />
+                >{winningNumber}1</div>
+                <img className={isMobile?"arrow-mobile":"arrow"} alt='' src={arrow} />
+                <div className={isMobile?"mobile-wheel":""}>
                 <Wheel/>
+                </div>
             </div>
         </div>
     </div>

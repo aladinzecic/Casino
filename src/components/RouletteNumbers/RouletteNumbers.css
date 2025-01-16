@@ -3,8 +3,9 @@
 }
 .number-board-mobile{
     /* width: 100%; */
-    transform: scale(0.55);
-    margin-left: -160px;
+    transform: scale(0.50);
+    position: relative;
+    top: -30vh;
 }
 
 .board-up{

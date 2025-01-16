@@ -28,17 +28,20 @@ margin-top: 5vh;
 
 }
 .roulette-right-main-mobile{
-    width: 75%;
+    width: 100%;
 height: 80vh;
 display: flex;
 flex-direction: column-reverse;
-margin-left: 5vw;
-align-items: start;
+align-items: center;
 position: relative;
 margin-top: 5vh;
 
 }
-
+.mobile-wheel{
+    position: relative;
+    top: 20px;
+    transform: scale(0.65);
+}
 .arrow{
     position: absolute;
     rotate: 90deg;
@@ -46,8 +49,28 @@ margin-top: 5vh;
     top: 55px;
     animation: bounce 6s linear  infinite ;
 }
+.arrow-mobile{
+    position: absolute;
+    rotate: 90deg;
+    height: 25px;
+    top: 25px;
+    transform: scale(0.7);
+    animation: bounce1 6s linear  infinite ;
 
+}
 .winning-number{
+    position: absolute;
+    top: -20px;
+    color: #fff;
+    font-size: 32px;
+    border-radius: 5px;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.winning-number-mobile{
+    border: 1px solid red;
     position: absolute;
     top: -20px;
     color: #fff;
@@ -57,6 +80,7 @@ margin-top: 5vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform: scale(0.6);
 }
 
 .winn{
@@ -98,6 +122,34 @@ margin-top: 5vh;
 
     100%{
         top: 55px;
+    }
+
+  }
+  @keyframes bounce1{
+    20%{
+        top: 25px;
+    }
+    30%{
+        top: 32px;
+    }
+    40%{
+        top: 25px;
+    }
+    50%{
+        top: 32px;
+    }
+    60%{
+        top: 25px;
+    }
+    70%{
+        top: 32px;
+    }
+    80%{
+        top: 25px;
+    }
+
+    100%{
+        top: 25px;
     }
 
   }
