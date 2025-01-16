@@ -5,7 +5,6 @@ import axios from "axios"
 import { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
-import logo from "../../assets/icons/mines-dare-2-win-tile-auth__1_-removebg-preview.png"
 import "./Login.css"
 export default function Login() {
     const {getUserData,isMobile}=useContext(AppContext)
