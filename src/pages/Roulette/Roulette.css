@@ -16,6 +16,12 @@ height: 85vh;
 display: flex;
 flex-direction: column;
 }
+.roulette-left-main-mobile{
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    border: 1px solid red;
+}
 .roulette-right-main{
     width: 75%;
 height: 80vh;
@@ -28,8 +34,9 @@ margin-top: 5vh;
 
 }
 .roulette-right-main-mobile{
+    border: 1px solid red;
     width: 100%;
-height: 80vh;
+height: 60vh;
 display: flex;
 flex-direction: column-reverse;
 align-items: center;
@@ -39,7 +46,7 @@ margin-top: 5vh;
 }
 .mobile-wheel{
     position: relative;
-    top: -120px;
+    top: 100px;
     transform: scale(0.65);
 }
 .arrow{

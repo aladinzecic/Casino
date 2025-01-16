@@ -24,7 +24,7 @@ const {winningNumber,getBackgroundColor,rouletteResults,isMobile}=useContext(App
       <Navbar/>
         <div className={isMobile?"roulette-main-mobile":"roulette-main"}>
         <Sidebar activee={1}/>
-            <div className="roulette-left-main">
+            <div className={isMobile?"roulette-left-main-mobile":"roulette-left-main"}>
                 <PlaceBetCard/>
                 <WinningsCardRoulette/>
                 

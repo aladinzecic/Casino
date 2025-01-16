@@ -3,9 +3,9 @@
 }
 .number-board-mobile{
     /* width: 100%; */
-    transform: scale(0.50);
+    transform: scale(0.54);
     position: relative;
-    top: -30vh;
+    top: 0vh;
 }
 
 .board-up{
