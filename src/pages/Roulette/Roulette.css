@@ -3,8 +3,10 @@
     overflow: hidden;
 }
 
+
 .roulette-main{
     display: flex;
+    border: 1px solid red;
 }
 
 .roulette-left-main{
@@ -12,8 +14,10 @@ width: 20%;
 height: 85vh;
 display: flex;
 flex-direction: column;
+border: 1px solid red;
 }
 .roulette-right-main{
+    border: 1px solid red;
     width: 75%;
 height: 80vh;
 display: flex;

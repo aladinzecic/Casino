@@ -13,9 +13,9 @@ import { NavLink } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
 
 export default function Sidebar({activee}) {
-  const {setRotateWheelDeg,setWinningNumber,ref1}=useContext(AppContext)
+  const {setRotateWheelDeg,setWinningNumber,ref1,isMobile}=useContext(AppContext)
   return (
-    <div className='side'>
+    <div className={isMobile?'side-mobile':'side'}>
       <NavLink onClick={(()=>{setRotateWheelDeg(0);setWinningNumber(null)})} style={{ textDecoration: 'none' }} to="/Roulette">
       <div className="active side-box">
       
