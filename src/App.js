@@ -9,10 +9,13 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute.js"
 import CashHunt from './pages/CashHunt/CashHunt.js';
 import Admin from './pages/Admin/Admin.js';
 import Deposit from './pages/Deposit/Deposit.js';
+import { useContext } from 'react';
+import { AppContext } from './Context/AppContext.js';
 
 function App() {
+  const {isProfileVisible}=useContext(AppContext)
   return (
-    <div className="App">
+    <div className="App" style={{overflow:isProfileVisible?"hidden":""}}>
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/Register" element={<Register />} />

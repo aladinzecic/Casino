@@ -7,7 +7,7 @@ import {motion} from "framer-motion"
 import { useNavigate } from 'react-router-dom'
 export default function ProfileSideBar() {
     
-    const {userData,money,setIsProfileVisible,isProfileVisible,isMobile}=useContext(AppContext)
+    const {userData,money,setIsProfileVisible,isProfileVisible,isMobile,setOverflow}=useContext(AppContext)
     const navigate=useNavigate()
     if (!userData) {
         return <></>; // Prikaz dok se podaci učitavaju
