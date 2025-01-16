@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState,useContext } from 'react'
 import "./Register.css"
 import user from "../../assets/icons/user.png"
 import password from "../../assets/icons/padlock.png"
@@ -6,8 +6,10 @@ import email from "../../assets/icons/email.png"
 import axios from "axios"
 import toast, { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
+import { AppContext } from '../../Context/AppContext'
 
 export default function Register() {
+    const {isMobile}=useContext(AppContext)
     const navigate=useNavigate()
     const [loginInfo,setLoginInfo]=useState({
         password:"",
@@ -21,7 +23,7 @@ export default function Register() {
     const handleSubmit = async ()=>{
         try{
             console.log(loginInfo)
-            const responsee= await axios.post('http://localhost:3001/auth/register',{
+            const responsee= await axios.post('https://casino-backend-s1l5.onrender.com/auth/register',{
                 username:loginInfo.username,
                 email:loginInfo.email,
                 password:loginInfo.password
@@ -52,7 +54,78 @@ export default function Register() {
   return (
     <>
     <Toaster position="bottom-center"/>
-    <div className='log-full'>
+    {
+        isMobile?
+        <div className='mobile-full'>
+            <h1 className="">
+                Create your <br/>
+                account
+            </h1>
+            <div className="down">
+                <h2 className="mobile-h2">Username</h2>
+                <input 
+                name='username'
+                onChange={handleLoginChange}
+                className="email-mobile" 
+                type='text'
+                style={{
+                    backgroundImage: `url(${user})`,
+                    backgroundSize: "18px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "2px",
+                    paddingLeft: "30px", 
+                }}
+                placeholder="Username"
+                autocomplete="off"
+            />
+            <hr className='hr'/>
+                <h2 className="mobile-h2" style={{marginTop:"5px"}}>Username</h2>
+                <input 
+                name='email'
+                onChange={handleLoginChange}
+                className="email-mobile" 
+                type='email'
+                style={{
+                    backgroundImage: `url(${email})`,
+                    backgroundSize: "18px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "2px",
+                    paddingLeft: "30px", 
+                }}
+                placeholder="Email"
+                autocomplete="off"
+            />
+            <hr className='hr'/>
+                <h2 className="mobile-h2" style={{marginTop:"5px"}}>Password</h2>
+                <input 
+                name='password'
+                onChange={handleLoginChange}
+                className="email-mobile" 
+                type='password'
+                style={{
+                    backgroundImage: `url(${password})`,
+                    backgroundSize: "18px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "2px",
+                    paddingLeft: "30px",
+                    
+                }}
+                placeholder="Password"
+                autocomplete="current-password"            
+                />
+                <hr className='hr'/>
+                <button className="btn-mobile" onClick={()=>{
+                    handleSubmit()
+                            }}>Log In</button>
+                <h3 className="mobile-down" style={{marginTop:"6vh", marginLeft:"53vw"}}>
+                    Already have account?
+                </h3>
+                <h2 className="mobile-down-h2" onClick={()=>navigate("/Login")}>Sign in</h2>
+                
+            </div>
+        </div>
+        :
+        <div className='log-full'>
         <div className="log-center">
             <div className="left">
                 <h2 className="h2">Sign In</h2>
@@ -115,6 +188,7 @@ export default function Register() {
             </div>
         </div>
     </div>
+    }
     </>
   )
 }

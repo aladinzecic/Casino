@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useState } from 'react'
-import user from "../../assets/icons/user.png"
+import React, { useContext, useState } from 'react'
 import password from "../../assets/icons/padlock.png"
 import email from "../../assets/icons/email.png"
 import axios from "axios"
-import toast, { Toaster } from 'react-hot-toast'
+import { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
-
+import logo from "../../assets/icons/mines-dare-2-win-tile-auth__1_-removebg-preview.png"
+import "./Login.css"
 export default function Login() {
-    const {setMoney,setId,id,money,getUserData}=useContext(AppContext)
+    const {getUserData,isMobile}=useContext(AppContext)
     const [loginInfo,setLoginInfo]=useState({
         password:"",
         email:""
@@ -19,19 +19,17 @@ export default function Login() {
     const navigate=useNavigate()
     const handleLoginSubmit = async () => {
         try {
-            const response = await axios.post('http://localhost:3001/auth/login', {
+            const response = await axios.post(`https://casino-backend-s1l5.onrender.com/auth/login`, {
                 email: loginInfo.email,
                 password: loginInfo.password
             });
-    
+            
             if (response.status === 200) {
                 const userId = response.data.user.id;
-                localStorage.setItem("token", loginInfo.username);
+                localStorage.setItem("token", userId);
     
-                // Ručno pozivanje funkcija nakon što se ID postavi
-                await getMoney(userId);
                 await getUserData(userId);
-    
+                
                 navigate("/Roulette");
             }
         } catch (err) {
@@ -39,22 +37,66 @@ export default function Login() {
         }
     };
     
-    const getMoney = async (userId) => {
-        console.log(userId)
-        setId(userId)
-        try {
-            const response = await axios.get(`http://localhost:3001/auth/getMoney/${userId}`);
-            setMoney(response.data.money);
-        } catch (err) {
-            console.log(err);
-        }
-    };
     
 
   return (
     <>
     <Toaster position="bottom-center"/>
-    <div className='log-full'>
+    {
+        isMobile?
+        <div className='mobile-full'>
+            <h1 className="">
+                Hello <br/>
+                Log In!
+            </h1>
+            <div className="down">
+                <h2 className="mobile-h2">Email</h2>
+                <input 
+                name='email'
+                onChange={handleLoginChange}
+                className="email-mobile" 
+                type='email'
+                style={{
+                    backgroundImage: `url(${email})`,
+                    backgroundSize: "18px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "2px",
+                    paddingLeft: "30px", 
+                }}
+                placeholder="Email"
+                autocomplete="off"
+            />
+            <hr className='hr'/>
+                <h2 className="mobile-h2" style={{marginTop:"20px"}}>Password</h2>
+                <input 
+                name='password'
+                onChange={handleLoginChange}
+                className="email-mobile" 
+                type='password'
+                style={{
+                    backgroundImage: `url(${password})`,
+                    backgroundSize: "18px",
+                    backgroundRepeat: "no-repeat",
+                    backgroundPosition: "2px",
+                    paddingLeft: "30px",
+                    
+                }}
+                placeholder="Password"
+                autocomplete="current-password"            
+                />
+                <hr className='hr'/>
+                <button className="btn-mobile" onClick={()=>{
+                                handleLoginSubmit()
+                            }}>Log In</button>
+                <h3 className="mobile-down">
+                    Don't have account?
+                </h3>
+                <h2 className="mobile-down-h2" onClick={()=>navigate("/register")}>Sign Up</h2>
+                
+            </div>
+        </div>
+        :
+        <div className='log-full'>
         <div className="log-center">
             <div className="left">
                 <h2 className="h2">Log In</h2>
@@ -104,6 +146,8 @@ export default function Login() {
             </div>
         </div>
     </div>
+    }
+    
     </>
   )
 }

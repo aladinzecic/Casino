@@ -1,4 +1,4 @@
-import React,{useState,useContext, useEffect} from 'react'
+import React,{useContext, useEffect} from 'react'
 import "./PlinkoBetCard.css"
 import {AppContext} from "../../Context/AppContext"
 import toast from 'react-hot-toast';

@@ -4,12 +4,13 @@ import { AppContext } from '../../Context/AppContext';
 import toast from 'react-hot-toast';
 
 export default function MinesTable() {
-  const {money,setMoney,userMoneyMinesBet,cashoutMines,setCashoutMines,minesMoney, setNumOfCorrectFields,numOfBombs, minesGameOn, setMinesGameOn } = useContext(AppContext);
+  const {money,setMoney,userMoneyMinesBet,setCashoutMines,minesMoney, setNumOfCorrectFields,numOfBombs, minesGameOn, setMinesGameOn } = useContext(AppContext);
   const gridSize = 5;
   const [bombsIndexes, setBombsIndexes] = useState([]);
   const [revealed, setRevealed] = useState(Array(gridSize * gridSize).fill(''));
 useEffect(()=>{
   setMoney(Math.round(money*100)/100)
+  // eslint-disable-next-line
 },[money])
   function GenerateMines() {
     const newBombsIndexes = [];
@@ -70,6 +71,7 @@ useEffect(()=>{
       setRevealed(Array(gridSize * gridSize).fill(''));
 
     }
+    // eslint-disable-next-line
   }, [minesGameOn]);
 
   const gridItems = revealed.map((status, i) => (

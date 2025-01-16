@@ -1,8 +1,8 @@
-import React, { useEffect, useContext } from 'react'
+import React, {useContext } from 'react'
 import "./WinningsCardRoulette.css"
 import { AppContext } from '../../Context/AppContext';
 export default function WinningsCardRoulette() {
-  const {betsRef,betsContentRoulette,betsRefRoulette}=useContext(AppContext)
+  const {betsContentRoulette,betsRefRoulette}=useContext(AppContext)
 
   return (
     <div ref={betsRefRoulette} className='winnings-card'>

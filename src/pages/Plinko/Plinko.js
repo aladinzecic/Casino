@@ -1,10 +1,9 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PlinkoScene from '../../components/PlinkoScene/PlinkoScene'
 import WinningsCard from '../../components/WinningsCard/WinningsCard'
 import Sidebar from '../../components/Sidebar/Sidebar'
 import Navbar from '../../components/NavBar/Navbar'
 import { Toaster } from 'react-hot-toast'
-import { AppContext } from '../../Context/AppContext'
 import "./Plinko.css"
 import PlinkoBetCard from '../../components/PlinkoBetCard/PlinkoBetCard'
 import GameExplanation from '../../components/GameExplanation/GameExplanation'
@@ -13,7 +12,6 @@ import capture8 from "../../assets/icons/Capture8.JPG"
 import capture9 from "../../assets/icons/Capture9.JPG"
 import ProfileSideBar from '../../components/ProfileSideBar/ProfileSideBar'
 export default function Plinko() {
-  const {plinkoBetMoney}=useContext(AppContext)
   return (
     <>
     <div className='plinko-full'>

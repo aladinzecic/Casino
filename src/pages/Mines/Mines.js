@@ -30,7 +30,7 @@ export default function Mines() {
           secondary: '#FFFAEE',
         },
       });
-      if(betsRef.current.children.length%2==0){
+      if(betsRef.current.children.length%2===0){
         setBetsContentMines([
           <div className="nzm">
           <h3 className="winnings-card-bet">${userMoneyMinesBet}</h3>

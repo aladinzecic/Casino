@@ -1,0 +1,72 @@
+.deposit-full{
+    width: 100%;
+    height: 100vh;
+    background-color: #0C012B;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.deposit-full h1{
+    color: #fff;
+    font-weight: 500;
+    margin-left: 15%;
+}
+.deposit-center{
+    width: 30%;
+    height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.deposit-center input{
+    width: 70%;
+    margin-left: 15%;
+    font-size: 18px;
+}
+.deposit-center h3{
+    margin-left: 15%;
+    color: #fff;
+    margin-top: 3vh;
+    font-size: 16px;
+}
+.deposit-line{
+    display: flex;
+    width: 70%;
+    height: 80px;
+    margin-left: 15%;
+}
+.line-part{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+}
+.line-part h3{
+    margin-left: 0;
+}
+#line-input{
+    margin-left: 0;
+        width: 100%;
+        font-size: 18px;
+        height: 48px;
+}
+.line-part:nth-child(2){
+    margin-left: 5%;
+}
+.line-part:nth-child(3){
+    margin-left: 5%;
+}
+
+.deposit-center button{
+    width: 70%;
+    margin-left: 15%;
+    height: 36px;
+    border: 0px;
+    border-radius: 6px;
+    background-color: #C137E5;
+    margin-top: 3vh;
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+}

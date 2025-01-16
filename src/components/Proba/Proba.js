@@ -5,7 +5,7 @@ import { AppContext } from "../../Context/AppContext";
 import toast from "react-hot-toast";
 export default function Proba({icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,way,keyy}) {
     const [iconsEven, setIconsEven] = useState([icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon1]);
-    const [iconsOdd, setIconsOdd] = useState([icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8]);
+    const [iconsOdd] = useState([icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8,icon1,icon2,icon3,icon4,icon5,icon6,icon7,icon8]);
     const [counter, setCounter] = useState(1);
     const {money,huntBetMoney,setMoney,isHuntGameOn,setIsHuntGameOn,arrOfClicked,setArrOfClicked,arrOfValues}=useContext(AppContext)
     const ref1=useRef(null)
@@ -50,15 +50,16 @@ else if(way===3&&isHuntGameOn===true){
     
         return () => clearInterval(interval); // Čisti interval kad se komponenta unmountuje
 }
-
+// eslint-disable-next-line
       }, [counter, iconsEven.length,isHuntGameOn])
 
       useEffect(()=>{
-        if(isHuntGameOn){
+        if(isHuntGameOn===true){
           setTimeout(()=>{
             setIsHuntGameOn("ende")
           },5000)
         }
+        // eslint-disable-next-line
       },[isHuntGameOn])
 
     
@@ -72,7 +73,7 @@ else if(way===3&&isHuntGameOn===true){
           "carousel-track-left"}
           variants={way === 0 || way === 3 ? variants.left : variants.right}
           initial="initial"
-          animate={isHuntGameOn||isHuntGameOn==="ende"?"animate":"initial"}
+          animate={isHuntGameOn||isHuntGameOn==="ende"||isHuntGameOn==="ender"?"animate":"initial"}
           transition={{
             ease:"linear",
             duration: way===0?1:way===1?2:way===2?1:way===3?0.5:1,
@@ -121,7 +122,7 @@ else if(way===3&&isHuntGameOn===true){
           <motion.img
               onClick={()=>{
                 if (way===2) {
-                  if(isHuntGameOn){
+                  if(isHuntGameOn===true||isHuntGameOn==="ende"){
 
                     console.log(keyy*8+index-8)
                     setArrOfClicked((prev)=>[...prev,keyy*8+index-8])
@@ -144,7 +145,7 @@ else if(way===3&&isHuntGameOn===true){
 
                 }
                 else{
-                  if(isHuntGameOn){
+                  if(isHuntGameOn===true||isHuntGameOn==="ende"){
 
                     console.log(keyy*8+index)
                     setArrOfClicked((prev)=>[...prev,keyy*8+index])
@@ -216,7 +217,7 @@ else if(way===3&&isHuntGameOn===true){
           <motion.img
               key={keyy*8+index}
               onClick={()=>{
-                if(!isHuntGameOn){
+                if(!isHuntGameOn||isHuntGameOn==="ender"){
                   toast.error('zapocni grui!', {
                     style: {
                       border: '1px solid #713200',

@@ -1,6 +1,4 @@
 import React,{createContext,useState,useRef, useEffect} from "react";
-import Matter from 'matter-js';
-import { color } from "framer-motion";
 import balloon from "../assets/CashHuntIcons/air-hot-balloon.png"
 import cactus from "../assets/CashHuntIcons/cactus.png"
 import bell from "../assets/CashHuntIcons/christmas-bell.png"
@@ -21,6 +19,7 @@ function ContextProvider({children}){
     const roseNumbers=[1,3,5,7,9,12,14,16,18,19,21,23,25,27,30,32,34,36]
     const purpleNumbers=[2,4,6,8,10,11,13,15,17,20,22,24,26,28,29,31,33,35]
     const numberOfDivs=37;
+    const [isMobile,setIsMobile] = useState(window.innerWidth <= 768);
     const [money,setMoney]=useState()
     const [isProfileVisible,setIsProfileVisible]=useState(false)
     const [userData,setUserData]=useState(null)
@@ -36,37 +35,69 @@ function ContextProvider({children}){
         money: 0,
         win: null
     });
+    useEffect(() => {
+      const handleResize = () => {
+        setIsMobile(window.innerWidth <= 768);
+      };
+  
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    }, []);
     useEffect(()=>{
     
-    if(userData&&userData.type=="admin"){
+    if(userData&&userData.type==="admin"){
       console.log(userData.type)
       navigate("/Admin")
-    }
+    }// eslint-disable-next-line
     },[userData])
     useEffect(()=>{
     
     if(money){
       setMoneyF()
-    }
+    }// eslint-disable-next-line
     },[money])
 
     const getUserData = async(userId)=>{
+      console.log(userId)
       try{
-          const response= await axios.get(`http://localhost:3001/auth/getUserData/${userId}`)
+          const response= await axios.get(`https://casino-backend-s1l5.onrender.com/auth/getUserData/${userId}`)
 
-          console.log(response)
+          console.log(response.data.all)
           setUserData(response.data.all)
+          setId(response.data.all.id)
+          setMoney(response.data.all.money)
       }
       catch(e){
           console.log(e)
       }
     }
+
+    useEffect(()=>{
+      const token=localStorage.getItem("token")
+      if(token){
+        getUserData(token)
+      }
+    },[])
     const setMoneyF = async ()=>{
       console.log(id)
       try{
-          const response= await axios.post(`http://localhost:3001/auth/updateMoney`,{
+          const response= await axios.post(`https://casino-backend-s1l5.onrender.com/auth/updateMoney`,{
            userId:id,
            money:money
+          })
+          console.log(response)
+      }
+
+      catch(err){
+          console.log(err)
+      }
+  }
+    const setMoneyR = async (mon)=>{
+      console.log(id)
+      try{
+          const response= await axios.post(`https://casino-backend-s1l5.onrender.com/auth/updateMoney`,{
+           userId:id,
+           money:mon
           })
           console.log(response)
       }
@@ -178,7 +209,7 @@ function ContextProvider({children}){
                 return prevMoney + newMoney;
             });
 
-            if(betsRefRoulette.current.children.length%2==0){
+            if(betsRefRoulette.current.children.length%2===0){
                 setBetsContentRoulette([
                   <div className="nzm">
                   <h3 className="winnings-card-bet">${userBetMoney}</h3>
@@ -433,10 +464,35 @@ function ContextProvider({children}){
                       }, 1);
 
                 }
-      
+
+                const updateActivity= async()=>{
+                  try{
+                    const response=await axios.post("https://casino-backend-s1l5.onrender.com/auth/updateActivity",{userId:id})
+                    console.log(response)
+                  }
+                  catch(e){
+                    console.log(e)
+                  }
+                }
+                useEffect(() => {
+                  // Proveri da li postoji userData i id pre nego što pozoveš funkciju
+                  if (userData) {
+                    updateActivity();
+                
+                    // Funkcija za pozivanje updateActivity
+                    const interval = setInterval(() => {
+                      updateActivity();
+                    }, 60000); // 60000 ms = 1 minut
+                
+                    // Čisti interval kada komponenta bude unmount-ovana
+                    return () => clearInterval(interval);
+                  }// eslint-disable-next-line
+                }, [id, userData]);
+                
       const values={
         grid,
         gridData,
+        setMoneyR,
         setGridData,
         generateGrid,
         generateGridData,
@@ -504,7 +560,8 @@ function ContextProvider({children}){
         userData,
         setUserData,
         setIsProfileVisible,
-        isProfileVisible
+        isProfileVisible,
+        isMobile
     }
 
 

@@ -3,7 +3,7 @@ import {AppContext} from "../../Context/AppContext"
 import toast from 'react-hot-toast';
 import "./CashBetCard.css"
 export default function CashBetCard() {
-    const {generateGrid,setMoney,huntBetMoney,arrOfValues,createShuffledArray,setArrOfValues,hideAll,revealAll,isHuntGameOn,setHuntBetMoney,huntBetDifficulty,setHuntBetDifficulty,setIsHuntGameOn}=useContext(AppContext);
+    const {generateGrid,huntBetMoney,arrOfValues,createShuffledArray,setArrOfValues,hideAll,revealAll,isHuntGameOn,setHuntBetMoney,huntBetDifficulty,setHuntBetDifficulty,setIsHuntGameOn}=useContext(AppContext);
     const startAnimation=()=>{
       revealAll()
       setTimeout(()=>{
@@ -87,7 +87,7 @@ export default function CashBetCard() {
           onClick={() => {
             if(huntBetMoney){
               generateGrid()
-              if(isHuntGameOn==="ende")
+              if(isHuntGameOn==="ender"||isHuntGameOn==="ende")
               setIsHuntGameOn(false)
               setArrOfValues(createShuffledArray()); // Ažurira niz sa novim vrednostima
               startAnimation(); // Pokreće animaciju

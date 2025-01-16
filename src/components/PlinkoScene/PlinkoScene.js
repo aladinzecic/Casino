@@ -35,6 +35,7 @@ if(temp){
   console.log(mul)
   setMoney(m=>m+newMoney)
 }
+// eslint-disable-next-line
       },[temp])
       
   const addRowOfBalls = (numBalls, offsetY) => {
@@ -54,7 +55,6 @@ if(temp){
 
   const rectangles = [];
   const addRowOfRectangles = (numBalls) => {
-    const padding = 40;
     const colors = ['#55046b', '#7c099c', '#c32bed', '#c32bed', '#7c099c', '#55046b'];
   
     for (let i = 0; i < numBalls; i++) {
@@ -161,7 +161,7 @@ useEffect(()=>{
 
       rectangles.forEach((rect,i) => {
         const { x, y } = rect.position;
-        if(lowRiskValues[i]!=undefined){
+        if(lowRiskValues[i]!==undefined){
           if(plinkoDifficulty==='Low'){
             context.fillText(`${lowRiskValues[i]}X`, x, y);
           }
@@ -231,16 +231,26 @@ useEffect(()=>{
 
   
 
-    return () => {
-      Matter.World.clear(engineRef.current.world);
-      Matter.Engine.clear(engineRef.current);
-      Matter.Runner.stop(runnerRef.current);
-      if (renderRef.current) {
-        Matter.Render.stop(renderRef.current);
-        renderRef.current.canvas.remove();
-        renderRef.current = null;
-      }
-    };
+    const engine = engineRef.current;
+  const runner = runnerRef.current;
+  const render = renderRef.current;
+
+  // Cleanup funkcija
+  return () => {
+    if (engine && engine.world) {
+      Matter.World.clear(engine.world);
+      Matter.Engine.clear(engine);
+    }
+    if (runner) {
+      Matter.Runner.stop(runner);
+    }
+    if (render) {
+      Matter.Render.stop(render);
+      render.canvas.remove();
+      renderRef.current = null; // Resetovanje reference
+    }
+  };
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
@@ -292,16 +302,26 @@ useEffect(()=>{
       });
     });
   
-    return () => {
-      Matter.World.clear(engineRef.current.world);
-      Matter.Engine.clear(engineRef.current);
-      Matter.Runner.stop(runnerRef.current);
-      if (renderRef.current) {
-        Matter.Render.stop(renderRef.current);
-        renderRef.current.canvas.remove();
-        renderRef.current = null;
-      }
-    };
+    const engine = engineRef.current;
+  const runner = runnerRef.current;
+  const render = renderRef.current;
+
+  // Funkcija za čišćenje
+  return () => {
+    if (engine && engine.world) {
+      Matter.World.clear(engine.world); // Čišćenje sveta
+      Matter.Engine.clear(engine);     // Čišćenje engine-a
+    }
+    if (runner) {
+      Matter.Runner.stop(runner);      // Zaustavljanje runner-a
+    }
+    if (render) {
+      Matter.Render.stop(render);     // Zaustavljanje render-a
+      render.canvas.remove();         // Uklanjanje canvasa
+      renderRef.current = null;       // Resetovanje reference
+    }
+  };
+    // eslint-disable-next-line
   }, [plinkoDifficulty]);
   
 

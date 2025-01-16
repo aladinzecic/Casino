@@ -1,10 +1,7 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import "./GameExplanation.css"
 import logo from "../../assets/icons/mines-dare-2-win-tile-auth__1_-removebg-preview.png"
 import ExplanationCard from '../ExplanationCard/ExplanationCard'
-import capture from "../../assets/icons/Capture.JPG"
-import capture1 from "../../assets/icons/Capture1.JPG"
-import capture2 from "../../assets/icons/Capture2.JPG"
 import { AppContext } from '../../Context/AppContext'
 import axios from "axios"
 export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card1,h3Card2,h3Card3,img1,img2,img3}) {
@@ -13,7 +10,7 @@ export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card
 
     const updatePage= async()=>{
       try{
-        const response= await axios.post("http://localhost:3001/auth/updatePage",{userId:id,page:gameName})
+        const response= await axios.post("https://casino-backend-s1l5.onrender.com/auth/updatePage",{userId:id,page:gameName})
         console.log(response)
       }
       catch(err){
@@ -23,7 +20,7 @@ export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card
 
     const getPage= async()=>{
       try{
-        const response= await axios.get("http://localhost:3001/auth/getPage",{
+        const response= await axios.get("https://casino-backend-s1l5.onrender.com/auth/getPage",{
           params: {
             userId: id,
             page: gameName
@@ -41,6 +38,7 @@ export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card
       if (id) {
         getPage();
       }
+      // eslint-disable-next-line
     }, [id]);
   return (
     <>

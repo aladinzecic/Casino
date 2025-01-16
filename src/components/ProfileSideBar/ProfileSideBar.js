@@ -34,7 +34,7 @@ export default function ProfileSideBar() {
     className='profile-full'>
         <img className="back" onClick={()=>setIsProfileVisible(false)} src={back}  alt='' />
       <div className="circle-profile-img">
-        <img className="" src={profilna} />
+        <img className="" src={profilna} alt=''/>
 
       </div>
         <h1 className="">{userData.username}</h1>

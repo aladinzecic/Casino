@@ -11,7 +11,7 @@ export default function Navbar() {
       <div className="rght">
       <h1 className="">$ {money}</h1>
       <div className="profile-img">
-        <img className="" onClick={()=>setIsProfileVisible(true)} src={prof} />
+        <img className="" onClick={()=>setIsProfileVisible(true)} src={prof} alt='' />
       </div>
       </div>
     </div>

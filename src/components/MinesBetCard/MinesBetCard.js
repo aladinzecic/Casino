@@ -1,4 +1,4 @@
-import React,{useState,useContext} from 'react'
+import React,{useContext} from 'react'
 import "./MinesBetCard.css"
 import {AppContext} from "../../Context/AppContext"
 import toast from 'react-hot-toast';
@@ -21,7 +21,7 @@ export default function MinesBetCard() {
         <div className="mines-enter-bombs" >
             <button className="bombs-btn minus" onClick={()=>{if(numOfBombs>1)setNumOfBombs(numOfBombs-1)}}>-</button>
             <div className="bombs-amount">
-                <img className="" src="" />
+                <img className="" src="" alt='' />
                 <h3 className="">{numOfBombs}</h3>
             </div>
             <button className="bombs-btn plus" onClick={()=>{if(numOfBombs<24)setNumOfBombs(numOfBombs+1)}}>+</button>
