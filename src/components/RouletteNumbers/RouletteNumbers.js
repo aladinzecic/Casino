@@ -40,7 +40,9 @@ else return 1
         <div className={isMobile?"number-board-mobile":"number-board"}>
             <div className="board-up">
             <div className="zero" key={0} onClick={()=>setUserBet(0)}
-              style={{opacity:isHovered!=null?"0.1":"1"}}
+              style={{                fontSize:isMobile?"24px":"",
+                opacity:isHovered!=null?"0.1":"1"}}                            
+              
               >0
             {userBet===0 && (
         <div className="proba">
@@ -55,6 +57,7 @@ else return 1
                 className='num'
                 key={number}
                 style={{
+                  fontSize:isMobile?"24px":"",
                   backgroundColor: getBackgroundColor(number),
                   opacity: addOpacity(number)
                 }}
@@ -76,6 +79,9 @@ else return 1
             <div className="num third" onClick={()=>setUserBet("thirds-first")}
                             onMouseEnter={()=>setIsHovered("thirds-first")}
                             onMouseLeave={()=>setIsHovered(null)}
+                            style={{
+                              fontSize:isMobile?"24px":"",
+                            }}
               >2:1
             {userBet==="thirds-first" && (
         <div className="proba">
@@ -87,6 +93,9 @@ else return 1
             <div className="num third" onClick={()=>setUserBet("thirds-second")}
                             onMouseEnter={()=>setIsHovered("thirds-second")}
                             onMouseLeave={()=>setIsHovered(null)}
+                            style={{
+                              fontSize:isMobile?"24px":"",
+                            }}
               >2:1
             {userBet==="thirds-second" && (
         <div className="proba">
@@ -98,6 +107,9 @@ else return 1
             <div className="num third" onClick={()=>setUserBet("thirds-third")}
                             onMouseEnter={()=>setIsHovered("thirds-third")}
                             onMouseLeave={()=>setIsHovered(null)}
+                            style={{
+                              fontSize:isMobile?"24px":"",
+                            }}
               >2:1
             {userBet==="thirds-third" && (
         <div className="proba">
@@ -113,6 +125,9 @@ else return 1
               onClick={()=>setUserBet("left-half")}
               onMouseEnter={()=>setIsHovered("left-half")}
               onMouseLeave={()=>setIsHovered(null)}
+              style={{
+                fontSize:isMobile?"24px":"",
+              }}
               >
                 1-18
                 {userBet==="left-half" && (
@@ -125,6 +140,9 @@ else return 1
               <div className="long-field" onClick={()=>setUserBet("even")}
                 onMouseEnter={()=>setIsHovered("even")}
                 onMouseLeave={()=>setIsHovered(null)}
+                style={{
+                  fontSize:isMobile?"24px":"",
+                }}
                 >
                 Even
                 {userBet==="even" && (
@@ -157,6 +175,9 @@ else return 1
               <div className="long-field" onClick={()=>setUserBet("odd")}
                           onMouseEnter={()=>setIsHovered("odd")}
                           onMouseLeave={()=>setIsHovered(null)}
+                          style={{
+                            fontSize:isMobile?"24px":"",
+                          }}
                 >
                 Odd
                 {userBet==="odd" && (
@@ -169,6 +190,9 @@ else return 1
               <div className="long-field" onClick={()=>setUserBet("right-half")}
                                           onMouseEnter={()=>setIsHovered("right-half")}
                                           onMouseLeave={()=>setIsHovered(null)}
+                                          style={{
+                                            fontSize:isMobile?"24px":"",
+                                          }}
                 >
                 19-36
                 {userBet==="right-half" && (
