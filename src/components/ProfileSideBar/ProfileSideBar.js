@@ -22,12 +22,11 @@ export default function ProfileSideBar() {
     };
       const variants3 = {
           initial: {
-            left: `100vw`
-        },
-        animate: {
             left: `0vw`
         },
+
     };
+
     const date = new Date(userData.createdAt);
     const formattedDate = new Intl.DateTimeFormat('en-GB', {
         day: '2-digit',
@@ -36,8 +35,9 @@ export default function ProfileSideBar() {
       }).format(date);
   return (
     <motion.div
-    variants={isMobile?variants3:variants2}
+    variants={!isMobile?variants2:variants3}
     initial="initial"
+    style={{zIndex:isProfileVisible?"100000":"-1"}}
     animate={isProfileVisible===true?"animate":"initial"}
     className={isMobile?'profile-full-mobile':'profile-full'}>
         <img className="back" onClick={()=>setIsProfileVisible(false)} src={back}  alt='' />
