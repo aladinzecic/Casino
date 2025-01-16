@@ -6,7 +6,7 @@ import toast from 'react-hot-toast';
 export default function PlaceBetCard() {
 const [lastNumIndex,setLastNumIndex]=useState(0)
 const [userMoneyBet,setUserMoneyBet]=useState(0)
-  const {setUserBet,money,setMoney,setMoneyButtons,moneyButtons,setRotateWheelDeg,wheelNumbers,rotateWheelDeg,setWinningNumber,winCheck,userBet,setRouletteResults}=useContext(AppContext)
+  const {setUserBet,money,setMoney,setMoneyButtons,moneyButtons,isMobile,setRotateWheelDeg,wheelNumbers,rotateWheelDeg,setWinningNumber,winCheck,userBet,setRouletteResults}=useContext(AppContext)
   const inputRef=useRef(null)
   function CalculateSpinningDeg(numb){
     const degPerNum=360/37;
@@ -85,6 +85,13 @@ const [userMoneyBet,setUserMoneyBet]=useState(0)
             else if(moneyButtons==="1/4")
               setMoney(money-money/4)
           }
+          if (isMobile) {
+            window.scrollTo({
+              top: 0,
+              behavior: 'smooth'
+            });
+          }
+          
           }
           else if(userBet===-1){
             toast.error('Place chips on field you want!', {
