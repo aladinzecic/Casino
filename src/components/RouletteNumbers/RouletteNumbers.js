@@ -37,7 +37,7 @@ else return 1
         }
       };
       return (
-        <div className="number-board" style={{ width: isMobile ? '100%' : '75%' }}>
+        <div className={isMobile?"number-board-mobile":"number-board"}>
             <div className="board-up">
             <div className="zero" key={0} onClick={()=>setUserBet(0)}
               style={{opacity:isHovered!=null?"0.1":"1"}}
@@ -49,11 +49,10 @@ else return 1
         </div>
       )}
             </div>
-            <div className='number-board-red-black' style={{ gap: isMobile ? '6px' : '10px' }}
-            >
+            <div className='number-board-red-black'>
             {allNumbers.map((number) => (
               <div
-                className={isMobile?'num-mobile':'num'}
+                className='num'
                 key={number}
                 style={{
                   backgroundColor: getBackgroundColor(number),

@@ -1,6 +1,11 @@
 .number-board{
     width: 75%;
 }
+.number-board-mobile{
+    /* width: 100%; */
+    transform: scale(0.55);
+    margin-left: -160px;
+}
 
 .board-up{
     width: 100%;
@@ -19,7 +24,6 @@
     grid-auto-flow: row;
 }
 .num{
-    padding: 20px;
     height: 40px;
     width: 40px;
     text-align: center;
@@ -32,19 +36,7 @@
     position: relative;
 
 }
-.num-mobile{
-    padding: 15px;
-    height: 6px;
-    width: 10px;
-    text-align: center;
-    color: #fff;
-    cursor: pointer;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
+
 .zero{
     width: 40px;
     height: 140px;
