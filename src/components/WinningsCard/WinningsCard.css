@@ -82,3 +82,11 @@
   .winnings-card::-webkit-scrollbar-thumb:hover {
     background: #8A2BE2; /* Thumb hover color */
   }
+
+
+  @media (max-width: 768px) {
+      .winnings-card{
+        margin-left:0!important;
+    }
+  
+}

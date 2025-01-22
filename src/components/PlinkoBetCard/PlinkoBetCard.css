@@ -117,3 +117,31 @@ input[type="range"] {
     accent-color: #C137E5
   }
 
+
+
+  @media (max-width: 768px) {
+    .plinko-bet-card{
+        margin-left: 0;
+    }
+    .bombNum-button{
+        border-radius: 5px;
+        background-color: #271C3E;
+        color: white;
+        height: 30px;
+        width: 95px!important;
+        border: 0;
+        cursor: pointer;
+        font-size: 16px;
+        }
+        
+        .bombNum-button-active{
+        background-color: #C137E5;
+        border-radius: 5px;
+        color: white;
+        height: 30px;
+        width: 95px!important;
+        border: 0;
+        cursor: pointer;
+        font-size: 16px;
+        }
+  }

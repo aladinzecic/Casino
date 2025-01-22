@@ -153,8 +153,8 @@ useEffect(()=>{
 
     Matter.Events.on(renderRef.current, 'afterRender', () => {
       const context = renderRef.current.context;
-      const fontSize = isMobile ? 20 : 14;
-      context.font =  `bold ${fontSize}px Agdasima`;
+      context.font = 'bold 16px Agdasima';
+
       context.fillStyle = '#fff';
       context.textAlign = 'center';
       context.textBaseline = 'middle';
