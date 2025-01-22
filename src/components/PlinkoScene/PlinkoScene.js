@@ -4,7 +4,7 @@ import "./PlinkoScene.css"
 import { AppContext } from '../../Context/AppContext';
 import toast from 'react-hot-toast';
 const PlinkoScene = () => {
-  const {isMobile,plinkoDifficulty,setNumOfPlinkoBalls,numOfPlinkoBalls,money,plinkoBetMoney,setMoney}=useContext(AppContext)
+  const {plinkoDifficulty,setNumOfPlinkoBalls,numOfPlinkoBalls,money,plinkoBetMoney,setMoney}=useContext(AppContext)
   const [temp,setTemp]=useState(0)
   const [text,setText]=useState(0)
   const sceneRef = useRef(null);
