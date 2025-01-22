@@ -4,7 +4,7 @@ import "./PlinkoScene.css"
 import { AppContext } from '../../Context/AppContext';
 import toast from 'react-hot-toast';
 const PlinkoScene = () => {
-  const {plinkoDifficulty,setNumOfPlinkoBalls,numOfPlinkoBalls,money,plinkoBetMoney,setMoney}=useContext(AppContext)
+  const {isMobile,plinkoDifficulty,setNumOfPlinkoBalls,numOfPlinkoBalls,money,plinkoBetMoney,setMoney}=useContext(AppContext)
   const [temp,setTemp]=useState(0)
   const [text,setText]=useState(0)
   const sceneRef = useRef(null);
@@ -153,8 +153,8 @@ useEffect(()=>{
 
     Matter.Events.on(renderRef.current, 'afterRender', () => {
       const context = renderRef.current.context;
-      context.font = 'bold 14px Agdasima';
-      
+      const fontSize = isMobile ? 20 : 14;
+      context.font =  `bold ${fontSize}px Agdasima`;
       context.fillStyle = '#fff';
       context.textAlign = 'center';
       context.textBaseline = 'middle';

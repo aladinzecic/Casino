@@ -11,3 +11,16 @@
     color: #fff;
     cursor: pointer;
 }
+
+@media (max-width: 768px) {
+    canvas{
+        padding-left: 22%;
+        transform: scale(0.67);
+        font-size: 26px;
+    }
+    .cash-out-btn{
+        margin-left: 0px;
+
+    }
+    
+}

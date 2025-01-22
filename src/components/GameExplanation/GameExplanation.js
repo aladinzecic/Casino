@@ -5,7 +5,7 @@ import ExplanationCard from '../ExplanationCard/ExplanationCard'
 import { AppContext } from '../../Context/AppContext'
 import axios from "axios"
 export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card1,h3Card2,h3Card3,img1,img2,img3}) {
-  const {id,ref1}=useContext(AppContext)
+  const {id,ref1,isMobile}=useContext(AppContext)
     const [showPage, setShowPage] = useState(false);
 
     const updatePage= async()=>{
@@ -47,7 +47,7 @@ export default function GameExplanation({gameName,h1Card1,h1Card2,h1Card3,h3Card
             ref1.current.style.zIndex="-1"
             updatePage()
     }}>
-      <h1 className="">{gameName}</h1>
+      <h1 ID={isMobile?"mobile-h1":""}>{gameName}</h1>
       <img className="explanation-logo" src={logo} alt='' />
       <div className="explainings">
       <ExplanationCard imgSrc={img1} h1Text={h1Card1} h3Text={h3Card1}/>
