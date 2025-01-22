@@ -27,13 +27,14 @@
 @media (max-width: 405px) {
     canvas{
         padding-left: 25%;
-        transform: scale(0.6);
+        transform: scale(0.6,0.55);
     }
     .cash-out-btn{
         /* margin-top: -5vh; */
         position: relative;
-        top: -6vh;
+        top: -10vh;
         margin-left: 0px;
+        height: 44px;
 
     }
     
