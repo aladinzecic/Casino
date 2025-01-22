@@ -36,3 +36,33 @@ margin-top: 5vh;
     color: #fff;
     cursor: pointer;
 }
+
+@media (max-width:768px) {
+    .mines-main{
+        flex-direction: column-reverse;
+    }
+    .mines-left-main{
+        width: 90%;
+        height: 110vh;
+        display: flex;
+        margin-left: 5%;
+        flex-direction: column;
+        margin-bottom: 10vh;
+        }
+        .mines-right-main{
+            width: 100%;
+        height: 80vh;
+        display: flex;
+        flex-direction: column-reverse;
+        margin-left: 5vw;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        margin-top: -2vh;
+        margin-left: 0;
+        }
+
+        .cash-out-btn{
+            margin-top: 10vh!important;
+        }
+}

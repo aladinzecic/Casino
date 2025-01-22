@@ -39,3 +39,21 @@
     margin-top: -3px;
     transition: ease;
   }
+
+
+  @media (max-width:768px) {
+    .grid-containerr{
+      transform: scale(0.95);
+    }
+  }
+  
+  @media (max-width:450px) {
+    .grid-containerr{
+      transform: scale(0.85);
+    }
+  }
+  @media (max-width:400px) {
+    .grid-containerr{
+      transform: scale(0.8);
+    }
+  }
