@@ -50,3 +50,9 @@
       transform: rotateX(0deg); /* Krajnje stanje (rotirano za 90 stepeni) */
     }
   }
+
+  @media (max-width:768px) {
+    .grid-container {
+      transform: scale(0.8);
+  }
+  }

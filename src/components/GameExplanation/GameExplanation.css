@@ -23,6 +23,8 @@
     font-size: 50px;
     width: 70vw;
     margin: 0;
+    margin-top: 3vh;
+    text-align: center;
 
 }
 .explanation-logo{
@@ -42,4 +44,21 @@
     font-style: normal;
     color: #A5E5FF;
     margin-top: 30px;
+}
+
+
+
+@media (max-width:768px) {
+    .explainings{
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+        justify-content: space-around;
+        height: 120vh;
+    }
+    .full-page{
+
+        height: 165vh;
+
+    }
 }

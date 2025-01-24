@@ -89,3 +89,11 @@ input::-webkit-inner-spin-button {
     color: #fff;
     font-size: 16px;
 }
+
+@media (max-width:768px) {
+    .place-bet-card{
+
+        margin-left: 0vw;
+
+    }
+}

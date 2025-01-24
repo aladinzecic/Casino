@@ -16,7 +16,7 @@ display: flex;
 flex-direction: column;
 }
 .roulette-left-main-mobile{
-    width: 100%;
+    width: 104%;
     display: flex;
     flex-direction: column;
     margin-top: -10vh;

@@ -50,3 +50,30 @@ justify-content: center;
 position: relative;
 margin-top: 2vh;
 }
+
+@media (max-width:768px) {
+    .cash-right-main{
+        width: 100%;
+    height: 85vh;
+    display: flex;
+    flex-direction: column-reverse;
+    margin-left: 0;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin-top: 2vh;
+    }
+    .cash-main{
+        flex-direction: column-reverse;
+    }
+    .canon{
+        display: none;
+    }
+    .cash-left-main{
+        width: 90%;
+        margin-left: 5%;
+        height: 110vh;
+        display: flex;
+        flex-direction: column;
+        }
+  }
