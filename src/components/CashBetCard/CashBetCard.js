@@ -93,7 +93,7 @@ export default function CashBetCard() {
               startAnimation(); // Pokreće animaciju
             }
             else{
-              toast.error('Unesi genge momak!', {
+              toast.error('You need to enter money first!', {
                 style: {
                   border: '1px solid #713200',
                   padding: '16px',

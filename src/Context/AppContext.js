@@ -270,106 +270,105 @@ function ContextProvider({children}){
       const revealAll = () => {
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev, i]); // Funkcionalni pristup
-          }, i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev, i]); 
+          }, i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev, 8+i]); // Funkcionalni pristup
-          }, 100+i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev, 8+i]); 
+          }, 100+i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev, 16+i]); // Funkcionalni pristup
-          },200+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev, 16+i]); 
+          },200+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev, 8*3+i]); // Funkcionalni pristup
-          },300+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev, 8*3+i]); 
+          },300+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev, 32+i]); // Funkcionalni pristup
-          },400 +i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev, 32+i]); 
+          },400 +i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev,8*5+ i]); // Funkcionalni pristup
-          },500+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev,8*5+ i]); 
+          },500+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev,48+ i]); // Funkcionalni pristup
-          },600+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev,48+ i]); 
+          },600+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev,8*7+ i]); // Funkcionalni pristup
-          },700+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev,8*7+ i]); 
+          },700+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => [...prev,8*8+ i]); // Funkcionalni pristup
-          },800+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => [...prev,8*8+ i]); 
+          },800+ i * 40); 
         }
 
       } 
       const hideAll = () => {
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==i)); // Funkcionalni pristup
-          }, i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==i)); 
+          }, i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==8+i)); // Funkcionalni pristup
-          }, 100+i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==8+i)); 
+          }, 100+i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==16+i)); // Funkcionalni pristup
-          },200+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==16+i)); 
+          },200+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==24+i)); // Funkcionalni pristup
-          },300+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==24+i)); 
+          },300+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==32+i)); // Funkcionalni pristup
-          },400 +i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==32+i)); 
+          },400 +i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==40+i)); // Funkcionalni pristup
-          },500+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==40+i)); 
+          },500+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==48+i)); // Funkcionalni pristup
-          },600+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==48+i)); 
+          },600+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==56+i)); // Funkcionalni pristup
-          },700+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==56+i)); 
+          },700+ i * 40); 
         }
         for (let i = 0; i < 8; i++) {
           setTimeout(() => {
-            setArrOfClicked((prev) => prev.filter((val)=>val!==64+i)); // Funkcionalni pristup
-          },800+ i * 40); // Razmak između prikazivanja elemenata
+            setArrOfClicked((prev) => prev.filter((val)=>val!==64+i)); 
+          },800+ i * 40); 
         }
       }
 
 
       function createShuffledArray() {
-        const values = [-huntBetMoney,huntBetMoney]; // Moguće vrednosti
+        const values = [-huntBetMoney,huntBetMoney];
 
-        const countPerValue = 72 / values.length; // Broj pojavljivanja svake vrednosti
+        const countPerValue = 72 / values.length;
         console.log(huntBetMoney)
-        // Kreiranje niza sa ravnomernim brojem elemenata
         const array = [];
         if(huntBetDifficulty==="Low"){
 
@@ -398,16 +397,14 @@ function ContextProvider({children}){
             array.push(3*huntBetMoney);
           }
         }
-        // Funkcija za mešanje niza (Fisher-Yates algoritam)
         function shuffle(array) {
           for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1)); // Nasumičan indeks
-            [array[i], array[j]] = [array[j], array[i]]; // Zamena elemenata
+            const j = Math.floor(Math.random() * (i + 1)); 
+            [array[i], array[j]] = [array[j], array[i]];
           }
         }
       
-        // Višestruko mešanje niza
-        for (let i = 0; i < 10; i++) { // Pet puta meša niz
+        for (let i = 0; i < 10; i++) { 
           shuffle(array);
         }
         
@@ -468,23 +465,19 @@ function ContextProvider({children}){
                 const updateActivity= async()=>{
                   try{
                     const response=await axios.post("https://casino-backend-s1l5.onrender.com/auth/updateActivity",{userId:id})
-                    console.log(response)
                   }
                   catch(e){
                     console.log(e)
                   }
                 }
                 useEffect(() => {
-                  // Proveri da li postoji userData i id pre nego što pozoveš funkciju
                   if (userData) {
                     updateActivity();
                 
-                    // Funkcija za pozivanje updateActivity
                     const interval = setInterval(() => {
                       updateActivity();
-                    }, 60000); // 60000 ms = 1 minut
+                    }, 60000); 
                 
-                    // Čisti interval kada komponenta bude unmount-ovana
                     return () => clearInterval(interval);
                   }// eslint-disable-next-line
                 }, [id, userData]);

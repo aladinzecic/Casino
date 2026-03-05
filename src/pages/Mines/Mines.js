@@ -18,7 +18,7 @@ export default function Mines() {
     if(minesGameOn){
       setMoney((prev) => Math.round((prev + cashoutMines) * 100) / 100);
       setNumOfCorrectFields(0)
-      toast.success('POBEDAAA.', {
+      toast.success('You won!', {
         style: {
           border: '1px solid #713200',
           padding: '16px',
@@ -56,7 +56,7 @@ export default function Mines() {
       setCashoutMines(0)
     }
     else{
-      toast.error('You didnt even start the game retard.', {
+      toast.error('You didnt even start the game.', {
         style: {
           border: '1px solid #713200',
           padding: '16px',

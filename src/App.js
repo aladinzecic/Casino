@@ -22,8 +22,8 @@ function App() {
         <Route path="/Login" element={<Login />} />
         <Route path="/CashHunt" element={<CashHunt />} />
         <Route path="/Roulette" element={<Roulette />} />
-        <Route path="/Mines" element={<ProtectedRoute><Mines /></ProtectedRoute>} />
-        <Route path="/Plinko" element={ <ProtectedRoute><Plinko /></ProtectedRoute>} />
+        <Route path="/Mines" element={<Mines />} />
+        <Route path="/Plinko" element={ <Plinko />} />
         <Route path="/Admin" element={ <Admin />} />
         <Route path="/Deposit" element={ <Deposit />} />
       </Routes>

@@ -129,7 +129,7 @@ else if(way===3&&isHuntGameOn===true){
                     setMoney((prev)=>prev+arrOfValues[keyy*8+index-8])
                   }
                   else{
-                    toast.error('zapocni grui!', {
+                    toast.error('You have to start game first!', {
                       style: {
                         border: '1px solid #713200',
                         padding: '16px',
@@ -152,7 +152,7 @@ else if(way===3&&isHuntGameOn===true){
                     setMoney((prev)=>prev+arrOfValues[keyy*8+index])
                   }
                   else{
-                    toast.error('zapocni grui!', {
+                    toast.error('You have to start game first!', {
                       style: {
                         border: '1px solid #713200',
                         padding: '16px',
@@ -218,7 +218,7 @@ else if(way===3&&isHuntGameOn===true){
               key={keyy*8+index}
               onClick={()=>{
                 if(!isHuntGameOn||isHuntGameOn==="ender"){
-                  toast.error('zapocni grui!', {
+                  toast.error('You have to start game first!', {
                     style: {
                       border: '1px solid #713200',
                       padding: '16px',
@@ -236,7 +236,7 @@ else if(way===3&&isHuntGameOn===true){
                   setMoney((prev)=>prev+arrOfValues[keyy*8+index])
                 }
                 else{
-                  toast.error('nemas para geng!', {
+                  toast.error('Not enough money.', {
                     style: {
                       border: '1px solid #713200',
                       padding: '16px',

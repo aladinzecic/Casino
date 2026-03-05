@@ -6,34 +6,54 @@ import user from "../../assets/icons/user (2).png"
 import arr from "../../assets/icons/right-up.png"
 import money from "../../assets/icons/money.png"
 import axios from 'axios'
+import toast, { Toaster } from 'react-hot-toast'
 export default function Admin() {
+      const [users, setUsers] = useState([])
+
     const [totalUsers,setTotalUsers]=useState()
     const [newUsers,setNewUsers]=useState()
     const [activeUsers,setActiveUsers]=useState()
-    const getAdminData= async ()=>{
-        try{
-            const response=await axios.get("https://casino-backend-s1l5.onrender.com/auth/getAdminData")
-            console.log(response.data.activeUsers[0].activeUsers)
-            setTotalUsers(response.data.totalUsers[0].count)
-            setNewUsers(response.data.newUsers[0].dailyUsers)
-            setActiveUsers(response.data.activeUsers[0].activeUsers)
-        }   
-        catch(e){
-            console.log(e)
-        }
+    const [depositedMoney,setDepositedMoney]=useState()
+    const [withdrawnMoney,setWithdrawnMoney]=useState()
+
+
+    const fetchUsers = async () => {
+      const response = await axios.get("https://casino-backend-s1l5.onrender.com/auth/users")
+      setUsers(response.data)
     }
+const getAdminData = async () => {
+  try {
+    const response = await axios.get(
+      "https://casino-backend-s1l5.onrender.com/auth/getAdminData"
+    );
+
+    // Direktno pristupi brojevima
+    setTotalUsers(response.data.totalUsers);
+    setNewUsers(response.data.newUsers);
+    setActiveUsers(response.data.activeUsers);
+    setWithdrawnMoney(response.data.withdrawnMoney);
+    setDepositedMoney(response.data.totalDeposited);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
+const banUser = async (id) => {
+  await axios.post("https://casino-backend-s1l5.onrender.com/auth/ban-user", { id })
+}
     useEffect(() => {
-        // Funkcija koja se poziva svakih minut
         getAdminData();
+        fetchUsers();
         const interval = setInterval(() => {
           getAdminData();
-        }, 60000); // 60000 ms = 1 minut
+        }, 60000); 
     
-        // Čišćenje intervala prilikom demontaže komponente
         return () => clearInterval(interval);
       }, []);
   return (
     <div className='admin-full-page'>
+              <div><Toaster position="bottom-center"/></div>
+        
         <div className="admin-full-page-top">
             <div className="admin-full-page-top-left">
                 <div className="left-div">
@@ -44,7 +64,7 @@ export default function Admin() {
                         </div>
                         <div className="left-box-right">
                             <h3 className="">Deposited money</h3>
-                            <h1 className="">$ 2358</h1>
+                            <h1 className="">$ {depositedMoney}</h1>
                         </div>
                         </div>
                         <div className="left-box">
@@ -53,7 +73,7 @@ export default function Admin() {
                         </div>
                         <div className="left-box-right">
                             <h3 className="">Withdrawn money</h3>
-                            <h1 className="">$ 1784</h1>
+                            <h1 className="">$ {withdrawnMoney}</h1>
                         </div>
                         </div>
                     </div>
@@ -66,7 +86,7 @@ export default function Admin() {
 
                         <div className="left-box-right">
                             <h3 id='largeH3' className="">Profit</h3>
-                            <h1 id='largeH1' className="">$ 574</h1>
+                            <h1 id='largeH1' className="">$ {depositedMoney-withdrawnMoney}</h1>
                         </div>
                         </div>
                     </div>
@@ -113,26 +133,34 @@ export default function Admin() {
             </div>
         </div>
             <div className="admin-full-page-bot">
-                <div className="down-box">
-                    <h2 className="">ROULLETE</h2>
-                    <h1 className="">31%</h1>
-                </div>
-                <div className="down-box">
-                    <h2 className="">PLINKO</h2>
-                    <h1 className="">12%</h1>
-                    
-                </div>
-                <div className="down-box">
-                    <h2 className="">MINES</h2>
-                    <h1 className="">37%</h1>
 
-                </div>
-                <div className="down-box">
-                    <h2 className="">CASH HUNT</h2>
-                    <h1 className="">23%</h1>
+      {users.map((user) => (
+        <div className="rect" key={user.id}>
+          <h3>{user.username}</h3>
+          <h3>{user.email}</h3>
 
-                </div>
+          <div className="circle" onClick={() => {
+            banUser(user.id)
+            toast.success('User successfuly banned', {
+                        style: {
+                          border: '1px solid #713200',
+                          padding: '16px',
+                          color: '#713200',
+                          fontSize: '18px'
+                        },
+                        iconTheme: {
+                          primary: '#713200',
+                          secondary: '#FFFAEE',
+                        },
+                      });
+            }}>
+            <h3 className="bold">x</h3>
+          </div>
         </div>
+      ))}
+
+    </div>
+    
     </div>  
   )
 }

@@ -28,7 +28,7 @@ useEffect(()=>{
     if (bombsIndexes.includes(index)) {
       setCashoutMines(0)
       setNumOfCorrectFields(0)
-      toast.error('jbgica.', {
+      toast.error('You lost.', {
         style: {
           border: '1px solid #713200',
           padding: '16px',
