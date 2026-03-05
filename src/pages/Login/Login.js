@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import password from "../../assets/icons/padlock.png"
 import email from "../../assets/icons/email.png"
 import axios from "axios"
-import { Toaster } from 'react-hot-toast'
+import toast, { Toaster } from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import { AppContext } from '../../Context/AppContext'
 import "./Login.css"
