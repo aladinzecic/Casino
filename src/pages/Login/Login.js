@@ -24,12 +24,30 @@ export default function Login() {
             });
             
             if (response.status === 200) {
-                const userId = response.data.user.id;
-                localStorage.setItem("token", userId);
-    
-                await getUserData(userId);
-                
-                navigate("/Roulette");
+
+
+                if(response.data.user.isBanned){
+                    toast.error('User is banned!', {
+                style: {
+                  border: '1px solid #713200',
+                  padding: '16px',
+                  color: '#713200',
+                  fontSize: '18px'
+                },
+                iconTheme: {
+                  primary: '#713200',
+                  secondary: '#FFFAEE',
+                },
+              });
+                }
+                else{
+                    const userId = response.data.user.id;
+                    localStorage.setItem("token", userId);
+        
+                    await getUserData(userId);
+                    
+                    navigate("/Roulette");
+                }
             }
         } catch (err) {
             console.log(err);
