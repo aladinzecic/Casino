@@ -465,6 +465,7 @@ function ContextProvider({children}){
                 const updateActivity= async()=>{
                   try{
                     const response=await axios.post("https://casino-backend-s1l5.onrender.com/auth/updateActivity",{userId:id})
+                    console.log(response)
                   }
                   catch(e){
                     console.log(e)

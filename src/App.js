@@ -20,10 +20,11 @@ function App() {
         <Route path="/" element={<Login />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/CashHunt" element={<CashHunt />} />
-        <Route path="/Roulette" element={<Roulette />} />
-        <Route path="/Mines" element={<Mines />} />
-        <Route path="/Plinko" element={ <Plinko />} />
+        <Route path="/CashHunt" element={<ProtectedRoute><CashHunt /></ProtectedRoute>
+      } />
+        <Route path="/Roulette" element={<ProtectedRoute><Roulette /></ProtectedRoute>} />
+        <Route path="/Mines" element={<ProtectedRoute><Mines /></ProtectedRoute>} />
+        <Route path="/Plinko" element={ <ProtectedRoute><Plinko /></ProtectedRoute>} />
         <Route path="/Admin" element={ <Admin />} />
         <Route path="/Deposit" element={ <Deposit />} />
       </Routes>
